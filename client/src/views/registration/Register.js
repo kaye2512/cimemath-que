@@ -17,7 +17,7 @@ function Register(){
                     <div className="flex flex-col max-w-xl">
 
                         {/* first name and last name section*/}
-                        <div className="flex justify-between  flex-wrap space-x-6">
+                        <div className="flex justify-between flex-wrap">
                             <TextFieldMedium label={"Prénom"} placeholder={"Entrer votre prénom"}/>
                             <TextFieldMedium label={"Nom"} placeholder={"Entrer votre nom"}/>
                         </div>
