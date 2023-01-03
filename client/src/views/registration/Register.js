@@ -5,8 +5,8 @@ import {CheckBoxField} from "../../components/CheckBox/CheckBoxField";
 
 function Register(){
     return (
-        <div className="mx-5 py-12 my-0 ">
-            <section className="py-6 px-20 ">
+        <div className="mx-5 py-12 my-0 flex flex-col items-center">
+            <section className="py-6 px-20">
                 {/* document title */}
                 <h1 className="text-5xl mb-8 font-extrabold ">
                     Inscription
@@ -14,11 +14,10 @@ function Register(){
 
                 {/* registration form*/}
                 <form>
-
                     <div className="flex flex-col max-w-xl">
 
                         {/* first name and last name section*/}
-                        <div className="flex justify-between  flex-wrap">
+                        <div className="flex justify-between  flex-wrap space-x-6">
                             <TextFieldMedium label={"Prénom"} placeholder={"Entrer votre prénom"}/>
                             <TextFieldMedium label={"Nom"} placeholder={"Entrer votre nom"}/>
                         </div>

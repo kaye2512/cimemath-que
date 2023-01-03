@@ -1,7 +1,7 @@
 export const TextFieldLarge = (props)=>{
     const {label, placeholder } = props;
     return(
-        <div className="mb-7 ">
+        <div className="mb-7">
             <label  htmlFor={label}
                     className="block mb-2 text-sm font-medium ">
                 {label}
