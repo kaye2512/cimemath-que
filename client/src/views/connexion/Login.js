@@ -25,7 +25,7 @@ function Login() {
                 <form>
                     <div className="flex flex-col max-w-xl">
 
-                        {/* first name and last name section */}
+                        {/* first name and last name section*/}
                         <TextFieldLarge label={"Identifiant"} placeholder={"Entrer votre identifiant"}/>
                         <TextFieldLarge label={"Mot de passe"} placeholder={"Entrer votre mot de passe"}/>
                         <FormConnexion/>
