@@ -6,6 +6,9 @@ import {FormFacebook} from "../../components/buttons/FormFacebook";
 import {FormGoogle} from "../../components/buttons/FormGoogle";
 import {FormApple} from "../../components/buttons/FormApple";
 import {FormConnexion} from "../../components/buttons/FormConnexion";
+import MyFooter from "../../components/footer/MyFooter";
+
+//import le footer
 
 
 function Login() {
@@ -33,9 +36,18 @@ function Login() {
                         <FormGoogle/><br/>
                         <FormApple/>
                     </div>
+
                 </form>
-            </section>
+
+            </section> <br/><br/>
+            {/*footer*/}
+            <footer>
+                <MyFooter/>
+            </footer>
         </div>
+
+
+
 
     );
 }
