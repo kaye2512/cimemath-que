@@ -6,11 +6,12 @@ import {FormFacebook} from "../../components/buttons/FormFacebook";
 import {FormGoogle} from "../../components/buttons/FormGoogle";
 import {FormApple} from "../../components/buttons/FormApple";
 import {FormConnexion} from "../../components/buttons/FormConnexion";
+//import footer
 import MyFooter from "../../components/footer/MyFooter";
 
-//import le footer
 
 
+//function that return login
 function Login() {
     return (
         <div className="mx-5 py-12 my-0 flex flex-col items-center">

@@ -10,6 +10,7 @@ import {faCopyright} from '@fortawesome/free-solid-svg-icons';
 
 //function that return  the footer
 export const MyFooter = () => {
+    //auto date copyright
     const year = new Date().getFullYear();
 
     return (
@@ -17,12 +18,14 @@ export const MyFooter = () => {
         <footer className="d-flex align-items-end">
             <div className="flex justify-between">
                 <img src={footerImage} alt="Footer Image" className="w-1/6"/>
+                {/* navbar*/}
                 <nav className="ml-auto">
                     <a href="#">Accueil &nbsp; &nbsp;</a>
                     <a href="#">A propos &nbsp; &nbsp;</a>
                     <a href="#">Mon Compte &nbsp; &nbsp;</a>
                 </nav>
             </div>
+            {/* used imported icon*/}
             <div className="ml-auto" style={{fontSize: '80%'}}>
                 <FontAwesomeIcon icon={faCopyright}/> Copyright {year}
             </div>
