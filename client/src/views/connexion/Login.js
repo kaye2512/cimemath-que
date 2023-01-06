@@ -8,7 +8,7 @@ import {FormApple} from "../../components/buttons/FormApple";
 import {FormConnexion} from "../../components/buttons/FormConnexion";
 //import footer
 
-import MyFooter from "../../components/Footer/MyFooter";
+import Footer from "../../components/Footer/Footer";
 
 
 
@@ -45,7 +45,7 @@ function Login() {
             </section> <br/><br/>
             {/*footer*/}
             <footer>
-                <MyFooter/>
+                <Footer/>
             </footer>
         </div>
 
