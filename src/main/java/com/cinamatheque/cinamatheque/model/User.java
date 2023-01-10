@@ -7,15 +7,11 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;;
-
+import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
 
-/*
-*  @author e2palmes
- */
 @Data
 @Document
 public class User implements UserDetails {
@@ -24,9 +20,8 @@ public class User implements UserDetails {
     private String firstname;
     private String lastname;
     private String password;
-    @Indexed(unique = true) private String email;
+    private String email;
     private Gender gender;
-
     private Role role;
     private String postcode;
     private String address;

@@ -2,7 +2,7 @@ package com.cinamatheque.cinamatheque.controller;
 
 
 import com.cinamatheque.cinamatheque.model.User;
-import com.cinamatheque.cinamatheque.service.UserService;
+import com.cinamatheque.cinamatheque.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,15 +13,10 @@ import java.util.List;
 @AllArgsConstructor
 public class UserController {
 
-    private final UserService userService;
-
-    @PostMapping(path = "/save")
-    public User newUser(@RequestBody User user){
-        return  new User();
-    }
+    private final UserRepository userRepository;
 
     @GetMapping()
     public List<User> getAllUsers(){
-        return userService.getAllUsers();
+        return userRepository.findAll();
     }
 }

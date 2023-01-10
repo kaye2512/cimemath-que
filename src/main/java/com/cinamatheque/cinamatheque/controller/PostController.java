@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/post")
 public class PostController {
-    @GetMapping
+    @GetMapping("/")
     public ResponseEntity<String> getPosts(){
         return ResponseEntity.ok("These are all the posts");
     }
