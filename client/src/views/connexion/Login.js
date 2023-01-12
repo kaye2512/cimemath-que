@@ -1,18 +1,50 @@
 //import components
-import {TextFieldLarge} from "../../components/forms/TextField/TextFieldLarge";
-import React from "react";
+import{TextFieldLarge} from "../../components/forms/TextField/TextFieldLarge";
 import {LoginSocialFacebook} from "reactjs-social-login";
 import {LoginSocialGoogle} from "reactjs-social-login";
 import {LoginSocialTwitter} from "reactjs-social-login";
 import {FacebookLoginButton,GoogleLoginButton,TwitterLoginButton} from "react-social-login-buttons";
 import {FormConnexion} from "../../components/buttons/FormConnexion";
-import Footer from "../../components/Footer/Footer";
+import {initialValues, validate} from "../../services/constants/Connexion/Constants"
+import {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 //import footer
-
 import Footer from "../../components/footer/Footer";
 
+
+/**
+ *
+ * @returns {JSX.Element}
+ * @constructor
+ */
+
 function Login() {
+    const [userValues, setUserValues] = useState(initialValues);
+    const [formError, setFormError] = useState({});
+    const [isSubmit, setIsSubmit] = useState(false);
+
+    const handleChange = (e)=>{
+        const {name, value} = e.target
+        setUserValues({...userValues,[name]:value});
+    }
+
+    const submitHandler =(e)=>{
+        e.preventDefault();
+        if(Object.keys(formError).length === 0){
+
+            console.log("form submitted");
+        }else{
+            setIsSubmit(true);
+            console.log("form have errors");
+        }
+    }
+
+    useEffect(()=>{
+        setFormError(validate(userValues));
+    },[userValues])
+
+
+
 
     return (
         <div className="mx-5 py-12 my-0 flex flex-col items-center">
@@ -22,15 +54,41 @@ function Login() {
                     Connexion
                 </h1>
 
-                {/* Connexion form*/}
-                <form>
-                    <div className="flex flex-col max-w-xl ">
+                {isSubmit &&
+
+                    <div
+                        className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg font-bold"
+                        role="alert">
+                        <span className="font-medium">L'identifiant ou le mot de passe ne sont pas valide</span>
+                    </div>
+
+                }
+                {/* registration form*/}
+                <form onSubmit={submitHandler}>
+                    <div className="flex flex-col max-w-xl">
 
                         {/* first name and last name section*/}
-                        <TextFieldLarge label={"Identifiant"} placeholder={"Entrer votre identifiant"}/>
-                        <TextFieldLarge label={"Mot de passe"} placeholder={"Entrer votre mot de passe"} type="password"/>
+                        <TextFieldLarge label="Identifiant"
+                                        type="text"
+                                        placeholder="Entrer votre identifiant"
+                                        name={"username"}
+                                        values={userValues.username}
+                                        formError={formError.username}
+                                        handleChange={handleChange}
+
+
+                        />
+                        <TextFieldLarge label="Mot de passe"
+                                        type="password"
+                                        placeholder="Entrer votre mot de passe"
+                                        name="password"
+                                        formError={formError.password}
+                                        values={userValues.password}
+                                        handleChange={handleChange}
+
+                        />
                         <FormConnexion/>
-                        <p className="mt-7">
+                            <p className="mt-7">
 
                             Vous n'avez pas de compte ? <Link to="/register" className="text-red-600 hover:underline">Inscrivez-Vous</Link>
                         </p><br/>
@@ -86,6 +144,8 @@ function Login() {
                 <Footer/>
             </footer>
         </div>
+
+
 
 
     );
