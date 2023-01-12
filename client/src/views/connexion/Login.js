@@ -42,24 +42,24 @@ function Login() {
                             {/*<FormGoogle/>*/}
 
                             <LoginSocialGoogle client_id="955538355623-dok0i9d3ndq8ruds7k3av7qgjurc5clj.apps.googleusercontent.com"
-                                               onReject={(err)=>console.log(err)}
-                                               onResolve={(res)=>console.log(res)}>
+                                                onReject={(err)=>console.log(err)}
+                                                onResolve={(res)=>console.log(res)}>
                                 <GoogleLoginButton text="connecter vous avec google" />
                             </LoginSocialGoogle>
 
-                           <LoginSocialFacebook
-                               appId="1774459536258808"
-                               onResolve={(res)=>{
-                                   console.log(res);
-                                    }
-                               }
-                               onReject={(err)=>{
-                                    console.log(err);
-                                    }
-                               }
-                           >
-                               <FacebookLoginButton text="connecter vous avec facebook" className="w-50"/>
-                           </LoginSocialFacebook>
+                            <LoginSocialFacebook
+                                appId="1774459536258808"
+                                onResolve={(res)=>{
+                                    console.log(res);
+                                        }
+                                }
+                                onReject={(err)=>{
+                                        console.log(err);
+                                        }
+                                }
+                            >
+                                <FacebookLoginButton text="connecter vous avec facebook" className="w-50"/>
+                            </LoginSocialFacebook>
 
                             <LoginSocialTwitter client_id="LUZqanB0cFpEMnF6MU9sSUs3clU6MTpjaQ"
                                                 redirect_uri="http://localhost:3000/login"
