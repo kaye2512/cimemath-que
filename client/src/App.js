@@ -10,7 +10,7 @@ function App() {
 
 
 
-  return (
+    return (
         <Router>
             <Routes>
                 <Route path="/" element={<Home/>}/>
@@ -19,7 +19,7 @@ function App() {
                 <Route path="*" element={<h1>Error 404 page not found</h1>}/>
             </Routes>
         </Router>
-  );
+    );
 }
 
 export default App;
