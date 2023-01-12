@@ -8,6 +8,9 @@ import {FacebookLoginButton,GoogleLoginButton,TwitterLoginButton} from "react-so
 import {FormConnexion} from "../../components/buttons/FormConnexion";
 import Footer from "../../components/Footer/Footer";
 import {Link} from "react-router-dom";
+//import footer
+
+import Footer from "../../components/footer/Footer";
 
 function Login() {
 
