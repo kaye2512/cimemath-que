@@ -2,19 +2,28 @@
 import React from 'react';
 
 //import les icones
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faFacebook} from '@fortawesome/free-brands-svg-icons';
+import {LoginSocialFacebook} from "reactjs-social-login";
+import {FacebookLoginButton} from "react-social-login-buttons";
 
-//facebook btn
+
 //fucntion that return facebook icon
 export const FormFacebook = () => {
     return (
-        <button type="submit"
-                className="text-white bg-blue-500 font-bold rounded-lg text-sm w-50 px-6 py-2.5 px-4 text-center">
-            {/* used imported icon for facebook*/}
-            <FontAwesomeIcon icon={faFacebook} className="icon"/> Se connecter avec Facebook
-        </button>
+        <LoginSocialFacebook
+            appId="1774459536258808"
+            onResolve={(res)=>{
+                console.log(res);
+            }
+            }
+            onReject={(err)=>{
+                console.log(err);
+            }
+            }
+        >
+            <FacebookLoginButton text="continuer avec facebook" className="w-50 rounded-lg"/>
+        </LoginSocialFacebook>
     );
 
 }
+export default FormFacebook;
 

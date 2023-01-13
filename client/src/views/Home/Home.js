@@ -3,9 +3,15 @@ import  react from "react";
 
 
 
+
+
+
 export const Home = (props)=>{
+
+
     return (
-        <div>
+
+            <div>
             <p>Home</p>
             <p className="mt-7">
                 <Link to="/Register" className="text-red-600 hover:underline">Inscrivez-Vous</Link>
@@ -15,6 +21,8 @@ export const Home = (props)=>{
             </p>
 
         </div>
+
+
 
 
     );
