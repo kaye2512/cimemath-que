@@ -6,7 +6,10 @@ import {LoginSocialFacebook} from "reactjs-social-login";
 import {LoginSocialGoogle} from "reactjs-social-login";
 import {LoginSocialTwitter} from "reactjs-social-login";
 // import social icons btn
-import {FacebookLoginButton,GoogleLoginButton,TwitterLoginButton} from "react-social-login-buttons";
+import {FormGoogle} from "../../components/buttons/FormGoogle";
+import {FormTwitter} from "../../components/buttons/FormTwitter";
+import {FormFacebook} from "../../components/buttons/FormFacebook";
+
 // import submit btn
 import {FormSubmit} from "../../components/buttons/FormSubmit";
 import {initialValues, validate} from "../../services/constants/Connexion/Constants"
@@ -15,6 +18,7 @@ import {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 //import footer
 import Footer from "../../components/footer/Footer";
+
 
 
 
@@ -50,6 +54,7 @@ function Login() {
     useEffect(()=>{
         setFormError(validate(userValues));
     },[userValues])
+
 
 
 
@@ -109,41 +114,12 @@ function Login() {
                         <div className="flex flex-col space-y-3 m-3">
 
                             {/* Google */}
-
-                            <LoginSocialGoogle client_id="955538355623-dok0i9d3ndq8ruds7k3av7qgjurc5clj.apps.googleusercontent.com"
-                                                onReject={(err)=>console.log(err)}
-                                                onResolve={(res)=>console.log(res)}>
-                                <GoogleLoginButton text="continuer avec google" />
-                            </LoginSocialGoogle>
-
+                                <FormGoogle/>
                             {/* Facebook */}
-                            <LoginSocialFacebook
-                                appId="1774459536258808"
-                                onResolve={(res)=>{
-                                    console.log(res);
-                                        }
-                                }
-                                onReject={(err)=>{
-                                        console.log(err);
-                                        }
-                                }
-                            >
-                                <FacebookLoginButton text="continuer avec facebook" className="w-50 rounded-lg"/>
-                            </LoginSocialFacebook>
+                                <FormFacebook/>
 
                             {/* Twitter */}
-                            <LoginSocialTwitter client_id="LUZqanB0cFpEMnF6MU9sSUs3clU6MTpjaQ"
-                                                redirect_uri="http://localhost:3000/login"
-                                                onReject={(err)=>console.log(err)}
-                                                onResolve={({ provider, data })=>
-                                                {console.log(data);}}
-
-                            >
-
-                                <TwitterLoginButton text="continuer avec twitter" className="w-30 rounded-lg"/>
-                            </LoginSocialTwitter>
-
-
+                                <FormTwitter/>
 
                         </div>
 
