@@ -1,3 +1,8 @@
+/*
+*Registration page constants
+*
+*/
+
 
 export const initialValues = {
     first_name:"",
@@ -33,7 +38,7 @@ export const validate = (userValues, agreeTerms)=>{
     }else{delete errors.email}
 
     if(!regex_password.test(userValues.password)){
-        errors.password = "Votre mot de passe doit contenir au moins un charactére majuscule, un charactére minuscule, un chiffre et un un charactére spécial"
+        errors.password = "Votre mot de passe doit contenir au moins 8 charactéres, un charactére majuscule, un charactére minuscule, un chiffre et un charactére spécial"
     }
     else{delete errors.password}
 

@@ -4,6 +4,7 @@ import {FormSubmit} from "../../components/buttons/FormSubmit";
 import {CheckBoxField} from "../../components/forms/CheckBox/CheckBoxField";
 import {initialValues, validate} from "../../services/constants/registration/Constants"
 import {useState, useEffect} from "react";
+import {Link} from "react-router-dom";
 
 function Register(){
 
@@ -11,6 +12,7 @@ function Register(){
     const [agreeTerms, setAgreeTerms] = useState(false);
     const [formError, setFormError] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
+
 
     const handleChange = (e)=>{
         const {name, value} = e.target
@@ -123,9 +125,9 @@ function Register(){
                                         handleChecked={handleChecked}
 
                         />
-                        <FormSubmit />
+                        <FormSubmit buttonText="Valider"/>
                         <p className="mt-7">
-                            Vous avez déja un compte ? <a href="#login" className="text-red-600 hover:underline">Connectez vous</a>
+                            Vous avez déja un compte ? <Link to ="/login" className="text-red-600 hover:underline">Connectez vous</Link>
                         </p>
                     </div>
                 </form>
