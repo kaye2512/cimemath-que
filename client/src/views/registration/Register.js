@@ -125,7 +125,7 @@ function Register(){
                                         handleChecked={handleChecked}
 
                         />
-                        <FormSubmit />
+                        <FormSubmit buttonText="Valider"/>
                         <p className="mt-7">
                             Vous avez déja un compte ? <Link to ="/login" className="text-red-600 hover:underline">Connectez vous</Link>
                         </p>

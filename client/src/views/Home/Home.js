@@ -1,6 +1,9 @@
 import {Link} from "react-router-dom";
+import  react from "react";
 
-export const Home = ()=>{
+
+
+export const Home = (props)=>{
     return (
         <div>
             <p>Home</p>

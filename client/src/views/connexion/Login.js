@@ -1,15 +1,21 @@
 //import components
 import{TextFieldLarge} from "../../components/forms/TextField/TextFieldLarge";
+
+//import social icons
 import {LoginSocialFacebook} from "reactjs-social-login";
 import {LoginSocialGoogle} from "reactjs-social-login";
 import {LoginSocialTwitter} from "reactjs-social-login";
+// import social icons btn
 import {FacebookLoginButton,GoogleLoginButton,TwitterLoginButton} from "react-social-login-buttons";
-import {FormConnexion} from "../../components/buttons/FormConnexion";
+// import submit btn
+import {FormSubmit} from "../../components/buttons/FormSubmit";
 import {initialValues, validate} from "../../services/constants/Connexion/Constants"
 import {useState, useEffect} from "react";
+// import route
 import {Link} from "react-router-dom";
 //import footer
 import Footer from "../../components/footer/Footer";
+
 
 
 /**
@@ -18,7 +24,9 @@ import Footer from "../../components/footer/Footer";
  * @constructor
  */
 
+
 function Login() {
+    //Declaration
     const [userValues, setUserValues] = useState(initialValues);
     const [formError, setFormError] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
@@ -63,11 +71,11 @@ function Login() {
                     </div>
 
                 }
-                {/* registration form*/}
+                {/* Login form*/}
                 <form onSubmit={submitHandler}>
                     <div className="flex flex-col max-w-xl">
 
-                        {/* first name and last name section*/}
+                        {/* username and password section*/}
                         <TextFieldLarge label="Identifiant"
                                         type="text"
                                         placeholder="Entrer votre identifiant"
@@ -87,7 +95,10 @@ function Login() {
                                         handleChange={handleChange}
 
                         />
-                        <FormConnexion/>
+
+                        {/* change button text name*/}
+                        <FormSubmit buttonText="Connexion" />
+
                             <p className="mt-7">
 
                             Vous n'avez pas de compte ? <Link to="/register" className="text-red-600 hover:underline">Inscrivez-Vous</Link>
@@ -97,14 +108,15 @@ function Login() {
                         {/* Socials authentification*/}
                         <div className="flex flex-col space-y-3 m-3">
 
-                            {/*<FormGoogle/>*/}
+                            {/* Google */}
 
                             <LoginSocialGoogle client_id="955538355623-dok0i9d3ndq8ruds7k3av7qgjurc5clj.apps.googleusercontent.com"
                                                 onReject={(err)=>console.log(err)}
                                                 onResolve={(res)=>console.log(res)}>
-                                <GoogleLoginButton text="connecter vous avec google" />
+                                <GoogleLoginButton text="continuer avec google" />
                             </LoginSocialGoogle>
 
+                            {/* Facebook */}
                             <LoginSocialFacebook
                                 appId="1774459536258808"
                                 onResolve={(res)=>{
@@ -116,9 +128,10 @@ function Login() {
                                         }
                                 }
                             >
-                                <FacebookLoginButton text="connecter vous avec facebook" className="w-50"/>
+                                <FacebookLoginButton text="continuer avec facebook" className="w-50 rounded-lg"/>
                             </LoginSocialFacebook>
 
+                            {/* Twitter */}
                             <LoginSocialTwitter client_id="LUZqanB0cFpEMnF6MU9sSUs3clU6MTpjaQ"
                                                 redirect_uri="http://localhost:3000/login"
                                                 onReject={(err)=>console.log(err)}
@@ -127,7 +140,7 @@ function Login() {
 
                             >
 
-                                <TwitterLoginButton text="connecter vous avec twitter" className="w-50"/>
+                                <TwitterLoginButton text="continuer avec twitter" className="w-30 rounded-lg"/>
                             </LoginSocialTwitter>
 
 
@@ -139,6 +152,7 @@ function Login() {
                 </form>
 
             </section> <br/><br/>
+
             {/*footer*/}
             <footer>
                 <Footer/>
