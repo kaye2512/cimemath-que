@@ -15,6 +15,9 @@ export const Home = (props)=>{
             <p className="mt-7">
                 <Link to="/Login" className="text-red-600 hover:underline">Connecter vous</Link>
             </p>
+            <p className="mt-7">
+                <Link to="/Accueil" className="text-red-600 hover:underline">Accueil</Link>
+            </p>
 
         </div>
 
