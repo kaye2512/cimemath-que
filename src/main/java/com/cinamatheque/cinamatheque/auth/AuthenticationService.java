@@ -21,19 +21,11 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
 
     public AuthenticationResponse register(RegisterRequest request) {
-        User user = new User();
-        user.setFirstname(request.getFirstname());
-        user.setLastname(request.getLastname());
-        user.setUsername(request.getUsername());
-        user.setEmail(request.getEmail());
-        user.setPassword(passwordEncoder.encode(request.getPassword()));
-        user.setRole(Role.USER);
-
-        userRepository.save(user);
-
-        var jwtToken = jwtService.generateToken(user);
-
-        return AuthenticationResponse.builder().token(jwtToken).build();
+            User user = new User(request.getUsername(), request.getFirstname(), request.getLastname(), request.getEmail(), passwordEncoder.encode(request.getPassword()));
+            user.setRole(Role.USER);
+            userRepository.save(user);
+            var jwtToken = jwtService.generateToken(user);
+            return AuthenticationResponse.builder().token(jwtToken).build();
     }
 
     public AuthenticationResponse authenticate(AuthenticateRequest request) {
@@ -43,7 +35,6 @@ public class AuthenticationService {
                         request.getPassword()
                 )
         );
-
         var user = userRepository.findByUsername(request.getUsername()).orElseThrow();
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder().token(jwtToken).build();
