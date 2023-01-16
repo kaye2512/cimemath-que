@@ -63,8 +63,8 @@ function Login() {
         <div className="mx-5 py-12 my-0 flex flex-col items-center">
             <section className="py-6 px-20">
                 {/* document title */}
-                <h1 className="text-5xl mb-8 font-extrabold ">
-                    Connexion
+                <h1 className="text-3xl mb-2 ml-8 font-extrabold ">
+                    Connectez-vous
                 </h1>
 
                 {isSubmit &&
@@ -78,7 +78,7 @@ function Login() {
                 }
                 {/* Login form*/}
                 <form onSubmit={submitHandler}>
-                    <div className="flex flex-col max-w-xl">
+                    <div className="flex flex-col max-w-sm">
 
                         {/* username and password section*/}
                         <TextFieldLarge label="Identifiant"
@@ -104,14 +104,13 @@ function Login() {
                         {/* change button text name*/}
                         <FormSubmit buttonText="Connexion" />
 
-                            <p className="mt-7">
+                            <p className="mt-5">
 
                             Vous n'avez pas de compte ? <Link to="/register" className="text-red-600 hover:underline">Inscrivez-Vous</Link>
                         </p><br/>
-                        <p> Ou bien connectez-vous avec : </p>
 
                         {/* Socials authentification*/}
-                        <div className="flex flex-col space-y-3 m-3">
+                        <div className="flex flex-col space-y-2 m-2">
 
                             {/* Google */}
                                 <FormGoogle/>
