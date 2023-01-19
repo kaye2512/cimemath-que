@@ -23,11 +23,6 @@ export const  Film = ()=>{
         setComments(Commentaires);
     }
 
-    useEffect(()=>{
-
-    },[Commentaires]);
-
-
     return (
         <div className="mx-5 py-12 my-0 flex flex-col items-center space-y-5">
             <section className="py-6 px-20 w-full max-w-screen-desktop">
