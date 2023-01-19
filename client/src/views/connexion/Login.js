@@ -1,23 +1,14 @@
-//import components
 import{TextFieldLarge} from "../../components/forms/TextField/TextFieldLarge";
-
-//import social icons
-import {LoginSocialFacebook} from "reactjs-social-login";
-import {LoginSocialGoogle} from "reactjs-social-login";
-import {LoginSocialTwitter} from "reactjs-social-login";
-// import social icons btn
 import {FormGoogle} from "../../components/buttons/FormGoogle";
 import {FormTwitter} from "../../components/buttons/FormTwitter";
 import {FormFacebook} from "../../components/buttons/FormFacebook";
-
-// import submit btn
-import {FormSubmit} from "../../components/buttons/FormSubmit";
+import {Button} from "../../components/buttons/Button";
 import {initialValues, validate} from "../../services/constants/Connexion/Constants"
 import {useState, useEffect} from "react";
-// import route
 import {Link} from "react-router-dom";
-//import footer
-import Footer from "../../components/footer/Footer";
+import Footer from "../../components/Footer/Footer";
+
+
 
 
 
@@ -102,7 +93,10 @@ function Login() {
                         />
 
                         {/* change button text name*/}
-                        <FormSubmit buttonText="Connexion" />
+                        <Button text="Connexion"
+                                color="white"
+                                type="submit"
+                        />
 
                             <p className="mt-5">
 
