@@ -1,9 +1,32 @@
 import {Button} from "../../components/buttons/Button";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPaperPlane} from "@fortawesome/free-solid-svg-icons/faPaperPlane";
-import {Actors, Commentaires, Contenu, Reviews} from "./test/Data";
+import {Actors, Commentaires, Contenu, Reviews, Users} from "./test/Data";
+import {useEffect, useState} from "react";
 
 export const  Film = ()=>{
+
+    const [comment, setComment] = useState("");
+    const [comments, setComments] = useState(Commentaires);
+    const submitHandler = (e)=>{
+        e.preventDefault();
+
+        Commentaires.push(
+            {
+                name:"this test user",
+                image:"/assets/images/avatar1.png",
+                commentaire: comment
+            }
+        );
+        setComment("");
+        console.log(Commentaires);
+        setComments(Commentaires);
+    }
+
+    useEffect(()=>{
+
+    },[Commentaires]);
+
 
     return (
         <div className="mx-5 py-12 my-0 flex flex-col items-center space-y-5">
@@ -100,9 +123,9 @@ export const  Film = ()=>{
             </section >
 
             <section className="py-6 px-20 w-full max-w-screen-desktop">
-                <div className="flex justify-between text-red-600 underline">
+                <div className="flex justify-between text-red-600 ">
                     <h1 className="mb-3 text-2xl text-red-600 font-bold">Reviews</h1>
-                    <a href="#Ecrire">Ecrire un review</a>
+                    <a className="underline" href="#Ecrire">Ecrire un review</a>
                 </div>
                 {
                     Reviews.map(({name,image,review,note})=>{
@@ -147,7 +170,7 @@ export const  Film = ()=>{
             <section className="py-6 px-20 w-full max-w-screen-desktop">
                 <h1 className="mb-3 text-2xl text-red-600 font-bold">Commentaires</h1>
                 {
-                 Commentaires.map(({name,image,commentaire})=>{
+                 comments.map(({name,image,commentaire})=>{
                      return (
                          <div className="flex mb-4 space-x-2">
                              <div>
@@ -162,15 +185,16 @@ export const  Film = ()=>{
                          </div>
                      );
                  })
-
                 }
 
-                    <form className="flex mx-10">
-                        <textarea className="appearance-none bg-transparent border-none w-full max-w-2xl text-slate-100 mr-2 py-1 px-2 "
+                    <form className="flex mx-10" onSubmit={submitHandler}>
+                        <textarea className="appearance-none bg-transparent border-b-2 border-white w-full max-w-2xl text-slate-100 mr-2 py-1 px-2 focus:outline-none"
                                placeholder="écrire un commentaire"
-                               rows="3"
+                               rows="2"
+                               value={comment}
+                               onChange={(e)=>setComment(e.target.value)}
                         ></textarea>
-                        <button>
+                        <button type="submit">
                             <FontAwesomeIcon icon={faPaperPlane}/>
                         </button>
                     </form>
