@@ -33,7 +33,7 @@ export const Actors =[
     },
     {
         name:"Scarlett Johansson",
-        photo:"/assets/images/ScarlettJohansson.png"
+        photo:"/assets/images/Scarlett_Johansson.png"
     },
     {
         name:"Scarlett Johansson",
@@ -165,3 +165,5 @@ export const Contenu =
     genre:["Drame","Policier","Thriller"],
     tag:["comédie noire","cancer","traffic de drogue","acteur masculin intelligent","acteur masculin dur à cuir"],
 }
+
+
