@@ -31,7 +31,68 @@ export const Actors =[
         name:"Jonathan Banks",
         photo:"/assets/images/johnatan.jpg"
     },
+    {
+        name:"Scarlett Johansson",
+        photo:"/assets/images/Scarlett_Johansson.png"
+    },
+    {
+        name:"Scarlett Johansson",
+        photo:"/assets/images/TomHolland.png"
+    },
 
+]
+
+export const  FilmEtSerie = [
+    {
+        name:"Ams",
+        genre:"Film",
+        photo:"/assets/images/F_Ams.png"
+    },
+    {
+        name:"Les Animaux du Pouvoir",
+        genre:"Film",
+        photo:"/assets/images/F_AnimauxPouvoir.png"
+    },
+    {
+        name:"Arcane",
+        genre:"Manga",
+        photo:"/assets/images/F_Arcane.png"
+    },
+    {
+        name:"Breaking Bad",
+        genre:"Film",
+        photo:"/assets/images/F_BreakingBad.png"
+    },
+    {
+        name:"Fumer Fait Tousser",
+        genre:"Manga",
+        photo:"/assets/images/F_FumerFaitTousser.png"
+    },
+    {
+        name:"Japan",
+        genre:"Film",
+        photo:"/assets/images/F_japan1.png"
+    },
+    {
+        name:"Le Torrent",
+        genre:"Film",
+        photo:"/assets/images/F_LeTorrent.png"
+    },
+    {
+        name:"Manga",
+        genre:"Manga",
+        photo:"/assets/images/F_manga1.png"
+    },
+    {
+        name:"Our Planet",
+        genre:"Manga",
+        photo:"/assets/images/F_OurPlanet.png"
+    },
+    {
+        name:"Wakanda Forever",
+        genre:"Manga",
+        photo:"/assets/images/F_WakandaForever.png"
+    },
 ]
 
 export const Users = [
@@ -104,3 +165,5 @@ export const Contenu =
     genre:["Drame","Policier","Thriller"],
     tag:["comédie noire","cancer","traffic de drogue","acteur masculin intelligent","acteur masculin dur à cuir"],
 }
+
+
