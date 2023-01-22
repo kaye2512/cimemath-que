@@ -2,9 +2,9 @@ import './assets/App.css';
 import Register from "./views/registration/Register";
 import Login from "./views/connexion/Login";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import {Home} from "./views/Home/Home";
+import {LandingPage} from "./views/LandingPage/LandingPage";
 import {useEffect} from "react";
-import { Accueil } from './views/Accueil/accueil';
+import { Accueil } from './views/Home/accueil';
 import {Film} from "./views/Film/Film";
 
 
@@ -16,7 +16,7 @@ function App() {
     return (
         <Router>
             <Routes>
-                <Route path="/" element={<Home/>}/>
+                <Route path="/" element={<LandingPage/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/Accueil" element={<Accueil/>}/>
