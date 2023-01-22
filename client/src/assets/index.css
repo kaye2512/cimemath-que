@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body{
+    background-color: black;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+
+
+.container{
+    background-color: black;
+}
+
+
+section{
+    background-color: #2C2C2C;
+    border-radius: 10px;
+}
