@@ -1,8 +1,8 @@
 import {Button} from "../../components/buttons/Button";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPaperPlane} from "@fortawesome/free-solid-svg-icons/faPaperPlane";
-import {Actors, Commentaires, Contenu, Reviews, Users} from "./test/Data";
-import {useEffect, useState} from "react";
+import {Actors, Commentaires, Contenu, Reviews} from "./test/Data";
+import {FormNavbar} from "../../components/navbar/FormNavbar";
 
 export const  Film = ()=>{
 
@@ -25,6 +25,9 @@ export const  Film = ()=>{
 
     return (
         <div className="mx-5 py-12 my-0 flex flex-col items-center space-y-5">
+            {/*navbar*/}
+            <FormNavbar/>
+
             <section className="py-6 px-20 w-full max-w-screen-desktop">
                 <h1 className="mb-3 text-2xl font-black">{Contenu.name}</h1>
                 <div className="flex space-x-9">
