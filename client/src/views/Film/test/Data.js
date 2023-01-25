@@ -30,16 +30,7 @@ export const Actors =[
     {
         name:"Jonathan Banks",
         photo:"/assets/images/johnatan.jpg"
-    },
-    {
-        name:"Scarlett Johansson",
-        photo:"/assets/images/Scarlett_Johansson.png"
-    },
-    {
-        name:"Scarlett Johansson",
-        photo:"/assets/images/TomHolland.png"
-    },
-
+    }
 ]
 
 export const  FilmEtSerie = [
