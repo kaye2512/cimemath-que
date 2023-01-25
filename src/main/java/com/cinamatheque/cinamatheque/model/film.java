@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Data
 @Document
-public class film {
+public class Film {
 
     @Id
     private String id;
@@ -16,5 +16,15 @@ public class film {
     private Date date_sortie;
     private String affiche;
     private String version;
+
+    public Film(String titre,
+                Date date_sortie,
+                String affiche,
+                String version) {
+        this.titre = titre;
+        this.date_sortie = date_sortie;
+        this.affiche = affiche;
+        this.version = version;
+    }
 
 }

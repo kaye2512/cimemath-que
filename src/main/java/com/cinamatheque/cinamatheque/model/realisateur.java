@@ -4,16 +4,27 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Date;
 
 @Data
 @Document
-public class realisateur {
+public class Realisateur {
     @Id
     private String id;
     private String nom;
     private String prenom;
-    private Date date_naissance;
+    private String date_naissance;
     private String nationalite;
     private String description;
+
+    public Realisateur(String nom,
+                       String prenom,
+                       String date_naissance,
+                       String nationalite,
+                       String description) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.date_naissance = date_naissance;
+        this.nationalite = nationalite;
+        this.description = description;
+    }
 }
