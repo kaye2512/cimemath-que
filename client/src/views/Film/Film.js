@@ -3,6 +3,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPaperPlane} from "@fortawesome/free-solid-svg-icons/faPaperPlane";
 import {Actors, Commentaires, Contenu, Reviews} from "./test/Data";
 import {FormNavbar} from "../../components/navbar/FormNavbar";
+import {useState} from "react";
 
 export const  Film = ()=>{
 
