@@ -55,7 +55,7 @@ export const Accueil = (props)=>{
 
                 {/*third section in the right*/}
 
-                <section className="flex flex-row py-6  px-2.5 w-4/12 mr-20 max-w-screen-desktop ">
+                <section className="flex flex-row py-6  px-2.5 w-4/12 mr-20 max-w-screen-desktop">
 
                 </section>
 
@@ -75,7 +75,7 @@ export const Accueil = (props)=>{
                 <div className="flex-col justify-between items-stretch mt-0 flex">
                     <span className="text-red-600 ml-0 text-xl font-bold leading-7">{contenu1.title}</span>
                     <div className="w-full flex-col justify-between items-center mb-1 font-small text-xs flex">
-                        {/*add contenu*/}
+                        {/*add contenu listed from acceuil data*/}
                         <h1 className="mb-1 text-sm font-black">{contenu1.infos}</h1>
                     </div> &nbsp;
 
