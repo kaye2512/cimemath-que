@@ -8,7 +8,7 @@ export const FormNavbar = () => {
 
             return(
 
-                <section className="flex flex-auto items-center justify-evenly h-full pr-2 pl-5 sticky top-0 ">
+                <section className="flex flex-auto items-center justify-evenly h-full pr-2 pl-5 sticky top-0 border border-black bg-black ">
 
                     <Link to="/Accueil">
                         <img className="bg-center h-18 w-24 mr-5" src={logo} alt="Logo"/>

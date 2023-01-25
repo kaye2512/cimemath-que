@@ -9,7 +9,7 @@ import img7 from "../../assets/Images/8.jpeg";
 export const FormGridFilm = () => {
 
     return(
-        <div className="grid grid-cols-7 h-48 max-w-4xl bg-slate-50  mx-auto mt-5 ">
+        <div className="grid grid-cols-7 h-48 w-full bg-black  rounded-md mx-auto mt-5 justify-between mt-4">
             <div><img src={img5} alt= "img5"/></div>
             <div><img src={img2} alt="img2"/></div>
             <div><img src={img3} alt={"img3"}/></div>
