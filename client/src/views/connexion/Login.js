@@ -6,12 +6,9 @@ import {Button} from "../../components/buttons/Button";
 import {initialValues, validate} from "../../services/constants/Connexion/Constants"
 import {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
-import Footer from "../../components/footer/Footer";
-
-
-
-
-
+import Footer from "../../components/Footer/Footer";
+import {Authenticate} from "../../services/constants/registration/Api";
+import {useNavigate} from "react-router-dom";
 
 /**
  *
@@ -22,6 +19,7 @@ import Footer from "../../components/footer/Footer";
 
 function Login() {
     //Declaration
+    const navigate = useNavigate();
     const [userValues, setUserValues] = useState(initialValues);
     const [formError, setFormError] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
@@ -34,8 +32,16 @@ function Login() {
     const submitHandler =(e)=>{
         e.preventDefault();
         if(Object.keys(formError).length === 0){
+           Authenticate(userValues).then((response)=>{
+               if(response){
+                   response.json().then((response)=>{
+                       localStorage.setItem("token",response.token)
+                   })
+                   navigate("/home");
+               }
+            });
 
-            console.log("form submitted");
+
         }else{
             setIsSubmit(true);
             console.log("form have errors");
@@ -127,9 +133,6 @@ function Login() {
                 <Footer/>
             </footer>
         </div>
-
-
-
 
     );
 }

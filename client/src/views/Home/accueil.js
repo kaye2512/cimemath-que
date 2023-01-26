@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 import  react from "react";
-import Slider from 'react-slick';
+
 import logo from "../../assets/Images/7thfloor.png";
 import Gauche from "../../assets/Svg/defileGauche.svg";
 import temps from "../../assets/Svg/temps.svg";
