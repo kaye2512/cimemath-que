@@ -1,6 +1,4 @@
 import {Link} from "react-router-dom";
-import  react from "react";
-
 
 export const LandingPage = (props)=>{
 
@@ -16,7 +14,7 @@ export const LandingPage = (props)=>{
                 <Link to="/Login" className="text-red-600 hover:underline">Connecter vous</Link>
             </p>
             <p className="mt-7">
-                <Link to="/Accueil" className="text-red-600 hover:underline">Accueil</Link>
+                <Link to="/home" className="text-red-600 hover:underline">Accueil</Link>
             </p>
 
         </div>
