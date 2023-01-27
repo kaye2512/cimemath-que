@@ -13,4 +13,5 @@ import lombok.NoArgsConstructor;
 public class AuthenticateRequest {
     private String username;
     private String password;
+    private String provider;
 }
