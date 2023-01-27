@@ -1,22 +1,14 @@
-//import components
 import{TextFieldLarge} from "../../components/forms/TextField/TextFieldLarge";
-
-//import social icons
-import {LoginSocialFacebook} from "reactjs-social-login";
-import {LoginSocialGoogle} from "reactjs-social-login";
-import {LoginSocialTwitter} from "reactjs-social-login";
-// import social icons btn
-import {FacebookLoginButton,GoogleLoginButton,TwitterLoginButton} from "react-social-login-buttons";
-// import submit btn
-import {FormSubmit} from "../../components/buttons/FormSubmit";
+import {FormGoogle} from "../../components/buttons/FormGoogle";
+import {FormTwitter} from "../../components/buttons/FormTwitter";
+import {FormFacebook} from "../../components/buttons/FormFacebook";
+import {Button} from "../../components/buttons/Button";
 import {initialValues, validate} from "../../services/constants/Connexion/Constants"
 import {useState, useEffect} from "react";
-// import route
 import {Link} from "react-router-dom";
-//import footer
-import Footer from "../../components/footer/Footer";
-
-
+import Footer from "../../components/Footer/Footer";
+import {Authenticate} from "../../services/constants/registration/Api";
+import {useNavigate} from "react-router-dom";
 
 /**
  *
@@ -27,6 +19,7 @@ import Footer from "../../components/footer/Footer";
 
 function Login() {
     //Declaration
+    const navigate = useNavigate();
     const [userValues, setUserValues] = useState(initialValues);
     const [formError, setFormError] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
@@ -39,8 +32,16 @@ function Login() {
     const submitHandler =(e)=>{
         e.preventDefault();
         if(Object.keys(formError).length === 0){
+           Authenticate(userValues).then((response)=>{
+               if(response){
+                   response.json().then((response)=>{
+                       localStorage.setItem("token",response.token)
+                   })
+                   navigate("/home");
+               }
+            });
 
-            console.log("form submitted");
+
         }else{
             setIsSubmit(true);
             console.log("form have errors");
@@ -54,12 +55,13 @@ function Login() {
 
 
 
+
     return (
         <div className="mx-5 py-12 my-0 flex flex-col items-center">
             <section className="py-6 px-20">
                 {/* document title */}
-                <h1 className="text-5xl mb-8 font-extrabold ">
-                    Connexion
+                <h1 className="text-3xl mb-2 ml-8 font-extrabold ">
+                    Connectez-vous
                 </h1>
 
                 {isSubmit &&
@@ -73,7 +75,7 @@ function Login() {
                 }
                 {/* Login form*/}
                 <form onSubmit={submitHandler}>
-                    <div className="flex flex-col max-w-xl">
+                    <div className="flex flex-col max-w-sm">
 
                         {/* username and password section*/}
                         <TextFieldLarge label="Identifiant"
@@ -97,53 +99,26 @@ function Login() {
                         />
 
                         {/* change button text name*/}
-                        <FormSubmit buttonText="Connexion" />
+                        <Button text="Connexion"
+                                color="white"
+                                type="submit"
+                        />
 
-                            <p className="mt-7">
+                            <p className="mt-5">
 
                             Vous n'avez pas de compte ? <Link to="/register" className="text-red-600 hover:underline">Inscrivez-Vous</Link>
                         </p><br/>
-                        <p> Ou bien connectez-vous avec : </p>
 
                         {/* Socials authentification*/}
-                        <div className="flex flex-col space-y-3 m-3">
+                        <div className="flex flex-col space-y-2 m-2">
 
                             {/* Google */}
-
-                            <LoginSocialGoogle client_id="955538355623-dok0i9d3ndq8ruds7k3av7qgjurc5clj.apps.googleusercontent.com"
-                                                onReject={(err)=>console.log(err)}
-                                                onResolve={(res)=>console.log(res)}>
-                                <GoogleLoginButton text="continuer avec google" />
-                            </LoginSocialGoogle>
-
+                                <FormGoogle/>
                             {/* Facebook */}
-                            <LoginSocialFacebook
-                                appId="1774459536258808"
-                                onResolve={(res)=>{
-                                    console.log(res);
-                                        }
-                                }
-                                onReject={(err)=>{
-                                        console.log(err);
-                                        }
-                                }
-                            >
-                                <FacebookLoginButton text="continuer avec facebook" className="w-50 rounded-lg"/>
-                            </LoginSocialFacebook>
+                                <FormFacebook/>
 
                             {/* Twitter */}
-                            <LoginSocialTwitter client_id="LUZqanB0cFpEMnF6MU9sSUs3clU6MTpjaQ"
-                                                redirect_uri="http://localhost:3000/login"
-                                                onReject={(err)=>console.log(err)}
-                                                onResolve={({ provider, data })=>
-                                                {console.log(data);}}
-
-                            >
-
-                                <TwitterLoginButton text="continuer avec twitter" className="w-30 rounded-lg"/>
-                            </LoginSocialTwitter>
-
-
+                                <FormTwitter/>
 
                         </div>
 
@@ -158,9 +133,6 @@ function Login() {
                 <Footer/>
             </footer>
         </div>
-
-
-
 
     );
 }

@@ -8,6 +8,8 @@ body{
     background-color: black;
     font-family: 'Poppins', sans-serif;
     color: white;
+    margin-right: 10%;
+    margin-left: 10%;
 }
 
 
@@ -20,3 +22,4 @@ section{
     background-color: #2C2C2C;
     border-radius: 10px;
 }
+

@@ -1,7 +1,7 @@
 export const TextFieldMedium = (props)=>{
     const {label, type, placeholder, name, values,formError, handleChange} = props;
     return(
-        <div className="mb-7 mr-6">
+        <div className="mb-6 mr-6">
             <label  htmlFor={label}
                     className="block mb-2 text-sm font-medium ">
                 {label}
