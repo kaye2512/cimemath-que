@@ -1,6 +1,7 @@
 import {TwitterLoginButton} from "react-social-login-buttons";
 import {LoginSocialTwitter} from "reactjs-social-login";
 import {useNavigate} from "react-router-dom";
+import {postToDb} from "../../services/constants/registration/Api";
 
 export const FormTwitter = (props) => {
     const navigate = useNavigate();
@@ -11,25 +12,27 @@ export const FormTwitter = (props) => {
                             onResolve={({ provider, data })=>
                             {
                                 const {
-                                    access_token,
                                     name,
                                     profile_image_url,
                                     username,
                                 } = data;
 
                                 const userValues = {
-                                    token:access_token,
-                                    first_name:"",
-                                    last_name:name,
+                                    firstname:"",
+                                    lastname:name,
                                     email:"",
                                     username:username,
-                                    profile_image:profile_image_url,
                                     provider:"twitter"
                                 }
                                 console.log(userValues);
-                                localStorage.setItem("token",access_token);
-                                navigate("/home");
-
+                                postToDb(userValues).then((response)=>{
+                                    if(response){
+                                        response.json().then((response)=>{
+                                            localStorage.setItem("token",response.token)
+                                        })
+                                        navigate("/home");
+                                    }
+                                });
                             }}>
 
             <TwitterLoginButton text="continuer avec twitter" className="w-30 rounded-lg"/>

@@ -5,8 +5,8 @@
 
 
 export const initialValues = {
-    first_name:"",
-    last_name:"",
+    firstname:"",
+    lastname:"",
     username:"",
     email:"",
     password:"",
@@ -22,13 +22,13 @@ export const regex_username = /^(?=.*[a-zA-Z]).{6,}$/;
 export const validate = (userValues, agreeTerms)=>{
     const errors = {};
 
-    if(!userValues.first_name){
-        errors.first_name = "Vous devez rentrer votre prénom"
-    }else{delete errors.first_name}
+    if(!userValues.firstname){
+        errors.firstname = "Vous devez rentrer votre prénom"
+    }else{delete errors.firstname}
 
-    if(!userValues.last_name){
-        errors.last_name = "Vous devez rentrer votre nom"
-    }else{delete errors.last_name}
+    if(!userValues.lastname){
+        errors.lastname = "Vous devez rentrer votre nom"
+    }else{delete errors.lastname}
 
     if(!regex_username.test(userValues.username)){
         errors.username = "L'identifiant doit avoir au moins 6 charactéres"

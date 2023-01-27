@@ -2,6 +2,7 @@
 import {LoginSocialGoogle} from "reactjs-social-login";
 import {GoogleLoginButton} from "react-social-login-buttons";
 import {useNavigate} from "react-router-dom";
+import {postToDb} from "../../services/constants/registration/Api";
 
 
 export const FormGoogle = () => {
@@ -11,7 +12,6 @@ export const FormGoogle = () => {
                            onReject={(err)=>console.log(err)}
                            onResolve={(res)=>{
                                const {
-                                   access_token,
                                    email,
                                    family_name,
                                    given_name,
@@ -19,17 +19,22 @@ export const FormGoogle = () => {
                                } = res.data;
 
                                const userValues = {
-                                   token:access_token,
-                                   first_name:given_name,
-                                   last_name:family_name,
+                                   firstname:given_name,
+                                   lastname:family_name,
                                    email:email,
                                    username:email.split("@",1)[0],
-                                   profile_image:picture,
                                    provider:"google"
                                }
                                console.log(userValues);
-                               localStorage.setItem("token",access_token);
-                               navigate("/home");
+
+                               postToDb(userValues).then((response)=>{
+                                   if(response){
+                                       response.json().then((response)=>{
+                                           localStorage.setItem("token",response.token)
+                                       })
+                                       navigate("/home");
+                                   }
+                               });
 
                            }}>
             <GoogleLoginButton text="continuer avec google" />

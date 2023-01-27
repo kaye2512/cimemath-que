@@ -75,8 +75,8 @@ function Register(){
                                              type={"text"}
                                              placeholder={"Entrer votre prénom"}
                                              name={"first_name"}
-                                             values={userValues.first_name}
-                                             formError={formError.first_name}
+                                             values={userValues.firstname}
+                                             formError={formError.firstname}
                                              handleChange={handleChange}
 
                             />
@@ -84,8 +84,8 @@ function Register(){
                                              type={"text"}
                                              placeholder={"Entrer votre nom"}
                                              name={"last_name"}
-                                             values={userValues.last_name}
-                                             formError={formError.last_name}
+                                             values={userValues.lastname}
+                                             formError={formError.lastname}
                                              handleChange={handleChange}
 
                             />
