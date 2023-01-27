@@ -1,9 +1,9 @@
 import {TwitterLoginButton} from "react-social-login-buttons";
 import {LoginSocialTwitter} from "reactjs-social-login";
 import {useNavigate} from "react-router-dom";
-import {postToDb} from "../../services/constants/registration/Api";
+import {ApiController} from "../../utils/server/apiController";
 
-export const FormTwitter = (props) => {
+export const FormTwitter = ({type}) => {
     const navigate = useNavigate();
     return (
         <LoginSocialTwitter client_id="LUZqanB0cFpEMnF6MU9sSUs3clU6MTpjaQ"
@@ -24,15 +24,11 @@ export const FormTwitter = (props) => {
                                     username:username,
                                     provider:"twitter"
                                 }
-                                console.log(userValues);
-                                postToDb(userValues).then((response)=>{
-                                    if(response){
-                                        response.json().then((response)=>{
-                                            localStorage.setItem("token",response.token)
-                                        })
+                                ApiController(type,userValues).then((res)=>{
+                                    if(res){
                                         navigate("/home");
                                     }
-                                });
+                                })
                             }}>
 
             <TwitterLoginButton text="continuer avec twitter" className="w-30 rounded-lg"/>

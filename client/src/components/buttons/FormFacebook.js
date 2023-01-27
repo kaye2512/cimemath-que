@@ -1,9 +1,9 @@
 import {LoginSocialFacebook} from "reactjs-social-login";
 import {FacebookLoginButton} from "react-social-login-buttons";
 import {useNavigate} from "react-router-dom";
-import {postToDb} from "../../services/constants/registration/Api";
+import {ApiController} from "../../utils/server/apiController";
 
-export const FormFacebook = () => {
+export const FormFacebook = ({type}) => {
     const navigate = useNavigate();
     return (
         <LoginSocialFacebook
@@ -23,15 +23,12 @@ export const FormFacebook = () => {
                     username:email.split("@",1)[0],
                     provider:"facebook"
                 }
-                console.log(userValues);
-                postToDb(userValues).then((response)=>{
-                    if(response){
-                        response.json().then((response)=>{
-                            localStorage.setItem("token",response.token)
-                        })
+
+                ApiController(type,userValues).then((res)=>{
+                    if(res){
                         navigate("/home");
                     }
-                });
+                })
             }}
             onReject={(err)=>{
                 console.log(err);
