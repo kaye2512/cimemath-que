@@ -19,33 +19,5 @@ public class CinamathequeApplication {
 
 		SpringApplication.run(CinamathequeApplication.class, args);
 	}
-	@Bean
-	CommandLineRunner runner(FilmRepository filmRepository){
-		return args -> {
-			Film film = new Film(
-					"avenger",
-					new Date(),
-					"Photo",
-					"2.0"
 
-			);
-			filmRepository.insert(film);
-		};
-	}
-
-	@Bean
-	CommandLineRunner runnerRealisateur(RealisateurRepository realisateurRepository){
-		return args -> {
-
-			Realisateur realisateur = new Realisateur(
-					"ronaldo",
-					 "patrick",
-					 String.valueOf(new Date()),
-					 "Français",
-					 "beau film à voir"
-
-			);
-			realisateurRepository.insert(realisateur);
-		};
-	}
 }
