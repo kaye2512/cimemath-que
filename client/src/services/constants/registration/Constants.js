@@ -18,6 +18,10 @@ export const regex_email = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^
 export const regex_password = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*#?&])(?=.*[a-zA-Z]).{8,}$/;
 export const regex_username = /^(?=.*[a-zA-Z]).{6,}$/;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5038c944ac61fbcf71986d8df1a8779706a34ec0
 export const validate = (userValues, agreeTerms)=>{
     const errors = {};
 

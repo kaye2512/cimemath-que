@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //import components
 import{TextFieldLarge} from "../../components/forms/TextField/TextFieldLarge";
 
@@ -21,6 +22,19 @@ import Footer from "../../components/footer/Footer";
 
 
 
+=======
+import{TextFieldLarge} from "../../components/forms/TextField/TextFieldLarge";
+import {FormGoogle} from "../../components/buttons/FormGoogle";
+import {FormTwitter} from "../../components/buttons/FormTwitter";
+import {FormFacebook} from "../../components/buttons/FormFacebook";
+import {Button} from "../../components/buttons/Button";
+import {initialValues, validate} from "../../services/constants/Connexion/Constants"
+import {useState, useEffect} from "react";
+import {Link} from "react-router-dom";
+import Footer from "../../components/Footer/Footer";
+import {Authenticate} from "../../services/constants/registration/Api";
+import {useNavigate} from "react-router-dom";
+>>>>>>> 5038c944ac61fbcf71986d8df1a8779706a34ec0
 
 /**
  *
@@ -31,6 +45,10 @@ import Footer from "../../components/footer/Footer";
 
 function Login() {
     //Declaration
+<<<<<<< HEAD
+=======
+    const navigate = useNavigate();
+>>>>>>> 5038c944ac61fbcf71986d8df1a8779706a34ec0
     const [userValues, setUserValues] = useState(initialValues);
     const [formError, setFormError] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
@@ -43,8 +61,21 @@ function Login() {
     const submitHandler =(e)=>{
         e.preventDefault();
         if(Object.keys(formError).length === 0){
+<<<<<<< HEAD
 
             console.log("form submitted");
+=======
+           Authenticate(userValues).then((response)=>{
+               if(response){
+                   response.json().then((response)=>{
+                       localStorage.setItem("token",response.token)
+                   })
+                   navigate("/home");
+               }
+            });
+
+
+>>>>>>> 5038c944ac61fbcf71986d8df1a8779706a34ec0
         }else{
             setIsSubmit(true);
             console.log("form have errors");
@@ -102,7 +133,14 @@ function Login() {
                         />
 
                         {/* change button text name*/}
+<<<<<<< HEAD
                         <FormSubmit buttonText="Connexion" />
+=======
+                        <Button text="Connexion"
+                                color="white"
+                                type="submit"
+                        />
+>>>>>>> 5038c944ac61fbcf71986d8df1a8779706a34ec0
 
                             <p className="mt-5">
 
@@ -134,9 +172,12 @@ function Login() {
             </footer>
         </div>
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 5038c944ac61fbcf71986d8df1a8779706a34ec0
     );
 }
 

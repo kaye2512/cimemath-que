@@ -3,7 +3,11 @@
 import React from 'react';
 
 //import l'image de footer
+<<<<<<< HEAD
 import footerImage from '../../assets/7thfloor.png';
+=======
+import footerImage from '../../assets/Images/7thfloor.png';
+>>>>>>> 5038c944ac61fbcf71986d8df1a8779706a34ec0
 //import copyright icon
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faCopyright} from '@fortawesome/free-solid-svg-icons';

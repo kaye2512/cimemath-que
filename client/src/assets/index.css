@@ -8,6 +8,11 @@ body{
     background-color: black;
     font-family: 'Poppins', sans-serif;
     color: white;
+<<<<<<< HEAD
+=======
+    margin-right: 10%;
+    margin-left: 10%;
+>>>>>>> 5038c944ac61fbcf71986d8df1a8779706a34ec0
 }
 
 
@@ -20,3 +25,7 @@ section{
     background-color: #2C2C2C;
     border-radius: 10px;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5038c944ac61fbcf71986d8df1a8779706a34ec0
