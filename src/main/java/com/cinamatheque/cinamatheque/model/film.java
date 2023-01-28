@@ -1,24 +1,21 @@
 package com.cinamatheque.cinamatheque.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
+import java.util.Map;
+import java.util.Set;
 
 @Data
-@Document(collection = "film")
-@AllArgsConstructor
+@Document
 public class Film {
-
-    @Id
-    private String id;
-    private String titre;
-    private String dateSortie;
-    private String affiche;
-    private String version;
-
-
-
+    @Id private String id;
+    private String title;
+    private String description;
+    private String note;
+    private Date pubDate;
+    private Map<String, Acteur> roles;
+    private Set<Director> Directors;
 }

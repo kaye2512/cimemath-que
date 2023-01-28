@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -30,12 +31,12 @@ public class FilmService {
         return repository.findById(id).get();
     }
 
-    public Film getFilmByFilmDate(String dateSortie){
-        return repository.findByDateSortie(dateSortie);
+    public Film getFilmByFilmDate(Date pubDate){
+        return repository.findByPubDate(pubDate);
     }
 
-    public List<Film> getFilmByTitre(String titre){
-        return repository.findByTitre(titre);
+    public List<Film> getFilmByTitle(String title){
+        return repository.findByTitle(title);
     }
 
     public Film updateFilm(Film filmRequest){
@@ -43,10 +44,12 @@ public class FilmService {
         //populate new value from request to existing object/entity/document
 
        Film existingFilm = repository.findById(filmRequest.getId()).get();
-       existingFilm.setTitre(filmRequest.getTitre());
-       existingFilm.setDateSortie(filmRequest.getDateSortie());
-       existingFilm.setAffiche(filmRequest.getAffiche());
-       existingFilm.setVersion(filmRequest.getVersion());
+       existingFilm.setTitle(filmRequest.getTitle());
+       existingFilm.setDescription(filmRequest.getDescription());
+       existingFilm.setNote(filmRequest.getNote());
+       existingFilm.setPubDate(filmRequest.getPubDate());
+       existingFilm.setRoles(filmRequest.getRoles());
+       existingFilm.setDirectors(filmRequest.getDirectors());
        return repository.save(existingFilm);
 
     }

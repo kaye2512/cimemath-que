@@ -4,12 +4,13 @@ import com.cinamatheque.cinamatheque.model.Film;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 
+import java.util.Date;
 import java.util.List;
 
 public interface FilmRepository
         extends MongoRepository<Film, String>{
 
-    Film findByDateSortie(String dateSortie);
+    Film findByPubDate(Date pubDate);
 
-    List<Film> findByTitre(String titre);
+    List<Film> findByTitle(String title);
 }

@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -30,13 +31,13 @@ public class FilmController {
     public Film getFilm(@PathVariable String id){
         return service.getFilmByFilmId(id);
     }
-    @GetMapping("/dateSortie/{dateSortie}")
-    public Film getFilmWithDate(@PathVariable String dateSortie){
-        return service.getFilmByFilmDate(dateSortie);
+    @GetMapping("/pubDate/{pubDate}")
+    public Film getFilmWithDate(@PathVariable Date pubDate){
+        return service.getFilmByFilmDate(pubDate);
     }
-    @GetMapping("/titre/{titre}")
-    public List<Film> getFilmsByTitre(@PathVariable String titre){
-        return service.getFilmByTitre(titre);
+    @GetMapping("/title/{title}")
+    public List<Film> getFilmsByTitle(@PathVariable String title){
+        return service.getFilmByTitle(title);
     }
     @PutMapping
     public Film modifyFilm(@RequestBody Film film){
