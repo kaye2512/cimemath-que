@@ -6,10 +6,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 @Document
-public class Evenement {
-
+public class Category {
     @Id
     private String id;
     private String titre;
-    private String id_participant;
 }
