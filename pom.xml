@@ -8,10 +8,10 @@
 		<version>3.0.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.cinamatheque</groupId>
-	<artifactId>cinamatheque</artifactId>
+	<groupId>com.cinematheque</groupId>
+	<artifactId>cinematheque</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>cinamatheque</name>
+	<name>cinematheque</name>
 	<description>Projet Cinematheque 7th floor</description>
 	<properties>
 		<java.version>17</java.version>
