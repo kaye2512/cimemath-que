@@ -6,7 +6,7 @@ import Gauche from "../../assets/Svg/defileGauche.svg";
 import temps from "../../assets/Svg/temps.svg";
 import jaime from "../../assets/Svg/jaime.svg";
 import commentaire from "../../assets/Svg/commentaire.svg";
-import {contenu1,contenu2} from "./test/Data";
+import {contenu1, contenu2, contenu3, contenu4} from "./test/Data";
 import {FormActusMoment} from "../../components/buttons/FormActusMoment";
 import {FormFilmMoment} from "../../components/buttons/FormFilmMoment";
 import {FormShowMoment} from "../../components/buttons/FormShowMoment";
@@ -14,6 +14,7 @@ import {FormLogin} from "../../components/buttons/FormLogin";
 import {FormRegister} from "../../components/buttons/FormRegister";
 import {FormNavbar} from "../../components/navbar/FormNavbar";
 import {FormGridFilm} from "../../components/Grid/FormGridFilm";
+import {Button} from "../../components/buttons/Button";
 
 /**
  *
@@ -55,7 +56,102 @@ export const Accueil = (props)=>{
 
                 {/*third section in the right*/}
 
-                <section className="flex flex-row py-6  px-2.5 w-4/12 mr-20 max-w-screen-desktop mt-14">
+                <section className="flex flex-col py-2  px-2.5 w-4/12 mr-20 max-w-screen-desktop mt-14">
+                   <h1 className="mb-3 text-2xl font-black text-red-600">{contenu3.title}</h1>
+                    <div className="flex space-x-2">
+                        <div className="flex flex-col items-center space-y-4">
+                            <div className="w-14">
+                                <img className=" w-18 h-24 items-center justify-between space-x-4" src="/assets/images/F_BreakingBad.png"/>
+                            </div>
+
+
+                        </div>
+                        {/*first block*/}
+                        <div className="flex flex-col space-y-2">
+                            <div>
+                                {contenu4.name}
+                            </div>
+                            <div>
+                                {contenu4.note}
+                            </div>
+                            <div>
+                                {contenu4.type}
+                            </div>
+                            <div>
+                                <Button
+                                    text ="Ajouter à ma liste"
+                                    color="red"
+                                    size="small"
+                                />
+                            </div>&nbsp;&nbsp;
+
+                        </div>&nbsp;&nbsp;
+
+                    </div>&nbsp;
+                    <div className="flex space-x-2">
+                        <div className="flex flex-col items-center space-y-4">
+                            <div className="w-14">
+                                <img className=" w-18 h-24 items-center justify-between space-x-4" src="/assets/images/F_BreakingBad.png"/>
+                            </div>
+
+
+                        </div>&nbsp;
+
+                        {/*second block*/}
+                        <div className="flex flex-col space-y-2">&nbsp;
+                            <div>
+                                {contenu4.name}
+                            </div>
+                            <div>
+                                {contenu4.note}
+                            </div>
+                            <div>
+                                {contenu4.type}
+                            </div>
+                            <div>
+                                <Button
+                                    text ="Ajouter à ma liste"
+                                    color="red"
+                                    size="small"
+                                />
+                            </div>
+
+                        </div>&nbsp;&nbsp;
+
+                    </div>&nbsp;&nbsp;
+                    {/*third block*/}
+                    <div className="flex space-x-2">
+                        <div className="flex flex-col items-center space-y-4">
+                            <div className="w-14">
+                                <img className=" w-18 h-24 items-center justify-between space-x-4" src="/assets/images/F_BreakingBad.png"/>
+                            </div>
+
+
+                        </div>&nbsp;
+                        <div className="flex flex-col space-y-2">&nbsp;
+                            <div>
+                                {contenu4.name}
+                            </div>
+                            <div>
+                                {contenu4.note}
+                            </div>
+                            <div>
+                                {contenu4.type}
+                            </div>
+                            <div>
+                                <Button
+                                    text ="Ajouter à ma liste"
+                                    color="red"
+                                    size="small"
+                                />
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
 
                 </section>
 
@@ -64,7 +160,7 @@ export const Accueil = (props)=>{
 
             {/*tH section*/}
             <section className="py-6 px-2.5 w-6/12 max-w-screen-desktop flex-row flex space-x-4">
-                <div className="flex flex-row items-center space-X-4">
+                <div className="flex flex-row items-center space-x-4">
                     <div className="w-32">
                         <img className="object-fill  w-40 h-50"  src="/assets/images/TomHolland.png" alt="TH"/>
 
