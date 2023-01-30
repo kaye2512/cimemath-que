@@ -1,7 +1,6 @@
 package com.cinamatheque.cinamatheque.service;
 
 import com.cinamatheque.cinamatheque.model.Acteur;
-import com.cinamatheque.cinamatheque.model.Film;
 import com.cinamatheque.cinamatheque.repository.ActeurRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,22 +20,24 @@ public class ActeurService {
         return repository.save(acteur);
     }
 
-    public List<Acteur> findAllActeur(){
-        return repository.findAll();
+    public Acteur updateActeur(Acteur acteurRequest){
+        //get the existing document from DB
+        //populate new value from request to existing object/entity/document
+
+        Acteur existingActeur = repository.findById(acteurRequest.getId()).get();
+        existingActeur.setFirstname(acteurRequest.getFirstname());
+        existingActeur.setLastname(acteurRequest.getLastname());
+        existingActeur.setBirthdate(acteurRequest.getBirthdate());
+        existingActeur.setDescription(acteurRequest.getDescription());
+        existingActeur.setNote(acteurRequest.getNote());
+        return repository.save(existingActeur);
     }
 
-    public Acteur getfActeurById(String id){
-        return repository.findById(id).get();
+    public  String deletingActeur(String id){
+        repository.deleteById(id);
+        return "deleting successfully";
     }
 
-    public List<Film> getActeurByFirstname(String firstname)
-    {
-        return repository.findByFirstname(firstname);
-    }
-
-    public List<Film> getActeurByLastname(String lastname){
-        return repository.findByLastname(lastname);
-    }
 
 
 }
