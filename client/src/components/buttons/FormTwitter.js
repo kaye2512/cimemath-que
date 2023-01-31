@@ -1,24 +1,38 @@
-//import react
-import React from 'react';
-
-//import les icones
 import {TwitterLoginButton} from "react-social-login-buttons";
 import {LoginSocialTwitter} from "reactjs-social-login";
+import {useNavigate} from "react-router-dom";
+import {ApiController} from "../../utils/server/apiController";
 
-
-//apple btn
-// fucntion that return apple icon
-export const FormTwitter = (props) => {
+export const FormTwitter = ({type}) => {
+    const navigate = useNavigate();
     return (
         <LoginSocialTwitter client_id="LUZqanB0cFpEMnF6MU9sSUs3clU6MTpjaQ"
                             redirect_uri="http://localhost:3000/login"
                             onReject={(err)=>console.log(err)}
                             onResolve={({ provider, data })=>
-                            {console.log(data);}}>
+                            {
+                                const {
+                                    name,
+                                    profile_image_url,
+                                    username,
+                                } = data;
+
+                                const userValues = {
+                                    firstname:"",
+                                    lastname:name,
+                                    email:"",
+                                    username:username,
+                                    provider:"twitter"
+                                }
+                                ApiController(type,userValues).then((res)=>{
+                                    if(res){
+                                        navigate("/home");
+                                    }
+                                })
+                            }}>
 
             <TwitterLoginButton text="continuer avec twitter" className="w-30 rounded-lg"/>
         </LoginSocialTwitter>
     );
 
 }
-export default FormTwitter;

@@ -1,19 +1,17 @@
 import {TextFieldMedium} from "../../components/forms/TextField/TextFieldMedium";
 import {TextFieldLarge} from "../../components/forms/TextField/TextFieldLarge";
-import {FormSubmit} from "../../components/buttons/FormSubmit";
+import {Button} from "../../components/buttons/Button";
 import {CheckBoxField} from "../../components/forms/CheckBox/CheckBoxField";
 import {initialValues, validate} from "../../services/constants/registration/Constants"
 import {useState, useEffect} from "react";
+import {useNavigate} from "react-router-dom";
 import {Link} from "react-router-dom";
+import {FormGoogle} from "../../components/buttons/FormGoogle";
+import {FormFacebook} from "../../components/buttons/FormFacebook";
+import {FormTwitter} from "../../components/buttons/FormTwitter";
+import {ApiController} from "../../utils/server/apiController";
 
-function Register() {
-    import {Button} from "../../components/buttons/Button";
-    import {CheckBoxField} from "../../components/forms/CheckBox/CheckBoxField";
-    import {initialValues, validate} from "../../services/constants/registration/Constants"
-    import {useState, useEffect} from "react";
-    import {useNavigate} from "react-router-dom";
-    import {Link} from "react-router-dom";
-    import {Authenticate, postToDb} from "../../services/constants/registration/Api";
+function Register(){
 
     const navigate = useNavigate();
     const [userValues, setUserValues] = useState(initialValues);
@@ -34,19 +32,21 @@ function Register() {
     const submitHandler =(e)=>{
         e.preventDefault();
         if(Object.keys(formError).length === 0){
-
-            console.log("form submitted");
-        }else{
-            setIsSubmit(true);
-            console.log("form have errors");
-            postToDb(userValues).then((response)=>{
-                if(response){
-                    response.json().then((response)=>{
-                        localStorage.setItem("token",response.token)
-                    })
+            console.log(userValues);
+            ApiController("register",{
+                firstname:userValues.firstname,
+                lastname:userValues.lastname,
+                email:userValues.email,
+                username:userValues.username,
+                password:userValues.password
+            }).then((res)=>{
+                if(res){
                     navigate("/home");
                 }
-            });
+            })
+
+        }else{
+            setIsSubmit(true);
         }
     }
 
@@ -81,18 +81,18 @@ function Register() {
                             <TextFieldMedium label={"Prénom"}
                                              type={"text"}
                                              placeholder={"Entrer votre prénom"}
-                                             name={"first_name"}
-                                             values={userValues.first_name}
-                                             formError={formError.first_name}
+                                             name={"firstname"}
+                                             values={userValues.firstname}
+                                             formError={formError.firstname}
                                              handleChange={handleChange}
 
                             />
                             <TextFieldMedium label={"Nom"}
                                              type={"text"}
                                              placeholder={"Entrer votre nom"}
-                                             name={"last_name"}
-                                             values={userValues.last_name}
-                                             formError={formError.last_name}
+                                             name={"lastname"}
+                                             values={userValues.lastname}
+                                             formError={formError.lastname}
                                              handleChange={handleChange}
 
                             />
@@ -105,8 +105,6 @@ function Register() {
                                         values={userValues.username}
                                         formError={formError.username}
                                         handleChange={handleChange}
-
-
                         />
                         <TextFieldLarge label={"Email"}
                                         type={"text"}
@@ -136,23 +134,32 @@ function Register() {
 
                         />
                         <CheckBoxField
-                                        checked={agreeTerms}
-                                        formError={formError.agree_terms}
-                                        handleChecked={handleChecked}
+                            checked={agreeTerms}
+                            formError={formError.agree_terms}
+                            handleChecked={handleChecked}
 
                         />
-
-                        <FormSubmit buttonText="Valider"/>
-
                         <Button text="Valider"
                                 color="white"
                                 type="submit"
                         />
+
                         <p className="mt-7">
                             Vous avez déja un compte ? <Link to ="/login" className="text-red-600 hover:underline">Connectez vous</Link>
                         </p>
                     </div>
                 </form>
+                <div className="flex flex-col space-y-2 m-2">
+
+                    {/* Google */}
+                    <FormGoogle type="register"/>
+                    {/* Facebook */}
+                    <FormFacebook type="register"/>
+
+                    {/* Twitter */}
+                    <FormTwitter type="register"/>
+
+                </div>
             </section>
         </div>
     );

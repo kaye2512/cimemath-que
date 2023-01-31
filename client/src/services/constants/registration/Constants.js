@@ -5,8 +5,8 @@
 
 
 export const initialValues = {
-    first_name:"",
-    last_name:"",
+    firstname:"",
+    lastname:"",
     username:"",
     email:"",
     password:"",
@@ -18,20 +18,17 @@ export const regex_email = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^
 export const regex_password = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*#?&])(?=.*[a-zA-Z]).{8,}$/;
 export const regex_username = /^(?=.*[a-zA-Z]).{6,}$/;
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 5038c944ac61fbcf71986d8df1a8779706a34ec0
 export const validate = (userValues, agreeTerms)=>{
     const errors = {};
 
-    if(!userValues.first_name){
-        errors.first_name = "Vous devez rentrer votre prénom"
-    }else{delete errors.first_name}
+    if(!userValues.firstname){
+        errors.firstname = "Vous devez rentrer votre prénom"
+    }else{delete errors.firstname}
 
-    if(!userValues.last_name){
-        errors.last_name = "Vous devez rentrer votre nom"
-    }else{delete errors.last_name}
+    if(!userValues.lastname){
+        errors.lastname = "Vous devez rentrer votre nom"
+    }else{delete errors.lastname}
 
     if(!regex_username.test(userValues.username)){
         errors.username = "L'identifiant doit avoir au moins 6 charactéres"

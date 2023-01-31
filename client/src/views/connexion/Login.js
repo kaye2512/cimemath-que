@@ -7,8 +7,8 @@ import {initialValues, validate} from "../../services/constants/Connexion/Consta
 import {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
-import {Authenticate} from "../../services/constants/registration/Api";
 import {useNavigate} from "react-router-dom";
+import {ApiController} from "../../utils/server/apiController";
 
 /**
  *
@@ -32,18 +32,11 @@ function Login() {
     const submitHandler =(e)=>{
         e.preventDefault();
         if(Object.keys(formError).length === 0){
-
-            console.log("form submitted");
-
-           Authenticate(userValues).then((response)=>{
-               if(response){
-                   response.json().then((response)=>{
-                       localStorage.setItem("token",response.token)
-                   })
-                   navigate("/home");
-               }
-            });
-
+            ApiController("authenticate",userValues).then((res)=>{
+                if(res){
+                    navigate("/home");
+                }
+            })
 
         }else{
             setIsSubmit(true);
@@ -54,9 +47,6 @@ function Login() {
     useEffect(()=>{
         setFormError(validate(userValues));
     },[userValues])
-
-
-
 
 
     return (
@@ -102,13 +92,12 @@ function Login() {
                         />
 
                         {/* change button text name*/}
-                        <FormSubmit buttonText="Connexion" />
                         <Button text="Connexion"
                                 color="white"
                                 type="submit"
                         />
 
-                            <p className="mt-5">
+                        <p className="mt-5">
 
                             Vous n'avez pas de compte ? <Link to="/register" className="text-red-600 hover:underline">Inscrivez-Vous</Link>
                         </p><br/>
@@ -117,12 +106,12 @@ function Login() {
                         <div className="flex flex-col space-y-2 m-2">
 
                             {/* Google */}
-                                <FormGoogle/>
+                            <FormGoogle type="authenticate"/>
                             {/* Facebook */}
-                                <FormFacebook/>
+                            <FormFacebook type="authenticate"/>
 
                             {/* Twitter */}
-                                <FormTwitter/>
+                            <FormTwitter type="authenticate"/>
 
                         </div>
 
