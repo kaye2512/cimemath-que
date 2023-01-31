@@ -10,18 +10,25 @@ export const FormGoogle = ({type}) => {
         <LoginSocialGoogle client_id="955538355623-dok0i9d3ndq8ruds7k3av7qgjurc5clj.apps.googleusercontent.com"
                            onReject={(err)=>console.log(err)}
                            onResolve={(res)=>{
+                               console.log(res.data);
+                               let username
                                const {
-                                   email,
                                    family_name,
                                    given_name,
-                                   picture,
+                                   email,
+                                   sub
                                } = res.data;
+                               if(!email){
+                                   username = sub;
+                               }else{
+                                   username = email.split("@",1)[0];
+                               }
 
                                const userValues = {
                                    firstname:given_name,
                                    lastname:family_name,
-                                   email:email,
-                                   username:email.split("@",1)[0],
+                                   email:"",
+                                   username:username,
                                    provider:"google"
                                }
                                 ApiController(type,userValues).then((res)=>{
