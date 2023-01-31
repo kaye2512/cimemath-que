@@ -19,6 +19,7 @@ export const FormFacebook = ({type}) => {
                 const userValues = {
                     firstname:first_name,
                     lastname:last_name,
+                    password:"",
                     email:email,
                     username:email.split("@",1)[0],
                     provider:"facebook"

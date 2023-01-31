@@ -38,7 +38,8 @@ function Register(){
                 lastname:userValues.lastname,
                 email:userValues.email,
                 username:userValues.username,
-                password:userValues.password
+                password:userValues.password,
+                provider:""
                 }).then((res)=>{
                 if(res){
                     navigate("/home");
