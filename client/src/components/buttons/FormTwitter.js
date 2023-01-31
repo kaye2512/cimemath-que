@@ -13,7 +13,6 @@ export const FormTwitter = ({type}) => {
                             {
                                 const {
                                     name,
-                                    profile_image_url,
                                     username,
                                 } = data;
 
