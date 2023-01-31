@@ -21,6 +21,7 @@ export const FormGoogle = ({type}) => {
                                    firstname:given_name,
                                    lastname:family_name,
                                    email:email,
+                                   password:"",
                                    username:email.split("@",1)[0],
                                    provider:"google"
                                }

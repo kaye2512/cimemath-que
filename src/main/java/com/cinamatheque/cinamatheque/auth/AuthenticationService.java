@@ -20,33 +20,23 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
-    public AuthenticationResponse register(RegisterRequest request) {
-        String password;
-        System.out.print(request);
-        if (request.getProvider().isBlank()){
-            password = "Mot de passe incraquable ! je vous le dis, essayez donc pour voir";
-        }else{
-            password = request.getPassword();
-        }
-            User user = new User(request.getUsername(), request.getFirstname(), request.getLastname(), request.getEmail(), passwordEncoder.encode(password));
+    public AuthenticationResponse register(RegisterRequest request) throws Exception {
+        try {
+            User user = new User(request.getUsername(), request.getFirstname(), request.getLastname(), request.getEmail(), passwordEncoder.encode(request.getPassword()));
             user.setRole(Role.USER);
             userRepository.save(user);
             var jwtToken = jwtService.generateToken(user);
             return AuthenticationResponse.builder().token(jwtToken).build();
+        } catch (Exception e) {
+            throw new Exception(e);
+        }
     }
 
     public AuthenticationResponse authenticate(AuthenticateRequest request) {
-        String password;
-        System.out.print(request);
-        if (request.getProvider().isBlank()){
-            password = "Mot de passe incraquable ! je vous le dis, essayez donc pour voir";
-        }else{
-            password = request.getPassword();
-        }
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getUsername(),
-                        password
+                        request.getPassword()
                 )
         );
         var user = userRepository.findByUsername(request.getUsername()).orElseThrow();
