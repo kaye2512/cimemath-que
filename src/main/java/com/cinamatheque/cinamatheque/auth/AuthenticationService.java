@@ -22,7 +22,7 @@ public class AuthenticationService {
 
     public AuthenticationResponse register(RegisterRequest request) {
         String password;
-        if (request.getProvider().isEmpty() || request.getProvider().isBlank()){
+        if (request.getProvider().isBlank()){
             password = request.getPassword();
         }else{
             password = "Mot de passe incraquable ! je vous le dis, essayez donc pour voir";
@@ -36,12 +36,11 @@ public class AuthenticationService {
 
     public AuthenticationResponse authenticate(AuthenticateRequest request) {
         String  password = request.getPassword();
-
-       /* if (request.getProvider().isEmpty() || request.getProvider().isBlank()){
+        if (request.getProvider().isBlank()){
 
         } else {
            password = "Mot de passe incraquable ! je vous le dis, essayez donc pour voir";
-        }*/
+        }
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getUsername(),
