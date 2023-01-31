@@ -35,12 +35,13 @@ public class AuthenticationService {
     }
 
     public AuthenticationResponse authenticate(AuthenticateRequest request) {
-        String password;
-        if (request.getProvider().isEmpty() || request.getProvider().isBlank()){
-            password = request.getPassword();
+        String  password = request.getPassword();
+
+       /* if (request.getProvider().isEmpty() || request.getProvider().isBlank()){
+
         } else {
-            password = "Mot de passe incraquable ! je vous le dis, essayez donc pour voir";
-        }
+           password = "Mot de passe incraquable ! je vous le dis, essayez donc pour voir";
+        }*/
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getUsername(),
