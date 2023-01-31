@@ -39,7 +39,7 @@ function Register(){
                 email:userValues.email,
                 username:userValues.username,
                 password:userValues.password
-                }).then((res)=>{
+            }).then((res)=>{
                 if(res){
                     navigate("/home");
                 }
@@ -134,9 +134,9 @@ function Register(){
 
                         />
                         <CheckBoxField
-                                        checked={agreeTerms}
-                                        formError={formError.agree_terms}
-                                        handleChecked={handleChecked}
+                            checked={agreeTerms}
+                            formError={formError.agree_terms}
+                            handleChecked={handleChecked}
 
                         />
                         <Button text="Valider"

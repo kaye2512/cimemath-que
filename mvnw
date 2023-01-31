@@ -58,7 +58,11 @@ case "`uname`" in
   CYGWIN*) cygwin=true ;;
   MINGW*) mingw=true;;
   Darwin*) darwin=true
+<<<<<<< HEAD
+    # Use /usr/libexec/java_home if available, otherwise fall back to /Library/Java/Home
+=======
     # Use /usr/libexec/java_home if available, otherwise fall back to /Library/Java/LandingPage
+>>>>>>> 5038c944ac61fbcf71986d8df1a8779706a34ec0
     # See https://developer.apple.com/library/mac/qa/qa1170/_index.html
     if [ -z "$JAVA_HOME" ]; then
       if [ -x "/usr/libexec/java_home" ]; then
