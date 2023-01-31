@@ -1,0 +1,9 @@
+/*search icon style*/
+
+
+
+.search-icon {
+    background-image: url('../assets/Svg/rectangle1158.svg');
+    background-repeat: no-repeat;
+    background-position: right;
+}
