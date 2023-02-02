@@ -20,16 +20,12 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
-    public AuthenticationResponse register(RegisterRequest request) throws Exception {
-        try {
+    public AuthenticationResponse register(RegisterRequest request) {
             User user = new User(request.getUsername(), request.getFirstname(), request.getLastname(), request.getEmail(), passwordEncoder.encode(request.getPassword()));
             user.setRole(Role.USER);
             userRepository.save(user);
             var jwtToken = jwtService.generateToken(user);
             return AuthenticationResponse.builder().token(jwtToken).build();
-        } catch (Exception e) {
-            throw new Exception(e);
-        }
     }
 
     public AuthenticationResponse authenticate(AuthenticateRequest request) {
