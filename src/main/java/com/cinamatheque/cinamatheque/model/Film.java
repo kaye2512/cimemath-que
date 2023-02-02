@@ -15,7 +15,7 @@ public class Film {
     private String title;
     private String description;
     private String note;
-    private Date pub_date;
+    private Date pubDate;
     private Map<String, Acteur> roles;
     private Set<Director> Directors;
 }

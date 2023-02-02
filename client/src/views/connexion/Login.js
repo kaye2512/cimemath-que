@@ -32,11 +32,11 @@ function Login() {
     const submitHandler =(e)=>{
         e.preventDefault();
         if(Object.keys(formError).length === 0){
-           ApiController("authenticate",userValues).then((res)=>{
+            ApiController("authenticate",userValues).then((res)=>{
                 if(res){
                     navigate("/home");
                 }
-           })
+            })
 
         }else{
             setIsSubmit(true);
@@ -97,7 +97,7 @@ function Login() {
                                 type="submit"
                         />
 
-                            <p className="mt-5">
+                        <p className="mt-5">
 
                             Vous n'avez pas de compte ? <Link to="/register" className="text-red-600 hover:underline">Inscrivez-Vous</Link>
                         </p><br/>
@@ -106,12 +106,12 @@ function Login() {
                         <div className="flex flex-col space-y-2 m-2">
 
                             {/* Google */}
-                                <FormGoogle type="authenticate"/>
+                            <FormGoogle type="authenticate"/>
                             {/* Facebook */}
-                                <FormFacebook type="authenticate"/>
+                            <FormFacebook type="authenticate"/>
 
                             {/* Twitter */}
-                                <FormTwitter type="authenticate"/>
+                            <FormTwitter type="authenticate"/>
 
                         </div>
 
