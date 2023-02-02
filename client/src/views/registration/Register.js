@@ -18,7 +18,7 @@ function Register(){
     const [agreeTerms, setAgreeTerms] = useState(false);
     const [formError, setFormError] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
-
+    const [message, setMessage] = useState("Le formulaire que vous venez de soumettre contient des erreurs");
 
     const handleChange = (e)=>{
         const {name, value} = e.target
@@ -32,6 +32,7 @@ function Register(){
     const submitHandler =(e)=>{
         e.preventDefault();
         if(Object.keys(formError).length === 0){
+
             console.log(userValues);
             ApiController("register",{
                 firstname:userValues.firstname,
@@ -40,10 +41,23 @@ function Register(){
                 username:userValues.username,
                 password:userValues.password,
                 provider:""
-                }).then((res)=>{
-                if(res){
-                    console.log(res)
+                }).then((response)=>{
+                if(response.ok){
                     navigate("/home");
+                }
+                else if (response.status === 409){
+                    response.json().then((response)=>{
+                        //je récupére la nature du message
+                        console.log(response.message.search('username'))
+                        if(response.message.search('username') > 0){
+                            setMessage("Cet identifiant existe déja !")
+                        }else{
+                            setMessage("Cet adresse email existe déja !")
+                        }
+
+
+                    })
+                    setIsSubmit(true);
                 }
             })
 
@@ -70,7 +84,7 @@ function Register(){
                     <div
                         className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg font-bold"
                         role="alert">
-                        <span className="font-medium">Le formulaire que vous venez de soumettre contient des erreurs</span>
+                        <span className="font-medium">{message}</span>
                     </div>
 
                 }

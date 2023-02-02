@@ -6,7 +6,7 @@ import {Button} from "../../components/buttons/Button";
 import {initialValues, validate} from "../../services/constants/Connexion/Constants"
 import {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
-import Footer from "../../components/footer/Footer";
+import {Footer} from "../../components/Footer/Footer"
 import {useNavigate} from "react-router-dom";
 import {ApiController} from "../../utils/server/apiController";
 
@@ -33,6 +33,8 @@ function Login() {
         e.preventDefault();
         if(Object.keys(formError).length === 0){
            ApiController("authenticate",userValues).then((res)=>{
+               const message = res.message;
+
                 if(res){
                     navigate("/home");
                 }
