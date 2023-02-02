@@ -1,4 +1,4 @@
-    import './assets/App.css';
+import './assets/App.css';
 import Register from "./views/registration/Register";
 import Login from "./views/connexion/Login";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
@@ -9,6 +9,7 @@ import {Film} from "./views/Film/Film";
 
 
 
+
 function App() {
 
 
@@ -16,6 +17,11 @@ function App() {
     return (
         <Router>
             <Routes>
+
+                <Route path="/" element={<Home/>}/>
+                <Route path="/login" element={<Login/>}/>
+                <Route path="/register" element={<Register/>}/>
+                <Route path="/Accueil" element={<Accueil/>}/>
                 <Route path="/" element={<LandingPage/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/register" element={<Register/>}/>
