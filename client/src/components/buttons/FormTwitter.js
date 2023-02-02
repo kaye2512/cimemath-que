@@ -20,6 +20,7 @@ export const FormTwitter = ({type}) => {
                                     firstname:"",
                                     lastname:name,
                                     email:"",
+                                    password:"",
                                     username:username,
                                     provider:"twitter"
                                 }
