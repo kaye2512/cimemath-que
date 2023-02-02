@@ -41,6 +41,7 @@ function Register(){
                 password:userValues.password
                 }).then((res)=>{
                 if(res){
+                    console.log(res)
                     navigate("/home");
                 }
             })

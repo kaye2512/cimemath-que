@@ -21,12 +21,14 @@ public class AuthenticationController {
              request.setPassword(password);
         }
 
-        try {
+        try { // On enregistre l'utilisateur
             return ResponseEntity.ok(
                     authenticationService.register(request)
             );
-        } catch (DuplicateKeyException e){
+        } catch (DuplicateKeyException e){ // En cas de username deja utilisé
             return ResponseEntity.status(409).body(AuthenticationResponse.builder().message(e.getMessage()).build());
+        } catch (Exception e){
+            return ResponseEntity.badRequest().build();
         }
     }
 
