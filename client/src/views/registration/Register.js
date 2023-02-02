@@ -42,6 +42,7 @@ function Register(){
                 provider:""
                 }).then((res)=>{
                 if(res){
+                    console.log(res)
                     navigate("/home");
                 }
             })
