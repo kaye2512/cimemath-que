@@ -46,10 +46,7 @@ public class FilmService {
        Film existingFilm = repository.findById(filmRequest.getId()).get();
        existingFilm.setTitle(filmRequest.getTitle());
        existingFilm.setDescription(filmRequest.getDescription());
-       existingFilm.setNote(filmRequest.getNote());
        existingFilm.setPubDate(filmRequest.getPubDate());
-       existingFilm.setRoles(filmRequest.getRoles());
-       existingFilm.setDirectors(filmRequest.getDirectors());
        return repository.save(existingFilm);
 
     }
