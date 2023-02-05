@@ -23,7 +23,7 @@ public class User implements UserDetails {
     private String firstname;
     private String lastname;
     private String password;
-    private String email;
+    @Indexed(unique = true) private String email;
     private Gender gender;
     private Role role;
     private String postcode;
@@ -34,7 +34,7 @@ public class User implements UserDetails {
     /*
      * each @param must not be {@literal null} or empty.
      */
-    public User(@NonNull String username, @NonNull String firstname, @NonNull String lastname, @NonNull String password, @NonNull String email) {
+    public User(@NonNull String username, @NonNull String firstname, @NonNull String lastname, @NonNull String email, @NonNull String password) {
         Assert.hasText(username, "Username is required");
         Assert.hasText(firstname, "firstname is required");
         Assert.hasText(lastname, "lastname is required");

@@ -1,4 +1,4 @@
-npm import{TextFieldLarge} from "../../components/forms/TextField/TextFieldLarge";
+import{TextFieldLarge} from "../../components/forms/TextField/TextFieldLarge";
 import {FormGoogle} from "../../components/buttons/FormGoogle";
 import {FormTwitter} from "../../components/buttons/FormTwitter";
 import {FormFacebook} from "../../components/buttons/FormFacebook";
@@ -6,7 +6,7 @@ import {Button} from "../../components/buttons/Button";
 import {initialValues, validate} from "../../services/constants/Connexion/Constants"
 import {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
-import Footer from "../../components/Footer/Footer";
+import Footer from "../../components/footer/Footer";
 import {useNavigate} from "react-router-dom";
 import {ApiController} from "../../utils/server/apiController";
 
