@@ -25,3 +25,24 @@ export const contenu2 ={
         "                            aliquip ex ea commodo consequat. Duis aute irure dolor in\n" +
         "                            reprehenderit in voluptate velit esse cillum dolore ... "
 }
+
+export const contenu3={
+    title: "Les Mieux Notés"
+}
+
+export const  contenu4 ={
+    name:"Breaking bad",
+    note:9.4,
+    type:"Drame",
+
+    name2:"Notre planète",
+    note2:9.2,
+    type2:"Documentaire",
+
+    name3:"Arcane",
+    note3:9.2,
+    type3:"Science fiction",
+    genre3:"Action, Aventure, Animation"
+
+
+}
