@@ -11,12 +11,12 @@ export const SecurityApi = async (type,userValues)=>{
     };
 
     localStorage.removeItem("token");
-
     const response = await fetch(api+'/auth/'+type, requestOptions)
-    if (!response.ok) {
-        throw new Error('Data coud not be fetched!')
-    } else {
-        return response;
+    if (response.ok || response.status === 409) {
+         return response;
+    }
+    else{
+        throw new Error('Data could not be fetched!');
     }
 
 }
