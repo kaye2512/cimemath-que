@@ -16,7 +16,7 @@ public class DirectorController {
 
     private final DirectorRepository directorRepository;
     @GetMapping
-    public List<Director> getRealisateurs(){
+    public List<Director> getDirectors(){
         return directorRepository.findAll();
     }
 }
