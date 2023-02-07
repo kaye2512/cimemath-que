@@ -4,6 +4,7 @@ import {faPaperPlane} from "@fortawesome/free-solid-svg-icons/faPaperPlane";
 import {Actors, Commentaires, Contenu, Reviews} from "./test/Data";
 import {FormNavbar} from "../../components/navbar/FormNavbar";
 import {useState} from "react";
+import {Link} from "react-router-dom";
 
 export const  Film = ()=>{
 
@@ -34,7 +35,7 @@ export const  Film = ()=>{
                 <div className="flex space-x-9">
                     <div className="flex flex-col items-center space-y-4">
                         <div className="w-40">
-                            <img className="object-fill w-40 h-52" src="/assets/images/bd.jpg" alt="bd"/>
+                                <img className="object-fill w-40 h-52" src="/assets/images/bd.jpg" alt="bd"/>
                         </div>
                         <div className="flex flex-col space-y-6">
 

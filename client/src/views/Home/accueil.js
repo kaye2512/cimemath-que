@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import {Link} from "react-router-dom";
-import  react from "react";
+import react from "react";
 
 import logo from "../../assets/Images/7thfloor.png";
 import Gauche from "../../assets/Svg/defileGauche.svg";
@@ -28,7 +28,7 @@ import StarRate from "../../assets/Svg/StarRate.svg";
 
 
 
-export const Accueil = (props)=>{
+export const Accueil = (props) => {
 
     return (
         //LandingPage page container
@@ -42,129 +42,28 @@ export const Accueil = (props)=>{
             <FormGridFilm/>
 
 
-            <div className="flex flex-row justify-between items-center space-x-4">
-                <div className="flex flex-row ml-5 items-center justify-start py-8 ">
-                    {/*btn de navigation*/}
+            <div className="grid grid-rows-3 grid-flow-col gap-4">
+                <div className="col-span-2">
 
-                   {/* les actus du moments*/}
-                    <FormActusMoment/>
+                    <div className=" flex flex-row ml-5 items-center mb-4">
+                        {/*btn de navigation*/}
 
-                    {/*les shows du moment*/}
-                    <FormShowMoment/>
+                        {/* les actus du moments*/}
+                        <FormActusMoment/>
 
-                    {/*les films du moments*/}
-                    <FormFilmMoment/>
-                </div>
+                        {/*les shows du moment*/}
+                        <FormShowMoment/>
 
+                        {/*les films du moments*/}
+                        <FormFilmMoment/>
+                    </div>
 
-                    {/*third section in the right*/}
-
-                    <section className="flex flex-col py-2  px-8 w-4/12 mr-20 max-w-screen-desktop mt-14 leading-3">
-                        <h1 className="mb-3 text-2xl font-black text-red-600">{contenu3.title}</h1>
-                        <div className="flex space-x-2">
-                            <div className="flex flex-col items-center space-y-4">
-                                <div className="w-14">
-                                    <img className=" w-18 h-20 items-center justify-between space-x-4" src="/assets/images/F_BreakingBad.png"/>
-                                </div>
-
-
-                            </div>
-                            {/*first block*/}
-                            <div className="flex flex-col space-y-2">
-                                <div>
-                                    {contenu4.name}
-                                </div>
-                                <div className="flex justify-start items-center text-allign">
-                                    <img className="" src={StarRate}/> &nbsp;{contenu4.note}
-                                </div>
-                                <div>
-                                    {contenu4.type}
-                                </div>
-                                <div>
-                                    <Button
-                                        text ="Ajouter à ma liste"
-                                        color="red"
-                                        size="small"
-                                    />
-                                </div>&nbsp;&nbsp;
-
-                            </div>&nbsp;&nbsp;
-
-                        </div>
-                        <div className="flex space-x-2">
-                            <div className="flex flex-col items-center space-y-4">
-                                <div className="w-14">
-                                    <img className=" w-18 h-20 items-center justify-between space-x-4" src="/assets/images/F_OurPlanet.png"/>
-                                </div>
-
-
-                            </div>
-
-                            {/*second block*/}
-                            <div className="flex flex-col space-y-2">&nbsp;
-                                <div>
-                                    {contenu4.name2}
-                                </div>
-                                <div className="flex justify-start items-center text-allign">
-                                    <img className="" src={StarRate}/> &nbsp; {contenu4.note2}
-                                </div>
-                                <div>
-                                    {contenu4.type}
-                                </div>
-                                <div>
-                                    <Button
-                                        text ="Ajouter à ma liste"
-                                        color="red"
-                                        size="small"
-                                    />
-                                </div>
-
-                            </div>&nbsp;&nbsp;
-
-                        </div>&nbsp;&nbsp;
-                        {/*third block*/}
-                        <div className="flex space-x-2">
-                            <div className="flex flex-col items-center space-y-4">
-                                <div className="w-14">
-                                    <img className=" w-18 h-20 items-center justify-between space-x-4" src="/assets/images/F_Arcane.png"/>
-                                </div>
-
-
-                            </div>&nbsp;
-                            <div className="flex flex-col space-y-2">&nbsp;
-                                <div>
-                                    {contenu4.name3}
-                                </div>
-                                <div className="flex justify-start items-center text-allign">
-                                    <img className="" src={StarRate}/> &nbsp;{contenu4.note3}
-                                </div>
-                                <div>
-                                    {contenu4.type}
-                                </div>
-                                <div>
-                                    <Button
-                                        text ="Ajouter à ma liste"
-                                        color="red"
-                                        size="small"
-                                    />
-                                </div>&nbsp;&nbsp;
-
-                            </div>&nbsp;&nbsp;
-
-                        </div>
-
-
-
-
-                    </section>
-
-            </div>
                     {/*tH section*/}
-                    <section className="py-6 px-2.5 w-6/12 max-w-screen-desktop flex-row flex space-x-4">
+                    <section className="py-6 px-2.5 w-4/5 max-w-screen-desktop flex-row flex space-x-4">
 
                         <div className="flex flex-row items-center space-x-4">
                             <div className="w-32">
-                                <img className="object-fill  w-40 h-50"  src="/assets/images/TomHolland.png" alt="TH"/>
+                                <img className="object-fill  w-40 h-50" src="/assets/images/TomHolland.png" alt="TH"/>
 
                             </div>
 
@@ -175,7 +74,8 @@ export const Accueil = (props)=>{
                             <div className="w-full flex-col justify-between items-center mb-1 font-small text-xs flex">
                                 {/*add contenu listed from acceuil data*/}
                                 <h1 className="mb-1 text-sm font-black">{contenu1.infos}</h1>
-                            </div> &nbsp;
+                            </div>
+                            &nbsp;
 
                             <div className="w-6/12 flex-row justify-between items-center mt-0 flex">
                                 <img className="w-4 h-4 object-cover self-start" src={temps}/>
@@ -186,10 +86,14 @@ export const Accueil = (props)=>{
                                 <span className="mb-0 ml-0">{contenu1.Nbcommentaire}</span>
                             </div>
                         </div>
-                    </section> &nbsp;
+                    </section>
 
+
+                </div>
+
+                <div className="row-span-2 col-span-2 space-x-2">
                     {/*scarllet section*/}
-                    <section className="py-6 px-2.5 w-6/12 max-w-screen-desktop flex-row flex space-x-4">
+                    <section className="py-6 px-2.5 w-4/5 max-w-screen-desktop flex-row flex space-x-4">
                         <div className="flex flex-row items-center space-X-4">
                             <div className="w-32">
                                 <img className="object-fill  w-40 h-50" src="/assets/images/Scarlett_Johansson.jpeg" alt="SJ"/>
@@ -199,7 +103,8 @@ export const Accueil = (props)=>{
                             <span className="text-red-600 ml-0 text-xl font-bold leading-7">{contenu2.title}</span>
                             <div className="w-full flex-col justify-between items-center mb-1 font-small text-xs flex">
                                 <h1 className="mb-1 text-sm font-black">{contenu2.infos}</h1>
-                            </div> &nbsp;
+                            </div>
+                            &nbsp;
 
                             <div className="w-6/12 flex-row justify-between items-center mt-0 flex">
                                 <img className="w-4 h-4 object-cover self-start" src={temps}/>
@@ -214,18 +119,121 @@ export const Accueil = (props)=>{
 
 
                     </section>
+                </div>
+
+                <div className="row-span-3 space-x-2">
+                    {/*third section in the right*/}
+
+                    <section className="flex flex-col py-4  px-12 w-4/5 mr-20 max-w-screen-desktop mt-14 leading-3">
+
+                        <h1 className="mb-3 text-2xl font-black text-red-600">{contenu3.title}</h1>
+                        {/*first block*/}
+                        <div className="flex space-x-2">
+                            <div className="flex flex-col items-center space-y-4">
+                                <div className="w-14">
+                                    <img className=" w-18 h-20 items-center justify-between space-x-4"
+                                         src="/assets/images/F_BreakingBad.png"/>
+                                </div>
 
 
+                            </div>
+                            <div className="flex flex-col space-y-2">
+                                <div>
+                                    {contenu4.name}
+                                </div>
+                                <div className="flex justify-start items-center text-allign">
+                                    <img className="" src={StarRate}/> &nbsp;{contenu4.note}
+                                </div>
+                                <div>
+                                    {contenu4.type}
+                                </div>
+                                <div>
+                                    <Button
+                                        text="Ajouter à ma liste"
+                                        color="red"
+                                        size="small"
+                                    />
+                                </div>
+                                &nbsp;&nbsp;
+
+                            </div>
+                            &nbsp;&nbsp;
+
+                        </div>&nbsp;
+                        {/*end first block*/}
+
+                        {/*second block*/}
+                        <div className="flex space-x-2">
+                            <div className="flex flex-col items-center space-y-4">
+                                <div className="w-14">
+                                    <img className=" w-18 h-20 items-center justify-between space-x-4"
+                                         src="/assets/images/F_OurPlanet.png"/>
+                                </div>
+
+                            </div>
+                            <div className="flex flex-col space-y-2">
+                                <div>
+                                    {contenu4.name2}
+                                </div>
+                                <div className="flex justify-start items-center text-allign">
+                                    <img className="" src={StarRate}/> &nbsp;{contenu4.note2}
+                                </div>
+                                <div>
+                                    {contenu4.type2}
+                                </div>
+                                <div>
+                                    <Button
+                                        text="Ajouter à ma liste"
+                                        color="red"
+                                        size="small"
+                                    />
+                                </div>&nbsp;&nbsp;
+                            </div>&nbsp;&nbsp;
+                        </div>&nbsp;
+                        {/*end seconde */}
 
 
+                        {/*third block*/}
+                        <div className="flex space-x-2">
+                            <div className="flex flex-col items-center space-y-4">
+                                <div className="w-14">
+                                    <img className=" w-18 h-20 items-center justify-between space-x-4"
+                                         src="/assets/images/F_Arcane.png"/>
+                                </div>
+
+                            </div>
+                            <div className="flex flex-col space-y-2">
+                                <div>
+                                    {contenu4.name3}
+                                </div>
+                                <div className="flex justify-start items-center text-allign">
+                                    <img className="" src={StarRate}/> &nbsp;{contenu4.note3}
+                                </div>
+                                <div>
+                                    {contenu4.type3}
+                                </div>
+                                <div>
+                                    <Button
+                                        text="Ajouter à ma liste"
+                                        color="red"
+                                        size="small"
+                                    />
+                                </div>&nbsp;&nbsp;
 
 
+                            </div>&nbsp;&nbsp;
 
+                        </div>
+                        {/*end third block*/}
+
+                    </section>
+
+
+                </div>
+
+            </div>
 
         </div>
-
-
-
 
 
     );
