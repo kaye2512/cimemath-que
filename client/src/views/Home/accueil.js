@@ -26,7 +26,6 @@ import StarRate from "../../assets/Svg/StarRate.svg";
  * @constructor
  */
 
-
 export const Accueil = (props) => {
 
     return (
