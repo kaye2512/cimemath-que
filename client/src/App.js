@@ -6,7 +6,7 @@ import {LandingPage} from "./views/LandingPage/LandingPage";
 import {useEffect} from "react";
 import { Accueil } from './views/Home/accueil';
 import {Film} from "./views/Film/Film";
-import { Home } from './views/Home/Home';
+
 
 
 
@@ -23,7 +23,6 @@ function App() {
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/Accueil" element={<Accueil/>}/>
-                <Route path="/" element={<LandingPage/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/home" element={<Accueil/>}/>
