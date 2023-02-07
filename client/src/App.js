@@ -3,9 +3,10 @@ import Register from "./views/registration/Register";
 import Login from "./views/connexion/Login";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import {LandingPage} from "./views/LandingPage/LandingPage";
-import {useEffect} from "react";
 import { Accueil } from './views/Home/accueil';
 import {Film} from "./views/Film/Film";
+import {Admin} from "./views/admin/admin";
+import {AdminUsers} from "./views/admin/users";
 
 
 
@@ -17,7 +18,6 @@ function App() {
     return (
         <Router>
             <Routes>
-
                 <Route path="/" element={<LandingPage/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/register" element={<Register/>}/>
@@ -27,6 +27,12 @@ function App() {
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/home" element={<Accueil/>}/>
                 <Route path="/film" element={<Film/>}/>
+                <Route path="/admin" element={<Admin/>}/>
+                <Route path="/admin/users" element={<AdminUsers/>}/>
+                <Route path="/admin/actors" element={<Admin/>}/>
+                <Route path="/admin/films" element={<Admin/>}/>
+                <Route path="/admin/directors" element={<Admin/>}/>
+                <Route path="/admin/home_elements" element={<Admin/>}/>
                 <Route path="*" element={<h1>Error 404 page not found</h1>}/>
             </Routes>
         </Router>
