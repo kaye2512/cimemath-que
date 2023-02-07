@@ -26,8 +26,6 @@ import StarRate from "../../assets/Svg/StarRate.svg";
  * @constructor
  */
 
-
-
 export const Accueil = (props) => {
 
     return (
@@ -41,8 +39,10 @@ export const Accueil = (props) => {
             {/*doit défilier automatique, pour linstant il est statique*/}
             <FormGridFilm/>
 
-
+            {/*grid layout row and column layout*/}
             <div className="grid grid-rows-3 grid-flow-col gap-4">
+
+                {/*nav btn*/}
                 <div className="col-span-2">
 
                     <div className=" flex flex-row ml-5 items-center mb-4">
@@ -58,7 +58,7 @@ export const Accueil = (props) => {
                         <FormFilmMoment/>
                     </div>
 
-                    {/*tH section*/}
+                    {/*first news section*/}
                     <section className="py-6 px-2.5 w-4/5 max-w-screen-desktop flex-row flex space-x-4">
 
                         <div className="flex flex-row items-center space-x-4">
@@ -91,8 +91,9 @@ export const Accueil = (props) => {
 
                 </div>
 
+                {/*seconde news stations*/}
                 <div className="row-span-2 col-span-2 space-x-2">
-                    {/*scarllet section*/}
+
                     <section className="py-6 px-2.5 w-4/5 max-w-screen-desktop flex-row flex space-x-4">
                         <div className="flex flex-row items-center space-X-4">
                             <div className="w-32">
@@ -121,9 +122,8 @@ export const Accueil = (props) => {
                     </section>
                 </div>
 
+                {/*third section in the right*/}
                 <div className="row-span-3 space-x-2">
-                    {/*third section in the right*/}
-
                     <section className="flex flex-col py-4  px-12 w-4/5 mr-20 max-w-screen-desktop mt-14 leading-3">
 
                         <h1 className="mb-3 text-2xl font-black text-red-600">{contenu3.title}</h1>
@@ -225,12 +225,8 @@ export const Accueil = (props) => {
 
                         </div>
                         {/*end third block*/}
-
                     </section>
-
-
                 </div>
-
             </div>
 
         </div>
