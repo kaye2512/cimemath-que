@@ -19,7 +19,7 @@ public class ActeurController {
     private ActeurRepository repository;
     @PostMapping
     public Acteur CreateActeur (@RequestBody Acteur acteur){
-        return service.addActeur(acteur);
+        return repository.save(acteur);
     }
     @GetMapping
     public List<Acteur> getActeur() {
@@ -37,13 +37,25 @@ public class ActeurController {
     public List<Acteur> getActeurByLastname(@PathVariable String lastname){
         return repository.findByLastname(lastname);
     }
+
+
     @PutMapping
-    public Acteur modifyActeur(@RequestBody Acteur acteur){
-        return service.updateActeur(acteur);
+    public Acteur modifyActeur(@RequestBody Acteur acteurRequest){
+        //get the existing document from DB
+        //populate new value from request to existing object/entity/document
+        Acteur existingActeur = repository.findById(acteurRequest.getId()).get();
+        existingActeur.setFirstname(acteurRequest.getFirstname());
+        existingActeur.setLastname(acteurRequest.getLastname());
+        existingActeur.setBirthdate(acteurRequest.getBirthdate());
+        existingActeur.setDescription(acteurRequest.getDescription());
+        existingActeur.setNote(acteurRequest.getNote());
+        return repository.save(existingActeur);
     }
 
     @DeleteMapping("/{id}")
     public String removeActeur(@PathVariable String id){
-        return service.deletingActeur(id);
+        repository.deleteById(id);
+        return "deleting successfully";
     }
+
 }

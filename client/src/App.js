@@ -6,6 +6,7 @@ import {LandingPage} from "./views/LandingPage/LandingPage";
 import {useEffect} from "react";
 import { Accueil } from './views/Home/accueil';
 import {Film} from "./views/Film/Film";
+import { Home } from './views/Home/Home';
 
 
 
