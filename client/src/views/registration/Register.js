@@ -18,7 +18,7 @@ function Register(){
     const [agreeTerms, setAgreeTerms] = useState(false);
     const [formError, setFormError] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
-    const [message, setMessage] = useState("Le formulaire que vous venez de soumettre contient des erreurs");
+    const [message, setMessage] = useState("");
 
     const handleChange = (e)=>{
         const {name, value} = e.target
@@ -54,15 +54,13 @@ function Register(){
                         }else{
                             setMessage("Cet adresse email existe déja !")
                         }
-
-
                     })
                     setIsSubmit(true);
                 }
             })
-
         }else{
             setIsSubmit(true);
+            setMessage("Le formulaire que vous venez de soumettre contient des erreurs");
         }
     }
 
