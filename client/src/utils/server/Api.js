@@ -16,13 +16,6 @@ export const SecurityApi = async (type,userValues)=>{
          return response;
     }
     else{
-<<<<<<< HEAD
         throw new Error('Data could not be fetched!');
-=======
-        throw new Error('Data coud not be fetched!');
->>>>>>> master
     }
-
 }
-
-
