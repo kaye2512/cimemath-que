@@ -10,6 +10,7 @@ import {FormGoogle} from "../../components/buttons/FormGoogle";
 import {FormFacebook} from "../../components/buttons/FormFacebook";
 import {FormTwitter} from "../../components/buttons/FormTwitter";
 import {ApiController} from "../../utils/server/apiController";
+import Footer from "../../components/footer/Footer";
 
 function Register(){
 
@@ -174,7 +175,10 @@ function Register(){
                     <FormTwitter type="register"/>
 
                 </div>
-            </section>
+            </section> &nbsp;
+            <footer>
+                <Footer/>
+            </footer>
         </div>
     );
 }
