@@ -29,7 +29,6 @@ function App() {
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/home" element={<Accueil/>}/>
                 <Route path="/film" element={<Film/>}/>
-                <Route path="/BioActor" element={<BioActor/>}/>
                 <Route path="/admin" element={<Admin/>}/>
                 <Route path="/admin/users" element={<AdminUsers/>}/>
                 <Route path="/admin/actors" element={<AdminActors/>}/>
