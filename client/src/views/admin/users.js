@@ -1,6 +1,7 @@
 import {AdminSidebar} from "../../components/Sidebar/AdminSidebar";
 import {Search} from "../../components/forms/search/Search";
 import {useState} from "react";
+import {UsersTable} from "../../components/table/admin/Users";
 
 export const AdminUsers =()=>{
     const [search,setSearch] = useState();
@@ -9,6 +10,9 @@ export const AdminUsers =()=>{
         console.log(search)
     }
 
+    const handleDelete = ()=>{
+        console.log("deleted");
+    }
     return (
         <div className="flex space-x-3 items-start py-12">
 
@@ -19,40 +23,7 @@ export const AdminUsers =()=>{
                         setSearch={setSearch}
                         search={search}
                 />
-                <table className="table-auto w-full text-left">
-                    <thead className="uppercase">
-                        <tr>
-                            <th scope="col" className="px-6 py-3">Id</th>
-                            <th scope="col" className="px-6 py-3">Nom</th>
-                            <th scope="col" className="px-6 py-3">Prenom</th>
-                            <th scope="col" className="px-6 py-3">Identifiant</th>
-                            <th scope="col" className="px-6 py-3">E-mail</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                          <td className="px-6 py-4">1</td>
-                            <td className="px-6 py-4">Sarr</td>
-                            <td className="px-6 py-4">El Hadji Mamadou</td>
-                            <td className="px-6 py-4">gloatingorc</td>
-                            <td className="px-6 py-4">gloatingorc@gmail.com</td>
-                        </tr>
-                        <tr>
-                            <td className="px-6 py-4">1</td>
-                            <td className="px-6 py-4">Sarr</td>
-                            <td className="px-6 py-4">El Hadji Mamadou</td>
-                            <td className="px-6 py-4">gloatingorc</td>
-                            <td className="px-6 py-4">gloatingorc@gmail.com</td>
-                        </tr>
-                         <tr>
-                             <td className="px-6 py-4">1</td>
-                             <td className="px-6 py-4">Sarr</td>
-                             <td className="px-6 py-4">El Hadji Mamadou</td>
-                             <td className="px-6 py-4">gloatingorc</td>
-                             <td className="px-6 py-4">gloatingorc@gmail.com</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <UsersTable handleDelete={handleDelete}/>
             </section>
         </div>
     );

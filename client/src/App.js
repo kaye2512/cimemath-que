@@ -7,6 +7,7 @@ import { Accueil } from './views/Home/accueil';
 import {Film} from "./views/Film/Film";
 import {Admin} from "./views/admin/admin";
 import {AdminUsers} from "./views/admin/users";
+import {ActorsAdd, AdminActors} from "./views/admin/actors";
 
 
 
@@ -29,7 +30,8 @@ function App() {
                 <Route path="/film" element={<Film/>}/>
                 <Route path="/admin" element={<Admin/>}/>
                 <Route path="/admin/users" element={<AdminUsers/>}/>
-                <Route path="/admin/actors" element={<Admin/>}/>
+                <Route path="/admin/actors" element={<AdminActors/>}/>
+                <Route path="/admin/actors/add" element={<ActorsAdd/>}/>
                 <Route path="/admin/films" element={<Admin/>}/>
                 <Route path="/admin/directors" element={<Admin/>}/>
                 <Route path="/admin/home_elements" element={<Admin/>}/>

@@ -1,4 +1,5 @@
 import {Links} from "./Links";
+import {actorsData, usersData, filmsData, directorsData} from "../table/admin/constants";
 
 export const AdminSidebar = ()=>{
     return(
@@ -16,13 +17,11 @@ export const AdminSidebar = ()=>{
                             <span className="ml-3">Administrateur</span>
                         </p>
                     </li>
-
-                    <Links name="users" title="Utilisateurs" count={3}/>
-                    <Links name="actors" title="Acteurs" count={10}/>
-                    <Links name="films" title="Filmographie" count={3}/>
-                    <Links name="directors" title="Réalisateurs" count={2}/>
+                    <Links name="users" title="Utilisateurs" count={usersData.length}/>
+                    <Links name="actors" title="Acteurs" count={actorsData.length}/>
+                    <Links name="films" title="Filmographie" count={filmsData.length}/>
+                    <Links name="directors" title="Réalisateurs" count={directorsData.length}/>
                     <Links name="display_home_page" title="Elements acceuil"/>
-
                 </ul>
             </section>
     );
