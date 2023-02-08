@@ -8,6 +8,7 @@ import {Film} from "./views/Film/Film";
 import {Admin} from "./views/admin/admin";
 import {AdminUsers} from "./views/admin/users";
 import {ActorsAdd, AdminActors} from "./views/admin/actors";
+import {BioActor} from "./views/biographie/BioActor";
 
 
 
