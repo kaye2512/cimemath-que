@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Date;
+
 @Data
 @Document
 @NoArgsConstructor
@@ -14,7 +16,7 @@ public class Acteur {
     @Id private String id;
     private String firstname;
     private String lastname;
-    private String birthdate;
+    private Date birthdate;
     private String description;
-    private float note;
+    private String image;
 }

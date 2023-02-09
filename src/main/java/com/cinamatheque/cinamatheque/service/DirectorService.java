@@ -6,7 +6,4 @@ import org.springframework.stereotype.Service;
 
 @AllArgsConstructor
 @Service
-public class DirectorService {
-
-
-}
+public class DirectorService {}
