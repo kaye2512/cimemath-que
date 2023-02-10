@@ -48,7 +48,6 @@ public class ActeurController {
         existingActeur.setLastname(acteurRequest.getLastname());
         existingActeur.setBirthdate(acteurRequest.getBirthdate());
         existingActeur.setDescription(acteurRequest.getDescription());
-        existingActeur.setNote(acteurRequest.getNote());
         return repository.save(existingActeur);
     }
 

@@ -19,4 +19,12 @@ public class Acteur {
     private Date birthdate;
     private String description;
     private String image;
+
+    public Acteur(String firstName, String lastName, Date birthday, String paragraph, String paragraph1) {
+        this.firstname = firstName;
+        this.lastname = lastName;
+        this.birthdate = birthday;
+        this.description = paragraph;
+        this.image = paragraph1;
+    }
 }

@@ -11,8 +11,6 @@ import {ActorsAdd, AdminActors} from "./views/admin/actors";
 import {BioActor} from "./views/biographie/BioActor";
 
 
-
-
 function App() {
 
 
@@ -24,7 +22,6 @@ function App() {
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/Accueil" element={<Accueil/>}/>
-                <Route path="/" element={<LandingPage/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/home" element={<Accueil/>}/>
