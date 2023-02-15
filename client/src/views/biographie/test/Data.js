@@ -10,6 +10,16 @@ export const Contenu = {
 
 }
 
+export const recompense = {
+
+    infosLeft1: "Golden Globe (Edition 77)",
+    infosLeft2: "Emmy Award",
+    infosLeft3: "Emmy Award (Edition 68)",
+    infosRight1: "Meilleur acteur dans une série dramatique dans : Game of throne",
+    infosRight2:"Emmy Award du Meilleur Acteur dans une Série Dramatique dans: Game of throne",
+    infosRight3:"Emmy Award du Meilleur Acteur dans une Série Dramatique dans: Game of throne"
+}
+
 
 export const KhPhotos =[
     {

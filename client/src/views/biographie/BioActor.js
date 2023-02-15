@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {FormNavbar} from "../../components/navbar/FormNavbar";
-import {Contenu, KhPhotos} from "./test/Data";
+import {Contenu, KhPhotos, recompense} from "./test/Data";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPaperPlane} from "@fortawesome/free-solid-svg-icons/faPaperPlane";
 import {Commentaires} from "../Film/test/Data";
@@ -97,6 +97,26 @@ export const BioActor = () => {
             {/*Recompence section*/}
             <section className="py-6 px-20 w-10/12 max-w-screen-desktop">
                 <h1 className="mb-3 text-2xl font-black text-red-600 font-bold">Récompenses</h1>
+                <div className="flex flex-col space-y-2 items-centers">
+
+                    <div>
+                        <div className="flex space-x-12 items-center">
+                            <div className=" space-y-8">
+                                <p>{recompense.infosLeft1}</p>
+                                <p>{recompense.infosLeft2}</p>
+                                <p>{recompense.infosLeft3}</p>
+
+                            </div>
+                            <div className="space-y-8">
+                                <p>{recompense.infosRight1}</p>
+                                <p>{recompense.infosRight2}</p>
+                                <p>{recompense.infosRight3}</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
 
 
             </section>
