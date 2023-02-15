@@ -1,6 +1,6 @@
 export const Contenu = {
     name:"Kit Harington",
-    Civil_status:["Christopher Catesby Harington"],
+    Civil_status:"Christopher Catesby Harington",
     Country:"Britannique",
     Birthday:"26 décembre 1986(Londres - Grande-Bretagne)",
     Age:"35",
@@ -10,22 +10,31 @@ export const Contenu = {
 
 }
 
+export const recompense = {
 
-export const KhPhotos =[
+    infosLeft1: "Golden Globe (Edition 77)",
+    infosLeft2: "Emmy Award",
+    infosLeft3: "Emmy Award (Edition 68)",
+    infosRight1: "Meilleur acteur dans une série dramatique dans : Game of throne",
+    infosRight2:"Emmy Award du Meilleur Acteur dans une Série Dramatique dans: Game of throne",
+    infosRight3:"Emmy Award du Meilleur Acteur dans une Série Dramatique dans: Game of throne"
+}
+
+
+export const Khphotos =[
     {
-        photo:"/assets/images/KH1.jpeg"
+        photo:"/assets/images/KH1.jpg"
+    },
+    {
+        photo:"/assests/images/KH2.jpg"
 
     },
     {
-        photo:"/assests/images/KH2.jpeg"
+        photo:"/assests/images/KH3.jpg"
 
     },
     {
-        photo:"/assests/images/KH3.jpeg"
-
-    },
-    {
-        photo:"/assests/images/KH4.jpeg"
+        photo:"/assests/images/KH4.jpg"
 
     },
 ]
