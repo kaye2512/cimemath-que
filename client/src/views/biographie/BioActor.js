@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {FormNavbar} from "../../components/navbar/FormNavbar";
-import {Contenu, KhPhotos, recompense} from "./test/Data";
+import {Contenu, Khphotos, recompense} from "./test/Data";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPaperPlane} from "@fortawesome/free-solid-svg-icons/faPaperPlane";
 import {Commentaires} from "../Film/test/Data";
@@ -79,7 +79,7 @@ export const BioActor = () => {
                 <h1 className="mb-3 text-2xl font-black text-red-600 font-bold">Photos</h1>
                 {/*map les pic dans un tableau*/}
                 <div className="flex flex-wrap -mr-12">
-                    {KhPhotos.map(({photo})=>{
+                    {Khphotos.map(({photo})=>{
                         return(
                             <div className="mb-4 ml-10">
                                 <img className="object-fill w-32 h-36 rounded-md" src={photo} alt="KH photos"/>

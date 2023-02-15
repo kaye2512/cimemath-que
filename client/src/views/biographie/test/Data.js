@@ -21,20 +21,20 @@ export const recompense = {
 }
 
 
-export const KhPhotos =[
+export const Khphotos =[
     {
-        photo:"/assets/images/KH1.jpeg"
+        photo:"/assets/images/KH1.jpg"
     },
     {
         photo:"/assests/images/KH2.jpg"
 
     },
     {
-        photo:"/assests/images/KH3.jpeg"
+        photo:"/assests/images/KH3.jpg"
 
     },
     {
-        photo:"/assests/images/KH4.jpeg"
+        photo:"/assests/images/KH4.jpg"
 
     },
 ]
