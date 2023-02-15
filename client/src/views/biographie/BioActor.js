@@ -77,7 +77,7 @@ export const BioActor = () => {
         {/*    photo section*/}
             <section className="py-6 px-20 w-10/12 max-w-screen-desktop">
                 <h1 className="mb-3 text-2xl font-black text-red-600 font-bold">Photos</h1>
-
+                {/*map les pic dans un tableau*/}
                 <div className="flex flex-wrap -mr-12">
                     {KhPhotos.map(({photo})=>{
                         return(
