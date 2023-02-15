@@ -1,6 +1,6 @@
 export const Contenu = {
     name:"Kit Harington",
-    Civil_status:["Christopher Catesby Harington"],
+    Civil_status:"Christopher Catesby Harington",
     Country:"Britannique",
     Birthday:"26 décembre 1986(Londres - Grande-Bretagne)",
     Age:"35",
@@ -14,10 +14,9 @@ export const Contenu = {
 export const KhPhotos =[
     {
         photo:"/assets/images/KH1.jpeg"
-
     },
     {
-        photo:"/assests/images/KH2.jpeg"
+        photo:"/assests/images/KH2.jpg"
 
     },
     {
