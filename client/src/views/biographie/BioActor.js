@@ -100,6 +100,7 @@ export const BioActor = () => {
                 <div className="flex flex-col space-y-2 items-centers">
 
                     <div>
+                        {/*left infos*/}
                         <div className="flex space-x-12 items-center">
                             <div className=" space-y-8">
                                 <p>{recompense.infosLeft1}</p>
@@ -107,6 +108,7 @@ export const BioActor = () => {
                                 <p>{recompense.infosLeft3}</p>
 
                             </div>
+                            {/*right infos*/}
                             <div className="space-y-8">
                                 <p>{recompense.infosRight1}</p>
                                 <p>{recompense.infosRight2}</p>
