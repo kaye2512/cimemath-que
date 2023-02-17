@@ -10,11 +10,7 @@ import {AdminUsers} from "./views/admin/users";
 import {ActorsAdd, AdminActors} from "./views/admin/actors";
 import {BioActor} from "./views/biographie/BioActor";
 
-
 function App() {
-
-
-
     return (
         <Router>
             <Routes>
