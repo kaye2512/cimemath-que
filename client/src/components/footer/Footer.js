@@ -7,6 +7,7 @@ import footerImage from '../../assets/Images/7thfloor.png';
 //import copyright icon
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faCopyright} from '@fortawesome/free-solid-svg-icons';
+import {Link} from "react-router-dom";
 
 
 //function that return  the footer
@@ -21,9 +22,9 @@ export const Footer = () => {
                 <img src={footerImage} alt="Footer" className="w-1/6"/>
                 {/* navbar*/}
                 <nav className="ml-auto">
-                    <a href="#">Accueil &nbsp; &nbsp;</a>
-                    <a href="#">A propos &nbsp; &nbsp;</a>
-                    <a href="#">Mon Compte &nbsp; &nbsp;</a>
+                    <Link to="/accueil">Accueil &nbsp; &nbsp;</Link>
+                    <Link to="#" href="#">A propos &nbsp; &nbsp;</Link>
+                    <Link to="#">Mon Compte &nbsp; &nbsp;</Link>
                 </nav>
             </div>
             {/* used imported icon*/}
