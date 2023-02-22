@@ -27,7 +27,7 @@ public class SampleDateLoaderTest implements CommandLineRunner {
                 .mapToObj(i -> new Acteur(
                         faker.name().firstName(),
                         faker.name().lastName(),
-                        faker.date().birthday(),
+                        faker.lorem().characters(),
                         faker.lorem().paragraph(),
                         faker.lorem().paragraph()
                 )).collect(Collectors.toList());

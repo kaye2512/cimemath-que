@@ -16,11 +16,11 @@ public class Acteur {
     @Id private String id;
     private String firstname;
     private String lastname;
-    private Date birthdate;
+    private String birthdate;
     private String description;
     private String image;
 
-    public Acteur(String firstName, String lastName, Date birthday, String paragraph, String paragraph1) {
+    public Acteur(String firstName, String lastName, String birthday, String paragraph, String paragraph1) {
         this.firstname = firstName;
         this.lastname = lastName;
         this.birthdate = birthday;

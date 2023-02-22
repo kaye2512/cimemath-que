@@ -1,6 +1,8 @@
 package com.cinamatheque.cinamatheque.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
@@ -11,15 +13,19 @@ import java.util.Map;
 import java.util.Set;
 
 @Data
-@Document
+@Document(collection = "Film")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Film {
     @Id private String id;
     private String title;
     private String description;
+    private String poster;
+    private String pubDate;
     @DocumentReference
-    List<Notice> notice;
-    private Date pubDate;
-    private Map<String, Acteur> roles;
+    private List<Acteur> actorId;
     @DocumentReference
-    List<Director> Directors;
+    private List<Director> directorsId;
+    @DocumentReference
+    private List<Notice> noticeId;
 }
