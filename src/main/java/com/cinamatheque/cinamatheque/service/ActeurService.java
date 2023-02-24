@@ -24,13 +24,13 @@ public class ActeurService {
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    public Acteur createActors(){
+    public Acteur createActors(String id){
         Acteur acteur = new Acteur();
 
         mongoTemplate.insert(acteur);
 
         mongoTemplate.update(Film.class)
-                .matching(where("id").is(Film.id))
+                .matching(where("id").is(id))
                 .apply(new Update().push("actor").value(acteur))
                 .first();
         return acteur;
