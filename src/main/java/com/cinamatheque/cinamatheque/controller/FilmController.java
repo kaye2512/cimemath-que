@@ -4,6 +4,7 @@ import com.cinamatheque.cinamatheque.model.Film;
 import com.cinamatheque.cinamatheque.repository.FilmRepository;
 import com.cinamatheque.cinamatheque.service.FilmService;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -14,10 +15,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/films")
-@AllArgsConstructor
 public class FilmController {
     @Autowired
     private FilmService filmService;
+    @Autowired
     private FilmRepository filmRepository;
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
