@@ -13,17 +13,18 @@ import java.util.Map;
 import java.util.Set;
 
 @Data
-@Document(collection = "Film")
+@Document(collection = "film")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Film {
+
     @Id private String id;
     private String title;
     private String description;
     private String poster;
     private String pubDate;
     @DocumentReference
-    private List<Acteur> actorId;
+    private List<Acteur> actor;
     @DocumentReference
     private List<Director> directorsId;
     @DocumentReference

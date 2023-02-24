@@ -1,6 +1,7 @@
 package com.cinamatheque.cinamatheque.model;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +13,7 @@ import java.util.Date;
 @Data
 @Document
 @NoArgsConstructor
+@AllArgsConstructor
 public class Acteur {
     @Id private String id;
     private String firstname;
@@ -20,11 +22,16 @@ public class Acteur {
     private String description;
     private String image;
 
-    public Acteur(String firstName, String lastName, String birthday, String paragraph, String paragraph1) {
-        this.firstname = firstName;
-        this.lastname = lastName;
-        this.birthdate = birthday;
-        this.description = paragraph;
-        this.image = paragraph1;
+    public Acteur(String firstname, String lastname, String birthdate, String description, String image) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.birthdate = birthdate;
+        this.description = description;
+        this.image = image;
+    }
+
+
+    public Acteur(String firstname) {
+        this.firstname = firstname;
     }
 }
