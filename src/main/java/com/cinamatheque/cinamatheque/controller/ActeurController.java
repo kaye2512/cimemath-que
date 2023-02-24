@@ -3,12 +3,18 @@ package com.cinamatheque.cinamatheque.controller;
 import com.cinamatheque.cinamatheque.model.Acteur;
 import com.cinamatheque.cinamatheque.repository.ActeurRepository;
 import com.cinamatheque.cinamatheque.service.ActeurService;
+import com.cronutils.utils.StringUtils;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 
@@ -23,8 +29,16 @@ public class ActeurController {
     @Autowired
     private ActeurRepository repository;
     // Create actor to populate actor
-   @PostMapping
-    public Acteur CreateActeur (@RequestBody Acteur acteur){
+    @PostMapping
+    public Acteur CreateActeur (@RequestBody Acteur acteur, @RequestParam("image")
+    MultipartFile file) throws IOException {
+        System.out.print(acteur);
+    StringBuilder fileNames = new StringBuilder();
+        Path fileNameAndPath = Paths.get("/public", file.getOriginalFilename());
+        fileNames.append(file.getOriginalFilename());
+        Files.write(fileNameAndPath, file.getBytes());
+        acteur.setImage(fileNames.toString());
+        System.out.print(acteur);
         return repository.save(acteur);
     }
     //   create actor to populate database and set id inside actor inside film

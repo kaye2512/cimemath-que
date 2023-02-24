@@ -1,8 +1,7 @@
-import {actorsData} from "./constants";
 import {useSelector} from "react-redux";
 
-export const ActorsTable = ({handleDelete, handleUpdate})=>{
-     const {allActors} = useSelector((state)=>state.actors)
+export const FilmsTable = ({handleDelete, handleUpdate})=>{
+     const {allFilms} = useSelector((state)=>state.films)
     return (
         <div>
             <table className="table-auto w-full text-left">
@@ -10,20 +9,18 @@ export const ActorsTable = ({handleDelete, handleUpdate})=>{
                     <tr>
                         <th scope="col" className="px-6 py-3">Id</th>
                         <th scope="col" className="px-6 py-3">Nom</th>
-                        <th scope="col" className="px-6 py-3">Prenom</th>
                         <th scope="col" className="px-6 py-3">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    { allActors &&
-                      allActors.map((data)=>{
-                          const {id,lastname,firstname} = data;
+                    { allFilms &&
+                      allFilms.map((data)=>{
+                          const {id, name} = data;
 
                               return (
                               <tr key={id}>
                                 <td className="px-6 py-4">{id}</td>
-                                <td className="px-6 py-4">{lastname}</td>
-                                <td className="px-6 py-4">{firstname}</td>
+                                <td className="px-6 py-4">{name}</td>
                                 <td className="px-6 py-4">
                                     <button className="text-sky-500 mr-3" onClick={handleUpdate}>Editer</button>
                                     <button className="text-red-600" onClick={handleDelete}>Supprimer</button>
