@@ -1,19 +1,15 @@
 package com.cinamatheque.cinamatheque.service;
 
 import com.cinamatheque.cinamatheque.model.Acteur;
-import com.cinamatheque.cinamatheque.model.Film;
 import com.cinamatheque.cinamatheque.repository.ActeurRepository;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.UUID;
-
-import static org.springframework.data.mongodb.core.query.Criteria.where;
-
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Base64;
 
 @Service
 public class ActeurService {
@@ -21,20 +17,21 @@ public class ActeurService {
     @Autowired
     private ActeurRepository acteurRepository;
 
-    @Autowired
-    private MongoTemplate mongoTemplate;
+    public Acteur safeActeur (MultipartFile file, String firstname, String lastname, String birthdate, String description) throws IOException {
 
-    public Acteur createActors(){
-        Acteur acteur = new Acteur();
+        Acteur actor = new Acteur();
+        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+        if(fileName.contains("..")){
+            System.out.println("not a valid file");
+        }
+        actor.setPosterActor(Arrays.toString(Base64.getEncoder().encode(file.getBytes())));
+        actor.setFirstname(firstname);
+        actor.setLastname(lastname);
+        actor.setBirthdate(birthdate);
+        actor.setDescription(description);
 
-        mongoTemplate.insert(acteur);
-
-        mongoTemplate.update(Film.class)
-                .matching(where("id").is(Film.id))
-                .apply(new Update().push("actor").value(acteur))
-                .first();
-        return acteur;
-
+        acteurRepository.save(actor);
+        return actor;
     }
 
 }

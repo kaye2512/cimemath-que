@@ -1,6 +1,7 @@
 package com.cinamatheque.cinamatheque.repository;
 
 import com.cinamatheque.cinamatheque.model.Acteur;
+import com.cinamatheque.cinamatheque.model.Notice;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

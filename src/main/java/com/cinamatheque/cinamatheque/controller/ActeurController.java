@@ -29,45 +29,43 @@ public class ActeurController {
     @Autowired
     private ActeurRepository repository;
     // Create actor to populate actor
-    @PostMapping
-    public Acteur CreateActeur (@RequestBody Acteur acteur, @RequestParam("image")
-    MultipartFile file) throws IOException {
-        System.out.print(acteur);
-    StringBuilder fileNames = new StringBuilder();
-        Path fileNameAndPath = Paths.get("/public", file.getOriginalFilename());
-        fileNames.append(file.getOriginalFilename());
-        Files.write(fileNameAndPath, file.getBytes());
-        acteur.setImage(fileNames.toString());
-        System.out.print(acteur);
-        return repository.save(acteur);
-    }
-    //   create actor to populate database and set id inside actor inside film
-//    @PostMapping
-//    public ResponseEntity<Acteur> CreateActeurtoPopulateFilm (@RequestBody Acteur acteur){
-//        return new ResponseEntity<Acteur>(acteurService.createActors(), HttpStatus.CREATED);
-//    }
+    // add image actor
+    // respect the field name in front application
+   @PostMapping
+   public Acteur CreateActeur (@RequestParam("file") MultipartFile file,
+                              @RequestParam("firstname") String firstname,
+                              @RequestParam("lastname") String lastname,
+                              @RequestParam("birthdate") String birthdate,
+                              @RequestParam("description") String description
+
+   ) throws IOException {
+       return acteurService.safeActeur(file, firstname, lastname, birthdate, description);
+   }
+
+
     //    get actor inside data bas
     @GetMapping
     public List<Acteur> getActeur() {
         return repository.findAll();
     }
-//    get actor by id
+
+    //    get actor by id
     @GetMapping("/{id}")
     public Acteur getActeurById(@PathVariable String id){
         return repository.findById(id).get();
     }
-//    get actor by firstname
+    //    get actor by firstname
     @GetMapping("/firstname/{firstname}")
     public List<Acteur> getActeurByFirstname(@PathVariable String firstname){
         return repository.findByFirstname(firstname);
     }
-//    get actor by lastname
+    //    get actor by lastname
     @GetMapping("/lastname/{lastname}")
     public List<Acteur> getActeurByLastname(@PathVariable String lastname){
         return repository.findByLastname(lastname);
     }
 
-// modify existing actor inside database
+    // modify existing actor inside database
     @PutMapping
     public Acteur modifyActeur(@RequestBody Acteur acteurRequest){
         //get the existing document from DB
@@ -79,7 +77,7 @@ public class ActeurController {
         existingActeur.setDescription(acteurRequest.getDescription());
         return repository.save(existingActeur);
     }
-//deleting actor inside database
+    //deleting actor inside database
     @DeleteMapping("/{id}")
     public String removeActeur(@PathVariable String id){
         repository.deleteById(id);

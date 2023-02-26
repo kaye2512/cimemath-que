@@ -59,6 +59,8 @@ public class FilmController {
         existingFilm.setTitle(filmRequest.getTitle());
         existingFilm.setDescription(filmRequest.getDescription());
         existingFilm.setPubDate(filmRequest.getPubDate());
+        existingFilm.setActors(filmRequest.getActors());
+        existingFilm.setDirectors(filmRequest.getDirectors());
         return filmRepository.save(existingFilm);
     }
 
