@@ -17,6 +17,7 @@ public class ActeurService {
     @Autowired
     private ActeurRepository acteurRepository;
 
+
     public Acteur safeActeur (MultipartFile file, String firstname, String lastname, String birthdate, String description) throws IOException {
 
         Acteur actor = new Acteur();
