@@ -23,16 +23,16 @@ public class SampleDateLoaderTest implements CommandLineRunner {
 
     public void run (String[] args){
 
-        List<Acteur> actor = IntStream.rangeClosed(1,10)
-                .mapToObj(i -> new Acteur(
-                        faker.name().firstName(),
-                        faker.name().lastName(),
-                        faker.lorem().characters(),
-                        faker.lorem().paragraph(),
-                        faker.lorem().paragraph()
-                )).collect(Collectors.toList());
-
-
-        acteurRepository.saveAll(actor);
+//        List<Acteur> actor = IntStream.rangeClosed(1,10)
+//                .mapToObj(i -> new Acteur(
+//                        faker.name().firstName(),
+//                        faker.name().lastName(),
+//                        faker.lorem().characters(),
+//                        faker.lorem().paragraph(),
+//                        faker.lorem().paragraph()
+//                )).collect(Collectors.toList());
+//
+//
+//        acteurRepository.saveAll(actor);
     }
 }

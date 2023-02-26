@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
@@ -23,10 +24,9 @@ public class Film {
     private String description;
     private String poster;
     private String pubDate;
-    @DocumentReference
-    private List<Acteur> actor;
-    @DocumentReference
-    private List<Director> directorsId;
+    private List<Category> genres;
+    private List<Acteur> actors;
+    private List<Director> directors;
     @DocumentReference
     private List<Notice> noticeId;
 }

@@ -11,7 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Date;
 
 @Data
-@Document
+@Document(collection = "actor")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Acteur {
@@ -20,18 +20,13 @@ public class Acteur {
     private String lastname;
     private String birthdate;
     private String description;
-    private String image;
+    private String posterActor;
 
-    public Acteur(String firstname, String lastname, String birthdate, String description, String image) {
+    public Acteur(String firstname, String lastname, String birthdate, String description, String posterActor) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.birthdate = birthdate;
         this.description = description;
-        this.image = image;
-    }
-
-
-    public Acteur(String firstname) {
-        this.firstname = firstname;
+        this.posterActor = posterActor;
     }
 }
