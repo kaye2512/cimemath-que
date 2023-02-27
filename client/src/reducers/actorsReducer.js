@@ -1,5 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {getActors} from "../utils/server/Api";
+import { getActors } from "../utils/api/actorsController";
+
 
 export const fetchAllActors = createAsyncThunk(
     '/actors/fetchAllActors',

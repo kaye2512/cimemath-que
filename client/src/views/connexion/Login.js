@@ -8,7 +8,7 @@ import {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 import Footer from "../../components/footer/Footer";
 import {useNavigate} from "react-router-dom";
-import {ApiController} from "../../utils/server/apiController";
+import { authUser } from "../../utils/api/authController";
 
 /**
  *
@@ -32,7 +32,7 @@ function Login() {
     const submitHandler =(e)=>{
         e.preventDefault();
         if(Object.keys(formError).length === 0){
-            ApiController("authenticate",userValues).then((res)=>{
+            authUser("authenticate",userValues).then((res)=>{
                 if(res){
                     navigate("/home");
                 }

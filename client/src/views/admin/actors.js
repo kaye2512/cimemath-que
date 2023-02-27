@@ -8,8 +8,8 @@ import {TextFieldLarge} from "../../components/forms/TextField/TextFieldLarge";
 import {TextArea} from "../../components/forms/textarea/TextArea";
 import {actorInitialValues, validateActor} from "../../services/constants/admin/constants";
 import {Button} from "../../components/buttons/Button";
-import {Link} from "react-router-dom";
-import { addActor } from "../../utils/server/Api";
+import {Link, useNavigate} from "react-router-dom";
+import { addActor } from "../../utils/api/actorsController";
 
 
 
@@ -46,19 +46,23 @@ export const AdminActors =()=>{
     );
 }
 export const ActorsAdd = ()=>{
-
+    const navigate = useNavigate()
     const [actorValues, setActorValues] = useState(actorInitialValues);
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
     const [message, setMessage] = useState("");
-    const [imageFile, setImageFile] = useState();
-
     const submitHandler = (e)=>{
         e.preventDefault();
 
         if(Object.keys(formErrors).length === 0){
 
-            addActor(actorValues, imageFile).then(response=>response.json()).then(response=>console.log(response))
+            addActor(actorValues).then(response=>response.json()).then((response)=>{
+                if(response){
+                    navigate('/admin/actors')
+                }
+            }).catch((err)=>{
+                console.log(err)
+            })
         }else{
             setIsSubmit(true);
             setMessage("Vous avez des erreurs dans le formulaire")
@@ -68,8 +72,11 @@ export const ActorsAdd = ()=>{
 
     const handleChange = (e)=>{
         const {name, value, files} = e.target
-        setActorValues({...actorValues,[name]:value})
-        setImageFile({imageFile: files[0]})
+        if(files){
+            setActorValues({...actorValues,[name]:files[0]})
+        }else{
+            setActorValues({...actorValues,[name]:value})
+        }
     }
 
     useEffect(()=>{
