@@ -5,27 +5,45 @@ import img4 from "../../assets/Images/3.jpeg";
 import img1 from "../../assets/Images/9.jpeg";
 import img6 from "../../assets/Images/6.jpeg";
 import img7 from "../../assets/Images/8.jpeg";
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faAnglesLeft, faAnglesRight} from "@fortawesome/free-solid-svg-icons";
+// import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+// import {faAnglesLeft, faAnglesRight} from "@fortawesome/free-solid-svg-icons";
+import AliceCarousel from "react-alice-carousel";
+import React from "react";
 
 export const FormGridFilm = () => {
 
-    return (
-        <div className="flex justify-center items-center">
-            <FontAwesomeIcon icon={faAnglesLeft} size="2xl"/>
-            <div className="grid grid-cols-7 h-48 w-full bg-black  rounded-md mx-auto mt-5 justify-between mt-4">
-                <div><img src={img5} alt="img5"/></div>
-                <div><img src={img2} alt="img2"/></div>
-                <div><img src={img3} alt={"img3"}/></div>
-                <div><img src={img4} alt="img4"/></div>
-                <div><img src={img1} alt="Img1"/></div>
-                <div><img src={img6} alt="img6"/></div>
-                <div><img src={img7} alt="ilg7"/></div>
+    const colors = ["#0088FE", "#00C49F", "#FFBB28"];
 
+    return(
+        <div className="">
+            <div className="overflow-hidden mx-0 max-w-max">
+                <div className="slideshowSlider">
+                    {colors.map((backgroundColor, index) => (
+                        <div className="w-full h-full rounded-lg" key={index} style={{ backgroundColor }}/>
+                    ))}
+
+
+                </div>
             </div>
-            <FontAwesomeIcon icon={faAnglesRight } size="2xl"/>
 
         </div>
     );
+
+    /*<div className="flex justify-center items-center">
+           <FontAwesomeIcon icon={faAnglesLeft} size="2xl"/>
+           <div className="grid grid-cols-7 h-48 w-full bg-black  rounded-md mx-auto mt-5 justify-between mt-4">
+                  {/!* <AliceCarousel autoPlay autoPlayInterval="3000">*!/}
+                       <div><img src={img5} alt="img5"/></div>
+                       <div><img src={img2} alt="img2"/></div>
+                       <div><img src={img3} alt={"img3"}/></div>
+                       <div><img src={img4} alt="img4"/></div>
+                       <div><img src={img1} alt="Img1"/></div>
+                       <div><img src={img6} alt="img6"/></div>
+                       <div><img src={img7} alt="img7"/></div>
+                  {/!* </AliceCarousel>*!/}
+           </div>
+           <FontAwesomeIcon icon={faAnglesRight } size="2xl"/>
+
+       </div>*/
 
 }
