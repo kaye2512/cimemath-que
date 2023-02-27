@@ -1,5 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {getDirectors} from "../utils/server/Api";
+import { getDirectors } from "../utils/api/directorsController";
+
 
 export const fetchAllDirectors = createAsyncThunk(
     '/actors/fetchAllDirectors',

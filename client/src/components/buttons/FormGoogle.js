@@ -1,7 +1,7 @@
 import {LoginSocialGoogle} from "reactjs-social-login";
 import {GoogleLoginButton} from "react-social-login-buttons";
 import {useNavigate} from "react-router-dom";
-import {ApiController} from "../../utils/server/apiController";
+import { authUser } from "../../utils/api/authController";
 
 
 export const FormGoogle = ({type}) => {
@@ -26,7 +26,7 @@ export const FormGoogle = ({type}) => {
                                    provider:"google"
                                }
                                console.log(userValues);
-                                ApiController(type,userValues).then((res)=>{
+                                authUser(type,userValues).then((res)=>{
                                     if(res){
                                         navigate("/home");
                                     }

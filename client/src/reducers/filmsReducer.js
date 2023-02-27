@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {getFilms} from "../utils/server/Api";
+import { getFilms } from "../utils/api/filmsController";
 
 export const fetchAllFilms = createAsyncThunk(
     '/actors/fetchAllFilms',

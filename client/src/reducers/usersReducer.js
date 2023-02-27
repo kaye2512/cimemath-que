@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {getUsers} from "../utils/server/Api";
+import { getUsers } from "../utils/api/usersController";
 export const fetchAllUsers = createAsyncThunk(
     'users/fetchAllUsers',
      ()=>{

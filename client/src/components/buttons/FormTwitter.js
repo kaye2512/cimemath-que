@@ -1,7 +1,7 @@
 import {TwitterLoginButton} from "react-social-login-buttons";
 import {LoginSocialTwitter} from "reactjs-social-login";
 import {useNavigate} from "react-router-dom";
-import {ApiController} from "../../utils/server/apiController";
+import { authUser } from "../../utils/api/authController";
 
 export const FormTwitter = ({type}) => {
     const navigate = useNavigate();
@@ -24,7 +24,7 @@ export const FormTwitter = ({type}) => {
                                     username:username,
                                     provider:"twitter"
                                 }
-                                ApiController(type,userValues).then((res)=>{
+                                authUser(type,userValues).then((res)=>{
                                     if(res){
                                         navigate("/home");
                                     }
