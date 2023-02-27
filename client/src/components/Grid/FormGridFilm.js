@@ -16,7 +16,7 @@ export const FormGridFilm = () => {
             <div className="grid grid-cols-7 h-48 w-full bg-black  rounded-md mx-auto mt-5 justify-between mt-4">
                 <div><img src={img5} alt="img5"/></div>
                 <div><img src={img2} alt="img2"/></div>
-                <div><img src={img3} alt={"img3"}/></div>
+                <div><img src={img3} alt={"img3"}/></div>cl
                 <div><img src={img4} alt="img4"/></div>
                 <div><img src={img1} alt="Img1"/></div>
                 <div><img src={img6} alt="img6"/></div>
