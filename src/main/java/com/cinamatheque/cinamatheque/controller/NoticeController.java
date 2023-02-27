@@ -13,7 +13,6 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1/notice")
 @AllArgsConstructor
-@CrossOrigin(origins = "*")
 public class NoticeController {
 
     private NoticeService noticeService;
