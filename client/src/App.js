@@ -9,12 +9,10 @@ import {Admin} from "./views/admin/admin";
 import {AdminUsers} from "./views/admin/users";
 import {ActorsAdd, AdminActors} from "./views/admin/actors";
 import {BioActor} from "./views/biographie/BioActor";
-
+import { AdminDirectors } from './views/admin/directors';
+import { AdminFilms } from './views/admin/films';
 
 function App() {
-
-
-
     return (
         <Router>
             <Routes>
@@ -26,12 +24,13 @@ function App() {
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/home" element={<Accueil/>}/>
                 <Route path="/film" element={<Film/>}/>
+                <Route path="BioActor" element={<BioActor/>}/>
                 <Route path="/admin" element={<Admin/>}/>
                 <Route path="/admin/users" element={<AdminUsers/>}/>
                 <Route path="/admin/actors" element={<AdminActors/>}/>
                 <Route path="/admin/actors/add" element={<ActorsAdd/>}/>
-                <Route path="/admin/films" element={<Admin/>}/>
-                <Route path="/admin/directors" element={<Admin/>}/>
+                <Route path="/admin/films" element={<AdminFilms/>}/>
+                <Route path="/admin/directors" element={<AdminDirectors/>}/>
                 <Route path="/admin/home_elements" element={<Admin/>}/>
                 <Route path="*" element={<h1>Error 404 page not found</h1>}/>
             </Routes>

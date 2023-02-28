@@ -2,16 +2,37 @@ package com.cinamatheque.cinamatheque.service;
 
 import com.cinamatheque.cinamatheque.model.Acteur;
 import com.cinamatheque.cinamatheque.repository.ActeurRepository;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.UUID;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Base64;
 
-@AllArgsConstructor
 @Service
 public class ActeurService {
 
+    @Autowired
+    private ActeurRepository acteurRepository;
 
+
+    public Acteur safeActeur (MultipartFile file, String firstname, String lastname, String birthdate, String description) throws IOException {
+
+        Acteur actor = new Acteur();
+        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+        if(fileName.contains("..")){
+            System.out.println("not a valid file");
+        }
+        actor.setPosterActor(Arrays.toString(Base64.getEncoder().encode(file.getBytes())));
+        actor.setFirstname(firstname);
+        actor.setLastname(lastname);
+        actor.setBirthdate(birthdate);
+        actor.setDescription(description);
+
+        acteurRepository.save(actor);
+        return actor;
+    }
 
 }

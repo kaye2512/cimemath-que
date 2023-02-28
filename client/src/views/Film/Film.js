@@ -107,19 +107,7 @@ export const  Film = ()=>{
 
             <section className="py-6 px-20 w-full max-w-screen-desktop">
                 <h1 className="mb-3 text-2xl text-red-600 font-bold">Acteurs et casting</h1>
-                <div className="flex flex-wrap -mr-12">
-                    {Actors.map(({name,photo})=>{
-                        return(
-                            <div className="mb-7 ml-12">
-                                <p>{name}</p>
-                                <img className="object-fill w-40 h-52 rounded-md" src={photo} alt="actor"/>
-                            </div>
 
-                        );
-                    })}
-
-
-                </div>
             </section >
 
             <section className="py-6 px-20 w-full max-w-screen-desktop">

@@ -1,7 +1,7 @@
 import {LoginSocialFacebook} from "reactjs-social-login";
 import {FacebookLoginButton} from "react-social-login-buttons";
 import {useNavigate} from "react-router-dom";
-import {ApiController} from "../../utils/server/apiController";
+import { authUser } from "../../utils/api/authController";
 
 export const FormFacebook = ({type}) => {
     const navigate = useNavigate();
@@ -25,7 +25,7 @@ export const FormFacebook = ({type}) => {
                     provider:"facebook"
                 }
 
-                ApiController(type,userValues).then((res)=>{
+                authUser(type,userValues).then((res)=>{
                     if(res){
                         navigate("/home");
                     }

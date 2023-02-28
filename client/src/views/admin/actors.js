@@ -8,10 +8,14 @@ import {TextFieldLarge} from "../../components/forms/TextField/TextFieldLarge";
 import {TextArea} from "../../components/forms/textarea/TextArea";
 import {actorInitialValues, validateActor} from "../../services/constants/admin/constants";
 import {Button} from "../../components/buttons/Button";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import { addActor } from "../../utils/api/actorsController";
+
+
 
 export const AdminActors =()=>{
     const [search,setSearch] = useState();
+
     const handleSearch = (e)=>{
         e.preventDefault();
         console.log(search);
@@ -24,7 +28,8 @@ export const AdminActors =()=>{
     const handleUpdate = ()=>{
         console.log("updated");
     }
-    return (
+
+    return (    
         <div className="flex space-x-3 items-start py-12">
             <AdminSidebar/>
             <section className="py-6 px-20 w-full space-y-3 flex flex-col max-w-screen-desktop">
@@ -33,6 +38,7 @@ export const AdminActors =()=>{
                         setSearch={setSearch}
                         search={search}
                 />
+
                 <Link to="/admin/actors/add" className="text-white bg-red-600 p-3 rounded-xl self-start">+ Ajouter un nouveau acteur</Link>
                 <ActorsTable handleDelete={handleDelete} handleUpdate={handleUpdate}/>
             </section>
@@ -40,18 +46,23 @@ export const AdminActors =()=>{
     );
 }
 export const ActorsAdd = ()=>{
-
+    const navigate = useNavigate()
     const [actorValues, setActorValues] = useState(actorInitialValues);
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
     const [message, setMessage] = useState("");
-
     const submitHandler = (e)=>{
         e.preventDefault();
 
         if(Object.keys(formErrors).length === 0){
-            console.log(actorValues);
-            console.log("form submitted");
+
+            addActor(actorValues).then(response=>response.json()).then((response)=>{
+                if(response){
+                    navigate('/admin/actors')
+                }
+            }).catch((err)=>{
+                console.log(err)
+            })
         }else{
             setIsSubmit(true);
             setMessage("Vous avez des erreurs dans le formulaire")
@@ -60,9 +71,12 @@ export const ActorsAdd = ()=>{
     }
 
     const handleChange = (e)=>{
-        const {name, value} = e.target;
-        setActorValues({...actorValues,[name]:value});
-
+        const {name, value, files} = e.target
+        if(files){
+            setActorValues({...actorValues,[name]:files[0]})
+        }else{
+            setActorValues({...actorValues,[name]:value})
+        }
     }
 
     useEffect(()=>{
@@ -73,7 +87,7 @@ export const ActorsAdd = ()=>{
          <div className="mx-5 py-12 my-0 flex flex-col items-center">
             <section className="py-6 px-20">
                 <h1 className="text-5xl mb-8 font-extrabold ">
-                    Ajouter un film
+                    Ajouter un acteur
                 </h1>
                  {isSubmit &&
                     <div
@@ -125,14 +139,22 @@ export const ActorsAdd = ()=>{
                                     placeholder="Entrer l'image de l'acteur"
                                     name="image"
                                     type="file"
-                                    values={actorValues.image}
+                            /*         values={actorValues.image.} */
                                     handleChange={handleChange}
                         />
+                        <div className="flex space-x-3 items-center">
 
                          <Button text="Valider"
                                 color="white"
                                 type="submit"
                         />
+                         <Button text="Annuler"
+                                color="red"
+                                type="link"
+                                route="/admin/actors"
+                        />
+
+                        </div>
                     </div>
                 </form>
             </section>

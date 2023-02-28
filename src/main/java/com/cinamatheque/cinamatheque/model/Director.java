@@ -13,5 +13,5 @@ public class Director {
     private String lastname;
     private String birthdate;
     private String description;
-    private float note;
+
 }

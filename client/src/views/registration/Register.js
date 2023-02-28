@@ -9,8 +9,8 @@ import {Link} from "react-router-dom";
 import {FormGoogle} from "../../components/buttons/FormGoogle";
 import {FormFacebook} from "../../components/buttons/FormFacebook";
 import {FormTwitter} from "../../components/buttons/FormTwitter";
-import {ApiController} from "../../utils/server/apiController";
 import Footer from "../../components/footer/Footer";
+import { authUser } from "../../utils/api/authController";
 
 function Register(){
 
@@ -35,7 +35,7 @@ function Register(){
         if(Object.keys(formError).length === 0){
 
             console.log(userValues);
-            ApiController("register",{
+            authUser("register",{
                 firstname:userValues.firstname,
                 lastname:userValues.lastname,
                 email:userValues.email,
