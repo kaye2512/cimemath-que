@@ -1,8 +1,13 @@
 import {AdminSidebar} from "../../components/Sidebar/AdminSidebar";
 import {Search} from "../../components/forms/search/Search";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import { FilmsTable } from "../../components/table/admin/Films";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { filmInitialValues, validateFilm } from "../../services/constants/admin/constants";
+import { addfilm } from "../../utils/api/filmsController";
+import { TextFieldLarge } from "../../components/forms/TextField/TextFieldLarge";
+import { Button } from "../../components/buttons/Button";
+import { TextArea } from "../../components/forms/textarea/TextArea";
 
 
 export const AdminFilms =()=>{
@@ -31,8 +36,110 @@ export const AdminFilms =()=>{
                         search={search}
                 />
 
-                <Link to="/admin/film/add" className="text-white bg-red-600 p-3 rounded-xl self-start">+ Ajouter un nouveau directeur</Link>
+                <Link to="/admin/films/add" className="text-white bg-red-600 p-3 rounded-xl self-start">+ Ajouter un nouveau directeur</Link>
                 <FilmsTable handleDelete={handleDelete} handleUpdate={handleUpdate}/>
+            </section>
+        </div>
+    );
+}
+
+export const FilmAdd = ()=>{
+    const navigate = useNavigate()
+    const [filmValues, setFilmValues] = useState(filmInitialValues);
+    const [formErrors, setFormErrors] = useState({});
+    const [isSubmit, setIsSubmit] = useState(false);
+    const [message, setMessage] = useState("");
+    const submitHandler = (e)=>{
+        e.preventDefault();
+
+        if(Object.keys(formErrors).length === 0){
+
+            addfilm(filmValues).then(response=>response.json()).then((response)=>{
+                if(response){
+                    navigate('/admin/films')
+                }
+            }).catch((err)=>{
+                console.log(err)
+            })
+        }else{
+            setIsSubmit(true);
+            setMessage("Vous avez des erreurs dans le formulaire")
+            console.log("form have errors");
+        }
+    }
+
+    const handleChange = (e)=>{
+        console.log(formErrors)
+        const {name, value, files} = e.target
+        if(files){
+            setFilmValues({...filmValues,[name]:files[0]})
+        }else{
+            setFilmValues({...filmValues,[name]:value})
+        }
+    }
+
+    useEffect(()=>{
+        setFormErrors(validateFilm(filmValues));
+    },[filmValues])
+
+    return (
+         <div className="mx-5 py-12 my-0 flex flex-col items-center">
+            <section className="py-6 px-20">
+                <h1 className="text-5xl mb-8 font-extrabold ">
+                    Ajouter un film
+                </h1>
+                 {isSubmit &&
+                    <div
+                        className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg font-bold"
+                        role="alert">
+                        <span className="font-medium">{message}</span>
+                    </div>
+
+                }
+                <form onSubmit={submitHandler}>
+                    <div className="flex flex-col max-w-xl">
+                       
+                            <TextFieldLarge label="title"
+                                             type="text"
+                                             placeholder="Entrer le titre du film"
+                                             name="title"
+                                             values={filmValues.title}
+                                             handleChange={handleChange}
+                                             formError={formErrors.title}
+                            />
+                           
+                       
+                        <TextArea
+                                    label="description"
+                                    placeholder="entrer la description du film"
+                                    name="description"
+                                    values={filmValues.description}
+                                    handleChange={handleChange}
+                                    formError={formErrors.description}
+                        />
+                        <TextFieldLarge
+                                    label="Couverture du film"
+                                    placeholder="Entrer la couverture du film"
+                                    name="image"
+                                    type="file"
+                            /*         values={actorValues.image.} */
+                                    handleChange={handleChange}
+                        />
+                        <div className="flex space-x-3 items-center">
+
+                         <Button text="Valider"
+                                color="white"
+                                type="submit"
+                        />
+                         <Button text="Annuler"
+                                color="red"
+                                type="link"
+                                route="/admin/films"
+                        />
+
+                        </div>
+                    </div>
+                </form>
             </section>
         </div>
     );

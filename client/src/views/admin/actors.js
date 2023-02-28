@@ -45,7 +45,7 @@ export const AdminActors =()=>{
         </div>
     );
 }
-export const ActorsAdd = ()=>{
+export const ActorAdd = ()=>{
     const navigate = useNavigate()
     const [actorValues, setActorValues] = useState(actorInitialValues);
     const [formErrors, setFormErrors] = useState({});
