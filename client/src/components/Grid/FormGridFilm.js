@@ -1,3 +1,27 @@
+import img5 from "../../assets/imagesGrid/5.jpeg";
+import img2 from "../../assets/imagesGrid/2.jpg";
+import img3 from "../../assets/imagesGrid/3.jpg";
+import img4 from "../../assets/imagesGrid/3.jpeg";
+import img1 from "../../assets/imagesGrid/9.jpeg";
+import img6 from "../../assets/imagesGrid/6.jpeg";
+import img7 from "../../assets/imagesGrid/8.jpeg";
+import img8 from "../../assets/imagesGrid/1.jpeg";
+import img9 from "../../assets/imagesGrid/7.jpg";
+import img10 from "../../assets/imagesGrid/10.jpeg";
+import img11 from "../../assets/imagesGrid/11.jpg";
+import img12 from "../../assets/imagesGrid/12.jpeg";
+import img13 from "../../assets/imagesGrid/13.jpeg";
+import img14 from "../../assets/imagesGrid/14.jpeg";
+import img15 from "../../assets/imagesGrid/15.jpg";
+import img16 from "../../assets/imagesGrid/16.jpeg";
+import img17 from "../../assets/imagesGrid/17.jpeg";
+import img18 from "../../assets/imagesGrid/18.png";
+import img19 from "../../assets/imagesGrid/19.jpeg";
+import img20 from "../../assets/imagesGrid/20.jpeg";
+import img21 from "../../assets/imagesGrid/21.webp";
+
+
+import { useState, useEffect, useRef } from "react";
 import React from "react";
 import "../../assets/App.css";
 
