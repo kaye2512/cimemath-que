@@ -3,7 +3,7 @@ import {FacebookLoginButton} from "react-social-login-buttons";
 import {useNavigate} from "react-router-dom";
 import { authUser } from "../../utils/api/authController";
 
-export const FormFacebook = ({type}) => {
+export const FormFacebook = ({type, setIsSubmit}) => {
     const navigate = useNavigate();
     return (
         <LoginSocialFacebook
@@ -29,7 +29,10 @@ export const FormFacebook = ({type}) => {
                     if(res){
                         navigate("/home");
                     }
+                }).catch(()=>{
+                    setIsSubmit(true)
                 })
+
             }}
             onReject={(err)=>{
                 console.log(err);

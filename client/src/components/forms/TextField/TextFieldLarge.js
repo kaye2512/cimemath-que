@@ -1,5 +1,5 @@
 export const TextFieldLarge = (props)=>{
-    const {label, type,  placeholder, name, values,formError, handleChange } = props;
+    const {label, type,  placeholder, name, values,formError, handleChange, showError } = props;
     return(
         <div className="mb-7">
             <label  htmlFor={label}
@@ -14,7 +14,7 @@ export const TextFieldLarge = (props)=>{
                    onChange={handleChange}
                    value={values}
             />
-            {formError && <p className="mt-2 text-sm text-red-600 dark:text-red-500">{formError}</p>}
+            {formError && showError && <p className="mt-2 text-sm text-red-600 dark:text-red-500">{formError}</p>}
         </div>
     );
 }

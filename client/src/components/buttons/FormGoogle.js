@@ -4,7 +4,7 @@ import {useNavigate} from "react-router-dom";
 import { authUser } from "../../utils/api/authController";
 
 
-export const FormGoogle = ({type}) => {
+export const FormGoogle = ({type, setIsSubmit}) => {
     const navigate = useNavigate();
     return (
         <LoginSocialGoogle client_id="955538355623-dok0i9d3ndq8ruds7k3av7qgjurc5clj.apps.googleusercontent.com"
@@ -30,6 +30,8 @@ export const FormGoogle = ({type}) => {
                                     if(res){
                                         navigate("/home");
                                     }
+                                }).catch(()=>{
+                                    setIsSubmit(true)
                                 })
 
                            }}>
