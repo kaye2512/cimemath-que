@@ -99,16 +99,14 @@ export const FilmAdd = ()=>{
                 <form onSubmit={submitHandler}>
                     <div className="flex flex-col max-w-xl">
                        
-                            <TextFieldLarge label="title"
-                                             type="text"
-                                             placeholder="Entrer le titre du film"
-                                             name="title"
-                                             values={filmValues.title}
-                                             handleChange={handleChange}
-                                             formError={formErrors.title}
-                            />
-                           
-                       
+                        <TextFieldLarge label="title"
+                                            type="text"
+                                            placeholder="Entrer le titre du film"
+                                            name="title"
+                                            values={filmValues.title}
+                                            handleChange={handleChange}
+                                            formError={formErrors.title}
+                        />
                         <TextArea
                                     label="description"
                                     placeholder="entrer la description du film"
