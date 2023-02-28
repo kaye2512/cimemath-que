@@ -1,19 +1,3 @@
-import img5 from "../../assets/Images/5.jpeg";
-import img2 from "../../assets/Images/2.jpg";
-import img3 from "../../assets/Images/3.jpg";
-import img4 from "../../assets/Images/3.jpeg";
-import img1 from "../../assets/Images/9.jpeg";
-import img6 from "../../assets/Images/6.jpeg";
-import img7 from "../../assets/Images/8.jpeg";
-import img8 from "../../assets/Images/1.jpeg";
-import img9 from "../../assets/Images/7.jpg";
-import img10 from "../../assets/Images/10.jpeg";
-import img11 from "../../assets/Images/11.jpg";
-import img12 from "../../assets/Images/12.jpeg";
-import img13 from "../../assets/Images/13.jpeg";
-import img14 from "../../assets/Images/14.jpeg";
-
-import { useState, useEffect, useRef } from "react";
 import React from "react";
 import "../../assets/App.css";
 
@@ -22,8 +6,10 @@ import "../../assets/App.css";
  * @type {*[]}
  */
 
-// declare images in an array
-const images = [img5, img2, img3, img4, img1, img6, img7, img8, img9, img10, img11, img12, img13, img14];
+// import all images from the folder imagesGrid
+const importAll = (r) => r.keys().map(r);
+const images = importAll(require.context("../../assets/imagesGrid", false, /\.(png|jpe?g|webp)$/));
+
 //gives a delay time
 const delay = 3000;
 
