@@ -60,8 +60,10 @@ export const FormGridFilm = () => {
         return () => {
             resetTimeout();
         };
-    }, [index]);
+    }, [index])
 
+    // show 7 images in the boundaries container
+    // make the container to have 7 images at once and slide to another array of 7 images
     const start = Math.floor(index / 7) * 7;
     const visibleImages = images.slice(start, start + 7);
 
@@ -91,7 +93,8 @@ export const FormGridFilm = () => {
                         return (
                             <div
                                 key={idx}
-                                className={`slideshowDot mt-[15px] mb-0 mx-[7px] rounded-[50%] ${
+                                {/*slideshowDot remove to hide the dots*/}
+                                className={` mt-[15px] mb-0 mx-[7px] rounded-[50%] ${
                                     isVisible ? "active bg-red" : ""
                                 }`}
                                 onClick={() => {
