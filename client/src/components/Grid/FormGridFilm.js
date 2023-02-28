@@ -83,6 +83,7 @@ export const FormGridFilm = () => {
             </div>
 
             {/*buttons (dots) that displays the currents image slided*/}
+            {/*slideshowDot remove to hide the dots*/}
             <div className="text-center">
                 {Array(Math.ceil(images.length / 7))
                     .fill()
@@ -93,7 +94,6 @@ export const FormGridFilm = () => {
                         return (
                             <div
                                 key={idx}
-                                {/*slideshowDot remove to hide the dots*/}
                                 className={` mt-[15px] mb-0 mx-[7px] rounded-[50%] ${
                                     isVisible ? "active bg-red" : ""
                                 }`}
