@@ -1,17 +1,25 @@
-import img5 from "../../assets/Images/5.jpeg";
-import img2 from "../../assets/Images/2.jpg";
-import img3 from "../../assets/Images/3.jpg";
-import img4 from "../../assets/Images/3.jpeg";
-import img1 from "../../assets/Images/9.jpeg";
-import img6 from "../../assets/Images/6.jpeg";
-import img7 from "../../assets/Images/8.jpeg";
-import img8 from "../../assets/Images/1.jpeg";
-import img9 from "../../assets/Images/7.jpg";
-import img10 from "../../assets/Images/10.jpeg";
-import img11 from "../../assets/Images/11.jpg";
-import img12 from "../../assets/Images/12.jpeg";
-import img13 from "../../assets/Images/13.jpeg";
-import img14 from "../../assets/Images/14.jpeg";
+import img5 from "../../assets/imagesGrid/5.jpeg";
+import img2 from "../../assets/imagesGrid/2.jpg";
+import img3 from "../../assets/imagesGrid/3.jpg";
+import img4 from "../../assets/imagesGrid/3.jpeg";
+import img1 from "../../assets/imagesGrid/9.jpeg";
+import img6 from "../../assets/imagesGrid/6.jpeg";
+import img7 from "../../assets/imagesGrid/8.jpeg";
+import img8 from "../../assets/imagesGrid/1.jpeg";
+import img9 from "../../assets/imagesGrid/7.jpg";
+import img10 from "../../assets/imagesGrid/10.jpeg";
+import img11 from "../../assets/imagesGrid/11.jpg";
+import img12 from "../../assets/imagesGrid/12.jpeg";
+import img13 from "../../assets/imagesGrid/13.jpeg";
+import img14 from "../../assets/imagesGrid/14.jpeg";
+import img15 from "../../assets/imagesGrid/15.jpg";
+import img16 from "../../assets/imagesGrid/16.jpeg";
+import img17 from "../../assets/imagesGrid/17.jpeg";
+import img18 from "../../assets/imagesGrid/18.png";
+import img19 from "../../assets/imagesGrid/19.jpeg";
+import img20 from "../../assets/imagesGrid/20.jpeg";
+import img21 from "../../assets/imagesGrid/21.webp";
+
 
 import { useState, useEffect, useRef } from "react";
 import React from "react";
@@ -22,8 +30,10 @@ import "../../assets/App.css";
  * @type {*[]}
  */
 
-// declare images in an array
-const images = [img5, img2, img3, img4, img1, img6, img7, img8, img9, img10, img11, img12, img13, img14];
+// import all images from the folder imagesGrid
+const importAll = (r) => r.keys().map(r);
+const images = importAll(require.context("../../assets/imagesGrid", false, /\.(png|jpe?g|webp)$/));
+
 //gives a delay time
 const delay = 3000;
 
@@ -83,7 +93,7 @@ export const FormGridFilm = () => {
             </div>
 
             {/*buttons (dots) that displays the currents image slided*/}
-               {/*slideshowDot remove to hide the dots*/}
+            {/*slideshowDot remove to hide the dots*/}
             <div className="text-center">
                 {Array(Math.ceil(images.length / 7))
                     .fill()
@@ -94,7 +104,6 @@ export const FormGridFilm = () => {
                         return (
                             <div
                                 key={idx}
-                             
                                 className={` mt-[15px] mb-0 mx-[7px] rounded-[50%] ${
                                     isVisible ? "active bg-red" : ""
                                 }`}
