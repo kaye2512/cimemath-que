@@ -1,5 +1,5 @@
 export const CheckBoxField = (props)=>{
-    const {checked, formError, handleChecked} = props;
+    const {checked, formError, handleChecked, showError} = props;
     return(
         <div className="flex flex-col mb-6">
             <div className="flex items-start">
@@ -20,7 +20,7 @@ export const CheckBoxField = (props)=>{
 
             </div>
             <div>
-                {formError && <p className="mt-2 text-sm text-red-600 dark:text-red-500">{formError}</p>}
+                {formError && showError && <p className="mt-2 text-sm text-red-600 dark:text-red-500">{formError}</p>}
             </div>
         </div>
 
