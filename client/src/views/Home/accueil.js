@@ -31,7 +31,7 @@ export const Accueil = (props) => {
     return (
         //LandingPage page container
         <div className=" flex flex-col items-stretch justify-around font-small
-                         leading-3 text-white w-full  h-full bg-black space-y-5">
+                         leading-3 text-white w-full bg-black h-full  space-y-5">
             {/*Navbar*/}
             <FormNavbar/>
 
