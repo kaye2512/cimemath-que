@@ -9,12 +9,15 @@ import {TextArea} from "../../components/forms/textarea/TextArea";
 import {actorInitialValues, validateActor} from "../../services/constants/admin/constants";
 import {Button} from "../../components/buttons/Button";
 import {Link, useNavigate} from "react-router-dom";
-import { addActor } from "../../utils/api/actorsController";
+import {addActor, deleteActor} from "../../utils/api/actorsController";
+import {Confirm} from "../../components/modals/confirm";
 
 
 
 export const AdminActors =()=>{
     const [search,setSearch] = useState();
+    const [modal, setModal] = useState(false);
+    const [selectedId, setSelectedId] = useState();
 
     const handleSearch = (e)=>{
         e.preventDefault();
@@ -22,12 +25,22 @@ export const AdminActors =()=>{
     }
 
     const handleDelete = ()=>{
-        console.log("deleted");
+       deleteActor(selectedId).then((response)=>{
+           console.log(response);
+           setModal(!modal);
+       })
     }
+
+     const handleModal = (id)=>{
+        setModal(!modal);
+        setSelectedId(id);
+    }
+
 
     const handleUpdate = ()=>{
         console.log("updated");
     }
+
 
     return (    
         <div className="flex space-x-3 items-start py-12">
@@ -40,11 +53,16 @@ export const AdminActors =()=>{
                 />
 
                 <Link to="/admin/actors/add" className="text-white bg-red-600 p-3 rounded-xl self-start">+ Ajouter un nouveau acteur</Link>
-                <ActorsTable handleDelete={handleDelete} handleUpdate={handleUpdate}/>
+                <ActorsTable handleModal={handleModal} handleUpdate={handleUpdate}/>
+
+                {modal && <Confirm type="suppression" context="acteur" handleModal={handleModal} handleDelete={handleDelete}/>}
+
             </section>
         </div>
     );
 }
+
+
 export const ActorAdd = ()=>{
     const navigate = useNavigate()
     const [actorValues, setActorValues] = useState(actorInitialValues);

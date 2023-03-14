@@ -1,7 +1,7 @@
 import {actorsData} from "./constants";
 import {useSelector} from "react-redux";
 
-export const ActorsTable = ({handleDelete, handleUpdate})=>{
+export const ActorsTable = ({handleModal, handleUpdate})=>{
      const {allActors} = useSelector((state)=>state.actors)
     return (
         <div>
@@ -26,7 +26,7 @@ export const ActorsTable = ({handleDelete, handleUpdate})=>{
                                 <td className="px-6 py-4">{firstname}</td>
                                 <td className="px-6 py-4">
                                     <button className="text-sky-500 mr-3" onClick={handleUpdate}>Editer</button>
-                                    <button className="text-red-600" onClick={handleDelete}>Supprimer</button>
+                                    <button className="text-red-600" onClick={handleModal(id)}>Supprimer</button>
                                 </td>
                               </tr>
                           );
