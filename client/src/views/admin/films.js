@@ -2,13 +2,13 @@ import {AdminSidebar} from "../../components/Sidebar/AdminSidebar";
 import {Search} from "../../components/forms/search/Search";
 import {Link, useNavigate} from "react-router-dom";
 import { FilmsTable } from "../../components/table/admin/Films";
-import { useState, useEffect } from "react";
-import {addfilm} from "../../utils/api/filmsController";
-import {filmInitialValues, validateFilm} from "../../services/constants/admin/constants";
-import {TextFieldMedium} from "../../components/forms/TextField/TextFieldMedium";
-import {TextFieldLarge} from "../../components/forms/TextField/TextFieldLarge";
-import {TextArea} from "../../components/forms/textarea/TextArea";
-import {Button} from "../../components/buttons/Button";
+import { useEffect, useState } from "react";
+import { filmInitialValues, validateFilm } from "../../services/constants/admin/constants";
+import { addfilm } from "../../utils/api/filmsController";
+import { TextFieldLarge } from "../../components/forms/TextField/TextFieldLarge";
+import { Button } from "../../components/buttons/Button";
+import { TextArea } from "../../components/forms/textarea/TextArea";
+
 
 
 export const AdminFilms =()=>{
@@ -27,7 +27,7 @@ export const AdminFilms =()=>{
         console.log("updated");
     }
 
-    return (    
+    return (
         <div className="flex space-x-3 items-start py-12">
             <AdminSidebar/>
             <section className="py-6 px-20 w-full space-y-3 flex flex-col max-w-screen-desktop">
@@ -44,18 +44,16 @@ export const AdminFilms =()=>{
     );
 }
 
-
-export const FilmAdd = () =>{
+export const FilmAdd = ()=>{
     const navigate = useNavigate()
     const [filmValues, setFilmValues] = useState(filmInitialValues);
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
     const [message, setMessage] = useState("");
-
     const submitHandler = (e)=>{
         e.preventDefault();
 
-        if(Object.keys(formErrors).length === 0 ){
+        if(Object.keys(formErrors).length === 0){
 
             addfilm(filmValues).then(response=>response.json()).then((response)=>{
                 if(response){
@@ -66,23 +64,24 @@ export const FilmAdd = () =>{
             })
         }else{
             setIsSubmit(true);
-            setMessage("Vous avez des erreurs dans le formualaire")
+            setMessage("Vous avez des erreurs dans le formulaire")
             console.log("form have errors");
         }
     }
 
     const handleChange = (e)=>{
+        console.log(formErrors)
         const {name, value, files} = e.target
         if(files){
-            setFilmValues({...filmValues, [name]:files[0]})
-        }else {
+            setFilmValues({...filmValues,[name]:files[0]})
+        }else{
             setFilmValues({...filmValues,[name]:value})
         }
     }
 
     useEffect(()=>{
         setFormErrors(validateFilm(filmValues));
-    }, [filmValues])
+    },[filmValues])
 
     return (
         <div className="mx-5 py-12 my-0 flex flex-col items-center">
@@ -100,66 +99,29 @@ export const FilmAdd = () =>{
                 }
                 <form onSubmit={submitHandler}>
                     <div className="flex flex-col max-w-xl">
-                        <div className="flex justify-between flex-wrap">
-                            <TextFieldMedium label="Titre"
-                                             type="text"
-                                             placeholder="Entrer le titre du film"
-                                             name="title"
-                                             values={filmValues.title}
-                                             handleChange={handleChange}
 
-                            />
-                            <TextFieldMedium label="Prénom de l'acteur"
-                                             type="text"
-                                             placeholder="Entrer votre prénom"
-                                             name="actors"
-                                             values={filmValues.actorFirstname}
-                                             handleChange={handleChange}
-
-                            />
-                            <TextFieldMedium label="Prénom du realisateur"
-                                             type="text"
-                                             placeholder="Entrer votre prénom"
-                                             name="director"
-                                             values={filmValues.directorsFirstname}
-                                             handleChange={handleChange}
-
-                            />
-                        </div>
+                        <TextFieldLarge label="title"
+                                        type="text"
+                                        placeholder="Entrer le titre du film"
+                                        name="title"
+                                        values={filmValues.title}
+                                        handleChange={handleChange}
+                                        formError={formErrors.title}
+                        />
                         <TextArea
                             label="description"
                             placeholder="entrer la description du film"
                             name="description"
                             values={filmValues.description}
                             handleChange={handleChange}
-
+                            formError={formErrors.description}
                         />
-
                         <TextFieldLarge
-                            label="Date de publication"
-                            type="date"
-                            placeholder="Entrer la date de publication"
-                            name="pubDate"
-                            values={filmValues.pubDate}
-                            handleChange={handleChange}
-
-                        />
-                        <TextFieldMedium label="genres"
-                                         type="text"
-                                         placeholder="Entrer le genres du film"
-                                         name="genres"
-                                         values={filmValues.genres}
-                                         handleChange={handleChange}
-
-                        />
-
-
-
-                        <TextFieldLarge
-                            label="Image du film"
-                            placeholder="Entrer l'image du film"
+                            label="Couverture du film"
+                            placeholder="Entrer la couverture du film"
                             name="image"
                             type="file"
+                            /*         values={actorValues.image.} */
                             handleChange={handleChange}
                         />
                         <div className="flex space-x-3 items-center">

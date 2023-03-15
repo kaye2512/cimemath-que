@@ -8,29 +8,42 @@ import {TextFieldLarge} from "../../components/forms/TextField/TextFieldLarge";
 import {TextArea} from "../../components/forms/textarea/TextArea";
 import {actorInitialValues, validateActor} from "../../services/constants/admin/constants";
 import {Button} from "../../components/buttons/Button";
-import {Link, useNavigate} from "react-router-dom";
-import { addActor } from "../../utils/api/actorsController";
-
+import {Link, useNavigate, useSearchParams, useParams} from "react-router-dom";
+import {addActor, deleteActor, getActor, updateActor} from "../../utils/api/actorsController";
+import {Confirm} from "../../components/modals/confirm";
 
 
 export const AdminActors =()=>{
-    const [search,setSearch] = useState();
-
+    const [search, setSearch] = useState();
+    const [modal, setModal] = useState(false);
+    const [selectedId, setSelectedId] = useState();
+    const navigate = useNavigate();
     const handleSearch = (e)=>{
         e.preventDefault();
         console.log(search);
     }
 
     const handleDelete = ()=>{
-        console.log("deleted");
+
+       deleteActor(selectedId).then((response)=>{
+           setModal(!modal);
+           window.location.reload();
+       })
     }
 
-    const handleUpdate = ()=>{
-        console.log("updated");
+     const handleModal = (id)=>{
+        setModal(!modal);
+        setSelectedId(id);
     }
 
-    return (    
+    const handleUpdate = (id)=>{
+        navigate('/admin/actors/update/'+id);
+    }
+
+    return (
+
         <div className="flex space-x-3 items-start py-12">
+            {modal &&  <Confirm type="suppression" context="acteur" handleModal={handleModal} handleDelete={handleDelete}/>}
             <AdminSidebar/>
             <section className="py-6 px-20 w-full space-y-3 flex flex-col max-w-screen-desktop">
                 <Search placeholder = "chercher par le nom, le prenom de l'acteur"
@@ -40,12 +53,141 @@ export const AdminActors =()=>{
                 />
 
                 <Link to="/admin/actors/add" className="text-white bg-red-600 p-3 rounded-xl self-start">+ Ajouter un nouveau acteur</Link>
-                <ActorsTable handleDelete={handleDelete} handleUpdate={handleUpdate}/>
+                <ActorsTable handleModal={handleModal} handleUpdate={handleUpdate}/>
+            </section>
+        </div>
+    );
+  }
+export const ActorUpdate = ()=>{
+
+    const navigate = useNavigate()
+    const [actorValues, setActorValues] = useState({});
+    const [formErrors, setFormErrors] = useState({});
+    const [isSubmit, setIsSubmit] = useState(false);
+    const [message, setMessage] = useState("");
+    const {id} = useParams();
+
+
+    const submitHandler = (e)=>{
+        e.preventDefault();
+
+        if(Object.keys(formErrors).length === 0){
+            actorValues.id = id;
+            updateActor(actorValues).then(response=>response.json()).then((response)=>{
+                if(response){
+                    navigate('/admin/actors')
+                }
+            }).catch((err)=>{
+                console.log(err)
+            })
+        }else{
+            setIsSubmit(true);
+            setMessage("Vous avez des erreurs dans le formulaire")
+            console.log("form have errors");
+        }
+    }
+
+    const handleChange = (e)=>{
+        const {name, value, files} = e.target
+        if(files){
+            setActorValues({...actorValues,[name]:files[0]})
+        }else{
+            setActorValues({...actorValues,[name]:value})
+        }
+    }
+
+    useEffect(()=>{
+        setFormErrors(validateActor(actorValues));
+    },[actorValues])
+
+
+
+    useEffect(()=>{
+        getActor(id).then(res=>res.json()).then((data)=>{
+            setActorValues(data);
+        })
+    },[])
+
+    return (
+         <div className="mx-5 py-12 my-0 flex flex-col items-center">
+            <section className="py-6 px-20">
+                <h1 className="text-5xl mb-8 font-extrabold ">
+                    Modifier l'acteur
+                </h1>
+                 {isSubmit &&
+                    <div
+                        className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg font-bold"
+                        role="alert">
+                        <span className="font-medium">{message}</span>
+                    </div>
+
+                }
+                <form onSubmit={submitHandler}>
+                    <div className="flex flex-col max-w-xl">
+                        <div className="flex justify-between flex-wrap">
+                            <TextFieldMedium label="Prénom"
+                                             type="text"
+                                             placeholder="Entrer votre prénom"
+                                             name="firstname"
+                                             values={actorValues.firstname}
+                                             handleChange={handleChange}
+                                             formError={formErrors.firstname}
+                            />
+                            <TextFieldMedium label="Nom"
+                                             type="text"
+                                             placeholder="Entrer votre nom"
+                                             name="lastname"
+                                             values={actorValues.lastname}
+                                             handleChange={handleChange}
+                                             formError={formErrors.lastname}
+                            />
+                        </div>
+                        <TextFieldLarge
+                                        label="Date de naissance"
+                                        type="date"
+                                        placeholder="Entrer la date de naissance"
+                                        name="birthdate"
+                                        values={actorValues.birthdate}
+                                        handleChange={handleChange}
+                                        formError={formErrors.birthdate}
+                        />
+                        <TextArea
+                                    label="description"
+                                    placeholder="entrer la description de l'acteur"
+                                    name="description"
+                                    values={actorValues.description}
+                                    handleChange={handleChange}
+                                    formError={formErrors.description}
+                        />
+                        <TextFieldLarge
+                                    label="Image de l'acteur"
+                                    placeholder="Entrer l'image de l'acteur"
+                                    name="image"
+                                    type="file"
+                            /*         values={actorValues.image.} */
+                                    handleChange={handleChange}
+                        />
+                        <div className="flex space-x-3 items-center">
+
+                         <Button text="Valider"
+                                color="white"
+                                type="submit"
+                        />
+                         <Button text="Annuler"
+                                color="red"
+                                type="link"
+                                route="/admin/actors"
+                        />
+
+                        </div>
+                    </div>
+                </form>
             </section>
         </div>
     );
 }
-export const ActorsAdd = ()=>{
+
+export const ActorAdd = ()=>{
     const navigate = useNavigate()
     const [actorValues, setActorValues] = useState(actorInitialValues);
     const [formErrors, setFormErrors] = useState({});

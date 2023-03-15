@@ -18,3 +18,38 @@ export const addActor = async(actorValues)=>{
     }
     return await fetch(api+'/acteur', requestOptions);
 }
+
+export const deleteActor = async (id)=>{
+    const requestOptions = {
+        method: 'DELETE',
+    }
+    return await fetch(api+'/acteur/'+id, requestOptions);
+}
+
+export const updateActor = async (actorValues)=>{
+    console.log(actorValues)
+    const data = {
+        id : actorValues.id,
+        firstname : actorValues.firstname,
+        lastname : actorValues.lastname,
+        birthdate : actorValues.birthdate,
+        description : actorValues.description
+    }
+
+
+    const requestOptions = {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    }
+    return await fetch(api+'/acteur', requestOptions);
+}
+
+export const getActor = async (id)=>{
+    const requestOptions = {
+        method: 'GET',
+    }
+    return await fetch(api+'/acteur/'+id, requestOptions);
+}

@@ -3,7 +3,7 @@ import {LoginSocialTwitter} from "reactjs-social-login";
 import {useNavigate} from "react-router-dom";
 import { authUser } from "../../utils/api/authController";
 
-export const FormTwitter = ({type}) => {
+export const FormTwitter = ({type, setIsSubmit}) => {
     const navigate = useNavigate();
     return (
         <LoginSocialTwitter client_id="LUZqanB0cFpEMnF6MU9sSUs3clU6MTpjaQ"
@@ -28,7 +28,10 @@ export const FormTwitter = ({type}) => {
                                     if(res){
                                         navigate("/home");
                                     }
+                                }).catch(()=>{
+                                    setIsSubmit(true)
                                 })
+
                             }}>
 
             <TwitterLoginButton text="continuer avec twitter" className="w-30 rounded-lg"/>
