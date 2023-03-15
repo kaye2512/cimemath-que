@@ -11,10 +11,6 @@ import java.util.UUID;
 @Repository
 public interface ActeurRepository
         extends MongoRepository<Acteur, String> {
-
-    List<Acteur> findByFirstname(String firstname);
-
-    List<Acteur> findByLastname(String lastname);
-
+    List<Acteur> findByFullname(String fullname);
 
 }

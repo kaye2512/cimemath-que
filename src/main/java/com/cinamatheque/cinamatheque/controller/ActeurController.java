@@ -55,7 +55,7 @@ public class ActeurController {
     //    get actor by firstname
     @GetMapping("/search/{fullname}")
     public List<Acteur> findActeurByFullname(@PathVariable String fullname){
-        return repository.findByFirstname(fullname);
+        return repository.findByFullname(fullname);
     }
 
     // modify existing actor inside database

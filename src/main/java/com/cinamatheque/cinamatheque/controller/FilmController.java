@@ -32,7 +32,7 @@ public class FilmController {
                            @RequestParam("title") String title,
                            @RequestParam("description") String description,
                            @RequestParam("pubDate") Date pubDate,
-                           @RequestParam("genres") List<Category> genres,
+                           @RequestParam("genres") String genres,
                            @RequestParam("actors") List<Acteur> actors,
                            @RequestParam("directors") List<Director> directors
     ) throws IOException {
