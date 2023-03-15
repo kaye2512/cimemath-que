@@ -9,12 +9,15 @@ import {TextArea} from "../../components/forms/textarea/TextArea";
 import {actorInitialValues, validateActor} from "../../services/constants/admin/constants";
 import {Button} from "../../components/buttons/Button";
 import {Link, useNavigate} from "react-router-dom";
-import { addActor } from "../../utils/api/actorsController";
-
+import {addActor, deleteActor} from "../../utils/api/actorsController";
+import {Confirm} from "../../components/modals/confirm";
 
 
 export const AdminActors =()=>{
-    const [search,setSearch] = useState();
+    const [search, setSearch] = useState();
+    const [modal, setModal] = useState(false);
+    const [selectedId, setSelectedId] = useState();
+    const navigate = useNavigate();
 
     const handleSearch = (e)=>{
         e.preventDefault();
@@ -22,15 +25,26 @@ export const AdminActors =()=>{
     }
 
     const handleDelete = ()=>{
-        console.log("deleted");
+
+       deleteActor(selectedId).then((response)=>{
+           setModal(!modal);
+          window.location.reload();
+       })
+    }
+
+     const handleModal = (id)=>{
+        setModal(!modal);
+        setSelectedId(id);
     }
 
     const handleUpdate = ()=>{
         console.log("updated");
     }
 
-    return (    
+    return (
+
         <div className="flex space-x-3 items-start py-12">
+            {modal &&  <Confirm type="suppression" context="acteur" handleModal={handleModal} handleDelete={handleDelete}/>}
             <AdminSidebar/>
             <section className="py-6 px-20 w-full space-y-3 flex flex-col max-w-screen-desktop">
                 <Search placeholder = "chercher par le nom, le prenom de l'acteur"
@@ -40,11 +54,12 @@ export const AdminActors =()=>{
                 />
 
                 <Link to="/admin/actors/add" className="text-white bg-red-600 p-3 rounded-xl self-start">+ Ajouter un nouveau acteur</Link>
-                <ActorsTable handleDelete={handleDelete} handleUpdate={handleUpdate}/>
+                <ActorsTable handleModal={handleModal} handleUpdate={handleUpdate}/>
             </section>
         </div>
     );
-}
+  }
+
 export const ActorAdd = ()=>{
     const navigate = useNavigate()
     const [actorValues, setActorValues] = useState(actorInitialValues);

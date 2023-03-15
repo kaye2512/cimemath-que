@@ -18,3 +18,10 @@ export const addActor = async(actorValues)=>{
     }
     return await fetch(api+'/acteur', requestOptions);
 }
+
+export const deleteActor = async (id)=>{
+    const requestOptions = {
+        method: 'DELETE',
+    }
+    return await fetch(api+'/acteur/'+id, requestOptions);
+}
