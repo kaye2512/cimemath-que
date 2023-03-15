@@ -1,11 +1,18 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import { getActors } from "../utils/api/actorsController";
+import {getActor, getActors} from "../utils/api/actorsController";
 
 
 export const fetchAllActors = createAsyncThunk(
     '/actors/fetchAllActors',
     ()=>{
         return getActors()
+    }
+)
+
+export const fetchActor = createAsyncThunk(
+    '/actors/fetchActor',
+    ()=>{
+        return getActor()
     }
 )
 
@@ -26,6 +33,7 @@ const actorsSlice = createSlice({
             state.allActors = action.payload;
             state.isLoading = false;
         })
+
         builder.addCase(fetchAllActors.rejected, (state)=>{
             state.isLoading = false;
         })
