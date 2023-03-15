@@ -7,7 +7,7 @@ import { Accueil } from './views/Home/accueil';
 import {Film} from "./views/Film/Film";
 import {Admin} from "./views/admin/admin";
 import {AdminUsers} from "./views/admin/users";
-import {ActorAdd, AdminActors} from "./views/admin/actors";
+import {ActorAdd, ActorUpdate, AdminActors} from "./views/admin/actors";
 import {BioActor} from "./views/biographie/BioActor";
 import { AdminDirectors, DirectorAdd } from './views/admin/directors';
 import { AdminFilms, FilmAdd } from './views/admin/films';
@@ -29,6 +29,7 @@ function App() {
                 <Route path="/admin/users" element={<AdminUsers/>}/>
                 <Route path="/admin/actors" element={<AdminActors/>}/>
                 <Route path="/admin/actors/add" element={<ActorAdd/>}/>
+                <Route path="/admin/actors/update/:id" element={<ActorUpdate/>}/>
                 <Route path="/admin/films" element={<AdminFilms/>}/>
                 <Route path="/admin/films/add" element={<FilmAdd/>}/>
                 <Route path="/admin/directors" element={<AdminDirectors/>}/>
