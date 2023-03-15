@@ -16,15 +16,13 @@ import java.util.Date;
 @AllArgsConstructor
 public class Acteur {
     @Id private String id;
-    private String firstname;
-    private String lastname;
+    private String fullname;
     private String birthdate;
     private String description;
     private String posterActor;
 
-    public Acteur(String firstname, String lastname, String birthdate, String description, String posterActor) {
-        this.firstname = firstname;
-        this.lastname = lastname;
+    public Acteur(String fullname, String birthdate, String description, String posterActor) {
+        this.fullname = fullname;
         this.birthdate = birthdate;
         this.description = description;
         this.posterActor = posterActor;

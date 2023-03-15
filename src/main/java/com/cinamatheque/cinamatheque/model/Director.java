@@ -9,8 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Director {
     @Id private String id;
-    private String firstname;
-    private String lastname;
+    private String fullname;
     private String birthdate;
     private String description;
 

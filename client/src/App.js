@@ -10,7 +10,7 @@ import {AdminUsers} from "./views/admin/users";
 import {ActorsAdd, AdminActors} from "./views/admin/actors";
 import {BioActor} from "./views/biographie/BioActor";
 import { AdminDirectors } from './views/admin/directors';
-import { AdminFilms } from './views/admin/films';
+import { FilmAdd, AdminFilms } from './views/admin/films';
 
 function App() {
     return (
@@ -32,6 +32,7 @@ function App() {
                 <Route path="/admin/films" element={<AdminFilms/>}/>
                 <Route path="/admin/directors" element={<AdminDirectors/>}/>
                 <Route path="/admin/home_elements" element={<Admin/>}/>
+                <Route path="/admin/films/add" element={<FilmAdd/>}/>
                 <Route path="*" element={<h1>Error 404 page not found</h1>}/>
             </Routes>
         </Router>
