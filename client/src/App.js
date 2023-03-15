@@ -12,6 +12,7 @@ import {BioActor} from "./views/biographie/BioActor";
 import { AdminDirectors, DirectorAdd } from './views/admin/directors';
 import { AdminFilms, FilmAdd } from './views/admin/films';
 
+
 function App() {
     return (
         <Router>

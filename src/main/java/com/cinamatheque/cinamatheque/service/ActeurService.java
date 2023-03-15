@@ -18,7 +18,7 @@ public class ActeurService {
     private ActeurRepository acteurRepository;
 
 
-    public Acteur safeActeur (MultipartFile file, String firstname, String lastname, String birthdate, String description) throws IOException {
+    public Acteur safeActeur (MultipartFile file, String fullname, String birthdate, String description) throws IOException {
 
         Acteur actor = new Acteur();
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
@@ -26,8 +26,7 @@ public class ActeurService {
             System.out.println("not a valid file");
         }
         actor.setPosterActor(Arrays.toString(Base64.getEncoder().encode(file.getBytes())));
-        actor.setFirstname(firstname);
-        actor.setLastname(lastname);
+        actor.setFullname(fullname);
         actor.setBirthdate(birthdate);
         actor.setDescription(description);
 

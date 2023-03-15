@@ -81,4 +81,3 @@ export const validateActor = (actorValues)=> {
 
     return errors;
 }
-

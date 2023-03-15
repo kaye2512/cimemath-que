@@ -10,6 +10,7 @@ import { Button } from "../../components/buttons/Button";
 import { TextArea } from "../../components/forms/textarea/TextArea";
 
 
+
 export const AdminFilms =()=>{
     const [search,setSearch] = useState();
 
@@ -26,7 +27,7 @@ export const AdminFilms =()=>{
         console.log("updated");
     }
 
-    return (    
+    return (
         <div className="flex space-x-3 items-start py-12">
             <AdminSidebar/>
             <section className="py-6 px-20 w-full space-y-3 flex flex-col max-w-screen-desktop">
@@ -83,12 +84,12 @@ export const FilmAdd = ()=>{
     },[filmValues])
 
     return (
-         <div className="mx-5 py-12 my-0 flex flex-col items-center">
+        <div className="mx-5 py-12 my-0 flex flex-col items-center">
             <section className="py-6 px-20">
                 <h1 className="text-5xl mb-8 font-extrabold ">
                     Ajouter un film
                 </h1>
-                 {isSubmit &&
+                {isSubmit &&
                     <div
                         className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg font-bold"
                         role="alert">
@@ -98,42 +99,42 @@ export const FilmAdd = ()=>{
                 }
                 <form onSubmit={submitHandler}>
                     <div className="flex flex-col max-w-xl">
-                       
+
                         <TextFieldLarge label="title"
-                                            type="text"
-                                            placeholder="Entrer le titre du film"
-                                            name="title"
-                                            values={filmValues.title}
-                                            handleChange={handleChange}
-                                            formError={formErrors.title}
+                                        type="text"
+                                        placeholder="Entrer le titre du film"
+                                        name="title"
+                                        values={filmValues.title}
+                                        handleChange={handleChange}
+                                        formError={formErrors.title}
                         />
                         <TextArea
-                                    label="description"
-                                    placeholder="entrer la description du film"
-                                    name="description"
-                                    values={filmValues.description}
-                                    handleChange={handleChange}
-                                    formError={formErrors.description}
+                            label="description"
+                            placeholder="entrer la description du film"
+                            name="description"
+                            values={filmValues.description}
+                            handleChange={handleChange}
+                            formError={formErrors.description}
                         />
                         <TextFieldLarge
-                                    label="Couverture du film"
-                                    placeholder="Entrer la couverture du film"
-                                    name="image"
-                                    type="file"
+                            label="Couverture du film"
+                            placeholder="Entrer la couverture du film"
+                            name="image"
+                            type="file"
                             /*         values={actorValues.image.} */
-                                    handleChange={handleChange}
+                            handleChange={handleChange}
                         />
                         <div className="flex space-x-3 items-center">
 
-                         <Button text="Valider"
-                                color="white"
-                                type="submit"
-                        />
-                         <Button text="Annuler"
-                                color="red"
-                                type="link"
-                                route="/admin/films"
-                        />
+                            <Button text="Valider"
+                                    color="white"
+                                    type="submit"
+                            />
+                            <Button text="Annuler"
+                                    color="red"
+                                    type="link"
+                                    route="/admin/films"
+                            />
 
                         </div>
                     </div>
@@ -142,5 +143,3 @@ export const FilmAdd = ()=>{
         </div>
     );
 }
-
-

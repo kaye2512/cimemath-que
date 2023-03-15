@@ -32,13 +32,12 @@ public class ActeurController {
     // respect the field name in front application
    @PostMapping
    public Acteur CreateActeur (@RequestParam("file") MultipartFile file,
-                              @RequestParam("firstname") String firstname,
-                              @RequestParam("lastname") String lastname,
+                              @RequestParam("fullname") String fullname,
                               @RequestParam("birthdate") String birthdate,
                               @RequestParam("description") String description
 
    ) throws IOException {
-       return acteurService.safeActeur(file, firstname, lastname, birthdate, description);
+       return acteurService.safeActeur(file, fullname, birthdate, description);
    }
 
 
@@ -49,29 +48,23 @@ public class ActeurController {
     }
 
     //    get actor by id
-    @GetMapping("/{id}")
-    public Acteur getActeurById(@PathVariable String id){
+    @GetMapping("/search/{id}")
+    public Acteur findActeurById(@PathVariable String id){
         return repository.findById(id).get();
     }
     //    get actor by firstname
-    @GetMapping("/firstname/{firstname}")
-    public List<Acteur> getActeurByFirstname(@PathVariable String firstname){
-        return repository.findByFirstname(firstname);
-    }
-    //    get actor by lastname
-    @GetMapping("/lastname/{lastname}")
-    public List<Acteur> getActeurByLastname(@PathVariable String lastname){
-        return repository.findByLastname(lastname);
+    @GetMapping("/search/{fullname}")
+    public List<Acteur> findActeurByFullname(@PathVariable String fullname){
+        return repository.findByFirstname(fullname);
     }
 
     // modify existing actor inside database
-    @PutMapping
+    @PutMapping()
     public Acteur modifyActeur(@RequestBody Acteur acteurRequest){
         //get the existing document from DB
         //populate new value from request to existing object/entity/document
         Acteur existingActeur = repository.findById(acteurRequest.getId()).get();
-        existingActeur.setFirstname(acteurRequest.getFirstname());
-        existingActeur.setLastname(acteurRequest.getLastname());
+        existingActeur.setFullname(acteurRequest.getFullname());
         existingActeur.setBirthdate(acteurRequest.getBirthdate());
         existingActeur.setDescription(acteurRequest.getDescription());
         return repository.save(existingActeur);
