@@ -11,7 +11,8 @@ import {FormFacebook} from "../../components/buttons/FormFacebook";
 import {FormTwitter} from "../../components/buttons/FormTwitter";
 import Footer from "../../components/footer/Footer";
 import { authUser } from "../../utils/api/authController";
-
+import {useDispatch, useSelector} from "react-redux";
+import {loginUser} from "../../reducers/userReducer";
 function Register(){
 
     const navigate = useNavigate();
@@ -21,6 +22,8 @@ function Register(){
     const [isSubmit, setIsSubmit] = useState(false);
     const [message, setMessage] = useState("");
     const [showError, setShowError] = useState(false);
+    const {isLogged} = useSelector((state)=>state.user)
+    const dispatch = useDispatch();
 
     const handleChange = (e)=>{
         const {name, value} = e.target
@@ -46,6 +49,8 @@ function Register(){
                 }).then((response)=>{
                 if(response.ok){
                     navigate("/home");
+                    dispatch(loginUser(userValues.username))
+                    console.log(isLogged)
                 }
                 else if (response.status === 409){
                     response.json().then((response)=>{
@@ -73,7 +78,9 @@ function Register(){
         setFormError(validate(userValues, agreeTerms));
     },[userValues,agreeTerms])
 
-
+    if(isLogged){
+        navigate("/");
+    }
     return (
         <div className="mx-5 py-12 my-0 flex flex-col items-center">
             <section className="py-6 px-20">

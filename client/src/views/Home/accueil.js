@@ -17,6 +17,7 @@ import {FormNavbar} from "../../components/navbar/FormNavbar";
 import {FormGridFilm} from "../../components/Grid/FormGridFilm";
 import {Button} from "../../components/buttons/Button";
 import StarRate from "../../assets/Svg/StarRate.svg";
+import {useSelector} from "react-redux";
 
 
 /**
@@ -27,6 +28,9 @@ import StarRate from "../../assets/Svg/StarRate.svg";
  */
 
 export const Accueil = (props) => {
+
+    const {user, isLogged} = useSelector((state)=>state.user)
+    console.log(isLogged)
 
     return (
         //LandingPage page container

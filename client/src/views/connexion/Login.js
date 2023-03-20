@@ -8,8 +8,9 @@ import {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 import {Footer} from "../../components/footer/Footer"
 import {useNavigate} from "react-router-dom";
-
 import { authUser } from "../../utils/api/authController";
+import {useDispatch, useSelector} from "react-redux";
+import {loginUser} from "../../reducers/userReducer";
 
 /**
  *
@@ -25,6 +26,8 @@ function Login() {
     const [formError, setFormError] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
     const [showError, setShowError] = useState(false);
+    const dispatch = useDispatch();
+    const {isLogged} = useSelector((state)=>state.user)
     const handleChange = (e)=>{
         const {name, value} = e.target
         setUserValues({...userValues,[name]:value});
@@ -39,6 +42,8 @@ function Login() {
                 if(res){
       
                     navigate("/home");
+                    dispatch(loginUser(userValues.username))
+                    console.log(isLogged)
                 }
             }).catch(()=>{
                  setIsSubmit(true);
@@ -53,7 +58,9 @@ function Login() {
         setFormError(validate(userValues));
     },[userValues])
 
-
+    if(isLogged){
+        navigate("/");
+    }
     return (
         <div className="mx-5 py-12 my-0 flex flex-col items-center">
             <section className="py-6 px-20">
