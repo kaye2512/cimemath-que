@@ -10,11 +10,17 @@ export const directorInitialValues = {
     lastname:"",
     description:"",
     birthdate: "",
+
 }
 
 export const filmInitialValues = {
     title:"",
     description:"",
+    genres : "",
+    file : "",
+    pubDate : "",
+    actors : "",
+    directors : ""
 }
 
 export const validateFilm = (filmValues)=>{

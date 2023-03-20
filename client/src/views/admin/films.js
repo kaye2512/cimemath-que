@@ -37,7 +37,7 @@ export const AdminFilms =()=>{
                         search={search}
                 />
 
-                <Link to="/admin/films/add" className="text-white bg-red-600 p-3 rounded-xl self-start">+ Ajouter un nouveau directeur</Link>
+                <Link to="/admin/films/add" className="text-white bg-red-600 p-3 rounded-xl self-start">+ Ajouter un nouveau film</Link>
                 <FilmsTable handleDelete={handleDelete} handleUpdate={handleUpdate}/>
             </section>
         </div>
@@ -108,6 +108,15 @@ export const FilmAdd = ()=>{
                                         handleChange={handleChange}
                                         formError={formErrors.title}
                         />
+
+                        <TextFieldLarge
+                                        label="Date de parution"
+                                        type="date"
+                                        placeholder="Entrer la date de parution du film"
+                                        name="pubDate"
+                                        values={filmValues.pubDate}
+                                        handleChange={handleChange}
+                        />
                         <TextArea
                             label="description"
                             placeholder="entrer la description du film"
@@ -116,10 +125,36 @@ export const FilmAdd = ()=>{
                             handleChange={handleChange}
                             formError={formErrors.description}
                         />
+
+
+                         <TextFieldLarge     label="genres"
+                                            type="text"
+                                            placeholder="entrer les genres du film séparé par un ;"
+                                            name="genres"
+                                            values={filmValues.genres}
+                                            handleChange={handleChange}
+                        />
+
+                        <TextFieldLarge     label="acteurs"
+                                            type="text"
+                                            placeholder="entrer les acteurs du film séparé par un ;"
+                                            name="actors"
+                                            values={filmValues.actors}
+                                            handleChange={handleChange}
+                        />
+
+                        <TextFieldLarge     label="directors"
+                                            type="text"
+                                            placeholder="entrer les réalisateurs du film séparé par un ;"
+                                            name="directors"
+                                            values={filmValues.directors}
+                                            handleChange={handleChange}
+                        />
+
                         <TextFieldLarge
                             label="Couverture du film"
                             placeholder="Entrer la couverture du film"
-                            name="image"
+                            name="file"
                             type="file"
                             /*         values={actorValues.image.} */
                             handleChange={handleChange}

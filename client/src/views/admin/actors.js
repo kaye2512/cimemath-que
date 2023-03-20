@@ -244,7 +244,7 @@ export const ActorAdd = ()=>{
                         <div className="flex justify-between flex-wrap">
                             <TextFieldMedium label="Prénom"
                                              type="text"
-                                             placeholder="Entrer votre prénom"
+                                             placeholder="Entrer le prénom de l'acteur"
                                              name="firstname"
                                              values={actorValues.firstname}
                                              handleChange={handleChange}
@@ -252,7 +252,7 @@ export const ActorAdd = ()=>{
                             />
                             <TextFieldMedium label="Nom"
                                              type="text"
-                                             placeholder="Entrer votre nom"
+                                             placeholder="Entrer le nom de l'acteur"
                                              name="lastname"
                                              values={actorValues.lastname}
                                              handleChange={handleChange}

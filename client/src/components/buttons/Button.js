@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 
 export const Button = (props)=>{
-        const {text, color, type, size, route} = props;
+        const {text, color, type, size, route, handleClick} = props;
         let submit = false;
         let link = false;
         let normal =false;
@@ -58,7 +58,7 @@ export const Button = (props)=>{
                 normal &&
                     <button className={buttonClass}
                             type="button"
-
+                            onClick={handleClick}
                     >
                         {text}
                     </button>

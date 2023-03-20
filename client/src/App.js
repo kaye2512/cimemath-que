@@ -1,26 +1,34 @@
-import './assets/App.css';
 import Register from "./views/registration/Register";
 import Login from "./views/connexion/Login";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import {LandingPage} from "./views/LandingPage/LandingPage";
 import { Accueil } from './views/Home/accueil';
 import {Film} from "./views/Film/Film";
 import {Admin} from "./views/admin/admin";
-import {AdminUsers} from "./views/admin/users";
 import {ActorAdd, ActorUpdate, AdminActors} from "./views/admin/actors";
 import {BioActor} from "./views/biographie/BioActor";
 import { AdminDirectors, DirectorAdd } from './views/admin/directors';
 import { AdminFilms, FilmAdd } from './views/admin/films';
 
-
+import {useDispatch} from "react-redux";
+import jwt_decode from "jwt-decode";
+import {loginUser} from "./reducers/userReducer";
+import {AdminUsers} from "./views/admin/users";
 function App() {
+    const dispatch = useDispatch();
+    const token = localStorage.getItem("token");
+
+    if(token){
+        const decoded = jwt_decode(token);
+        dispatch(loginUser(decoded.sub))
+    }
+
     return (
         <Router>
             <Routes>
-                <Route path="/" element={<LandingPage/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/register" element={<Register/>}/>
-                <Route path="/Accueil" element={<Accueil/>}/>
+                <Route path="/" element={<Accueil/>}/>
+                <Route path="/home" element={<Accueil/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/home" element={<Accueil/>}/>
@@ -41,5 +49,4 @@ function App() {
         </Router>
     );
 }
-
 export default App;
