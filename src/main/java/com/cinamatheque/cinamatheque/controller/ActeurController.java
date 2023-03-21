@@ -19,6 +19,12 @@ public class ActeurController {
 
     // Create actor to populate actor
     // add image actor
+
+    //    get actor by id
+    @GetMapping("/search/{id}")
+    public Acteur findActeurById(@PathVariable String id){
+        return repository.findById(id).get();
+    }
    @PostMapping
    public Acteur CreateActeur (@RequestParam("file") MultipartFile file,
                               @RequestParam("fullname") String fullname,

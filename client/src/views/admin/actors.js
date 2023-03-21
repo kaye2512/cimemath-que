@@ -124,24 +124,14 @@ export const ActorUpdate = ()=>{
                 }
                 <form onSubmit={submitHandler}>
                     <div className="flex flex-col max-w-xl">
-                        <div className="flex justify-between flex-wrap">
-                            <TextFieldMedium label="Prénom"
-                                             type="text"
-                                             placeholder="Entrer votre prénom"
-                                             name="firstname"
-                                             values={actorValues.firstname}
-                                             handleChange={handleChange}
-                                             formError={formErrors.firstname}
-                            />
-                            <TextFieldMedium label="Nom"
-                                             type="text"
-                                             placeholder="Entrer votre nom"
-                                             name="lastname"
-                                             values={actorValues.lastname}
-                                             handleChange={handleChange}
-                                             formError={formErrors.lastname}
-                            />
-                        </div>
+                        <TextFieldLarge  label="prénom et nom de l'acteur"
+                                         type="text"
+                                         placeholder="Entrer le prénom et le nom de l'acteur"
+                                         name="fullname"
+                                         values={actorValues.fullname}
+                                         handleChange={handleChange}
+                                         formError={formErrors.fullname}
+                        />
                         <TextFieldLarge
                                         label="Date de naissance"
                                         type="date"
@@ -241,24 +231,15 @@ export const ActorAdd = ()=>{
                 }
                 <form onSubmit={submitHandler}>
                     <div className="flex flex-col max-w-xl">
-                        <div className="flex justify-between flex-wrap">
-                            <TextFieldMedium label="Prénom"
-                                             type="text"
-                                             placeholder="Entrer le prénom de l'acteur"
-                                             name="firstname"
-                                             values={actorValues.firstname}
-                                             handleChange={handleChange}
-                                             formError={formErrors.firstname}
-                            />
-                            <TextFieldMedium label="Nom"
-                                             type="text"
-                                             placeholder="Entrer le nom de l'acteur"
-                                             name="lastname"
-                                             values={actorValues.lastname}
-                                             handleChange={handleChange}
-                                             formError={formErrors.lastname}
-                            />
-                        </div>
+                        <TextFieldLarge  label="prénom et nom de l'acteur"
+                                         type="text"
+                                         placeholder="Entrer le prénom et le nom de l'acteur"
+                                         name="fullname"
+                                         values={actorValues.fullname}
+                                         handleChange={handleChange}
+                                         formError={formErrors.fullname}
+                        />
+
                         <TextFieldLarge
                                         label="Date de naissance"
                                         type="date"
@@ -274,7 +255,6 @@ export const ActorAdd = ()=>{
                                     name="description"
                                     values={actorValues.description}
                                     handleChange={handleChange}
-                                    formError={formErrors.description}
                         />
                         <TextFieldLarge
                                     label="Image de l'acteur"
