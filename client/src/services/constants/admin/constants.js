@@ -1,7 +1,6 @@
 export const actorInitialValues = {
-    firstname:"",
-    lastname:"",
-    description:"",
+    fullname: "",
+    description: "",
     birthdate: "",
 }
 
@@ -63,16 +62,11 @@ export const validateDirector = (directorValues)=>{
 
 export const validateActor = (actorValues)=> {
     const errors = {};
-    if (!actorValues.firstname) {
-        errors.firstname = "Vous devez rentrer le prénom de l'acteur";
-    } else {
-        delete errors.firstname
-    }
 
-    if (!actorValues.lastname) {
-        errors.lastname = "Vous devez rentrer le nom de l'acteur";
+    if (!actorValues.fullname) {
+        errors.fullname = "Vous devez rentrer le prénom et nom de l'acteur";
     } else {
-        delete errors.lastname
+        delete errors.fullname
     }
 
     if (!actorValues.birthdate) {
@@ -80,10 +74,6 @@ export const validateActor = (actorValues)=> {
     } else {
         delete errors.birthdate
     }
-
-    if(!actorValues.description){
-        errors.description= "Vous devez rentrer la description de l'acteur";
-    }else{delete errors.description}
 
     return errors;
 }
