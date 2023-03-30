@@ -6,9 +6,11 @@ import {Button} from "../../components/buttons/Button";
 import {initialValues, validate} from "../../services/constants/Connexion/Constants"
 import {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
-import Footer from "../../components/footer/Footer";
+import {Footer} from "../../components/footer/Footer"
 import {useNavigate} from "react-router-dom";
 import { authUser } from "../../utils/api/authController";
+import {useDispatch, useSelector} from "react-redux";
+import {loginUser} from "../../reducers/userReducer";
 
 /**
  *
@@ -23,24 +25,32 @@ function Login() {
     const [userValues, setUserValues] = useState(initialValues);
     const [formError, setFormError] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
-
+    const [showError, setShowError] = useState(false);
+    const dispatch = useDispatch();
+    const {isLogged} = useSelector((state)=>state.user)
     const handleChange = (e)=>{
         const {name, value} = e.target
         setUserValues({...userValues,[name]:value});
     }
 
     const submitHandler =(e)=>{
+        
         e.preventDefault();
         if(Object.keys(formError).length === 0){
             authUser("authenticate",userValues).then((res)=>{
+                
                 if(res){
+      
                     navigate("/home");
+                    dispatch(loginUser(userValues.username))
+                    console.log(isLogged)
                 }
+            }).catch(()=>{
+                 setIsSubmit(true);
             })
 
         }else{
-            setIsSubmit(true);
-            console.log("form have errors");
+            setShowError(true)
         }
     }
 
@@ -48,7 +58,9 @@ function Login() {
         setFormError(validate(userValues));
     },[userValues])
 
-
+    if(isLogged){
+        navigate("/");
+    }
     return (
         <div className="mx-5 py-12 my-0 flex flex-col items-center">
             <section className="py-6 px-20">
@@ -76,6 +88,7 @@ function Login() {
                                         placeholder="Entrer votre identifiant"
                                         name={"username"}
                                         values={userValues.username}
+                                        showError={showError}
                                         formError={formError.username}
                                         handleChange={handleChange}
 
@@ -85,6 +98,7 @@ function Login() {
                                         type="password"
                                         placeholder="Entrer votre mot de passe"
                                         name="password"
+                                        showError={showError}
                                         formError={formError.password}
                                         values={userValues.password}
                                         handleChange={handleChange}
@@ -106,12 +120,12 @@ function Login() {
                         <div className="flex flex-col space-y-2 m-2">
 
                             {/* Google */}
-                            <FormGoogle type="authenticate"/>
+                            <FormGoogle type="authenticate" setIsSubmit={setIsSubmit}/>
                             {/* Facebook */}
-                            <FormFacebook type="authenticate"/>
+                            <FormFacebook type="authenticate" setIsSubmit={setIsSubmit}/>
 
                             {/* Twitter */}
-                            <FormTwitter type="authenticate"/>
+                            <FormTwitter type="authenticate" setIsSubmit={setIsSubmit}/>
 
                         </div>
 

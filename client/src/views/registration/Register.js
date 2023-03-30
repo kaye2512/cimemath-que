@@ -11,7 +11,8 @@ import {FormFacebook} from "../../components/buttons/FormFacebook";
 import {FormTwitter} from "../../components/buttons/FormTwitter";
 import Footer from "../../components/footer/Footer";
 import { authUser } from "../../utils/api/authController";
-
+import {useDispatch, useSelector} from "react-redux";
+import {loginUser} from "../../reducers/userReducer";
 function Register(){
 
     const navigate = useNavigate();
@@ -20,6 +21,9 @@ function Register(){
     const [formError, setFormError] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
     const [message, setMessage] = useState("");
+    const [showError, setShowError] = useState(false);
+    const {isLogged} = useSelector((state)=>state.user)
+    const dispatch = useDispatch();
 
     const handleChange = (e)=>{
         const {name, value} = e.target
@@ -45,6 +49,8 @@ function Register(){
                 }).then((response)=>{
                 if(response.ok){
                     navigate("/home");
+                    dispatch(loginUser(userValues.username))
+                    console.log(isLogged)
                 }
                 else if (response.status === 409){
                     response.json().then((response)=>{
@@ -55,12 +61,15 @@ function Register(){
                         }else{
                             setMessage("Cet adresse email existe déja !")
                         }
+
+
                     })
                     setIsSubmit(true);
                 }
             })
         }else{
             setIsSubmit(true);
+            setShowError(true);
             setMessage("Le formulaire que vous venez de soumettre contient des erreurs");
         }
     }
@@ -69,7 +78,9 @@ function Register(){
         setFormError(validate(userValues, agreeTerms));
     },[userValues,agreeTerms])
 
-
+    if(isLogged){
+        navigate("/");
+    }
     return (
         <div className="mx-5 py-12 my-0 flex flex-col items-center">
             <section className="py-6 px-20">
@@ -98,6 +109,7 @@ function Register(){
                                              placeholder={"Entrer votre prénom"}
                                              name={"firstname"}
                                              values={userValues.firstname}
+                                             showError={showError}
                                              formError={formError.firstname}
                                              handleChange={handleChange}
 
@@ -107,6 +119,7 @@ function Register(){
                                              placeholder={"Entrer votre nom"}
                                              name={"lastname"}
                                              values={userValues.lastname}
+                                             showError={showError}
                                              formError={formError.lastname}
                                              handleChange={handleChange}
 
@@ -118,6 +131,7 @@ function Register(){
                                         placeholder={"Entrer votre identifiant"}
                                         name={"username"}
                                         values={userValues.username}
+                                        showError={showError}
                                         formError={formError.username}
                                         handleChange={handleChange}
                         />
@@ -126,6 +140,7 @@ function Register(){
                                         placeholder={"Entrer votre email"}
                                         name={"email"}
                                         values={userValues.email}
+                                        showError={showError}
                                         formError={formError.email}
                                         handleChange={handleChange}
 
@@ -135,6 +150,7 @@ function Register(){
                                         placeholder={"Entrer votre mot de passe"}
                                         name={"password"}
                                         formError={formError.password}
+                                        showError={showError}
                                         values={userValues.password}
                                         handleChange={handleChange}
 
@@ -144,12 +160,14 @@ function Register(){
                                         placeholder={"Confirmer votre mot de passe"}
                                         name={"confirm_password"}
                                         values={userValues.confirm_password}
+                                        showError={showError}
                                         formError={formError.confirm_password}
                                         handleChange={handleChange}
 
                         />
                         <CheckBoxField
                                         checked={agreeTerms}
+                                        showError={showError}
                                         formError={formError.agree_terms}
                                         handleChecked={handleChecked}
 

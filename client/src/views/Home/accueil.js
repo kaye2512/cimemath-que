@@ -17,6 +17,7 @@ import {FormNavbar} from "../../components/navbar/FormNavbar";
 import {FormGridFilm} from "../../components/Grid/FormGridFilm";
 import {Button} from "../../components/buttons/Button";
 import StarRate from "../../assets/Svg/StarRate.svg";
+import {useSelector} from "react-redux";
 
 
 /**
@@ -28,16 +29,20 @@ import StarRate from "../../assets/Svg/StarRate.svg";
 
 export const Accueil = (props) => {
 
+    const {user, isLogged} = useSelector((state)=>state.user)
+    console.log(isLogged)
+
     return (
         //LandingPage page container
         <div className=" flex flex-col items-stretch justify-around font-small
-                         leading-3 text-white w-full  h-full bg-black space-y-5">
+                         leading-3 text-white w-full bg-black h-full  space-y-5">
             {/*Navbar*/}
             <FormNavbar/>
 
             {/*film/serie/manga contents*/}
             {/*doit défilier automatique, pour linstant il est statique*/}
             <FormGridFilm/>
+          
 
             {/*grid layout row and column layout*/}
             <div className="grid grid-rows-3 grid-flow-col gap-4">

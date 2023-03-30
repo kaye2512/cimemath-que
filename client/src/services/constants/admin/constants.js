@@ -1,22 +1,72 @@
 export const actorInitialValues = {
+    fullname: "",
+    description: "",
+    birthdate: "",
+}
+
+export const directorInitialValues = {
     firstname:"",
     lastname:"",
     description:"",
     birthdate: "",
+
 }
 
-export const validateActor = (actorValues)=> {
+export const filmInitialValues = {
+    title:"",
+    description:"",
+    genres : "",
+    file : "",
+    pubDate : "",
+    actors : "",
+    directors : ""
+}
+
+export const validateFilm = (filmValues)=>{
     const errors = {};
-    if (!actorValues.firstname) {
+    if (!filmValues.title) {
+        errors.title = "Vous devez rentrer le nom du film";
+    } else {
+        delete errors.title
+    }
+
+    return errors;
+}
+
+export const validateDirector = (directorValues)=>{
+    const errors = {};
+    if (!directorValues.firstname) {
         errors.firstname = "Vous devez rentrer le prénom de l'acteur";
     } else {
         delete errors.firstname
     }
 
-    if (!actorValues.lastname) {
+    if (!directorValues.lastname) {
         errors.lastname = "Vous devez rentrer le nom de l'acteur";
     } else {
         delete errors.lastname
+    }
+
+    if (!directorValues.birthdate) {
+        errors.birthdate = "la date de naissance de l'acteur";
+    } else {
+        delete errors.birthdate
+    }
+
+    if(!directorValues.description){
+        errors.description= "Vous devez rentrer la description de l'acteur";
+    }else{delete errors.description}
+
+    return errors;
+}
+
+export const validateActor = (actorValues)=> {
+    const errors = {};
+
+    if (!actorValues.fullname) {
+        errors.fullname = "Vous devez rentrer le prénom et nom de l'acteur";
+    } else {
+        delete errors.fullname
     }
 
     if (!actorValues.birthdate) {
@@ -25,10 +75,5 @@ export const validateActor = (actorValues)=> {
         delete errors.birthdate
     }
 
-    if(!actorValues.description){
-        errors.description= "Vous devez rentrer la description de l'acteur";
-    }else{delete errors.description}
-
     return errors;
 }
-
